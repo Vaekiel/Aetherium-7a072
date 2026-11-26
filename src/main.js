@@ -1493,7 +1493,6 @@ function renderCircuits(){
   const v=circuitSession.view();
   const blocked=state.expedition?.armed===true;
   $('#circuit-summary').textContent=v?(v.finished?'Achevé · '+v.total+'/'+v.max:'Étape '+(v.step+1)+'/'+v.circuit.games.length):'3 circuits permanents';
-  $('#circuit-shortcut-progress').textContent=$('#circuit-summary').textContent;
   const reading=$('#circuit-reading-routes');
   reading.replaceChildren();
   for(const c of ARCANE_CIRCUITS){
@@ -1571,11 +1570,6 @@ function recordCircuitVictory(index,mode,score,game){
 }
 function renderExpedition(){
   const view=expeditionSummary(state.expedition);
-  const portalText=$('#expedition-shortcut-progress');
-  portalText.textContent=view.route&&!view.complete?
-    view.route.name+' · étape '+(view.current.step+1)+'/'+view.route.stages.length:
-    view.discovered?view.discovered+'/'+view.total+' fragments découverts':
-    EXPEDITION_ROUTES.length+' chemins à découvrir';
   $('#expedition-counter').textContent=view.discovered+'/'+view.total+' fragments';
   const host=$('#expedition-content');
   host.replaceChildren();
