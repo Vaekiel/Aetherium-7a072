@@ -1046,15 +1046,12 @@ function startMines(){
       el('span','excavation-danger','5 pièges dissimulés')
     );
     hud.append(relic,stats);
-    const meter=el('div','excavation-meter');
-    meter.setAttribute('aria-hidden','true');
-    for(let i=0;i<10;i++)meter.append(el('span'));
     const sitePanel=el('div','excavation-site-panel');
     sitePanel.append(el('span','excavation-site-kicker','✧ CARNET DE FOUILLES'),
       el('strong','excavation-site-name'),
       el('p','excavation-site-description'),
       el('span','excavation-artifact-note'));
-    g.board.before(sitePanel,hud,meter);
+    g.board.before(sitePanel,hud);
   }
   const sitePanel=$('.excavation-site-panel',g.card);
   $('.excavation-site-name',sitePanel).textContent=site.title;
@@ -1063,13 +1060,10 @@ function startMines(){
   artifactNote.textContent='◇ Vestige facultatif à découvrir · sans bonus de Couronnes';
   const relic=$('.excavation-relic',hud);
   relic.classList.remove('is-victorious','is-failed');
-  const meter=g.card.querySelector('.excavation-meter');
-  meter.replaceChildren(...Array.from({length:safeTarget},()=>el('span')));
   const updateHud=()=>{
     $('.excavation-counter',hud).textContent=safe+' / '+safeTarget+' cases sûres';
     $('.excavation-danger',hud).textContent=g.ended
       ?(safe===safeTarget?'Fouille accomplie':'Piège déclenché'):'5 pièges dissimulés';
-    [...meter.children].forEach((node,index)=>node.classList.toggle('filled',index<safe));
   };
 
   g.board.replaceChildren();
