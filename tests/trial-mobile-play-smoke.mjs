@@ -14,3 +14,8 @@ assert.ok(main.includes("if(!mobileView.matches)target.scrollIntoView"),'Mobile 
 assert.ok(main.includes('grant(earned)'),'Rewards remain wired');
 assert.ok(html.includes('class="future-difficulty" disabled'),'Ascension remains unavailable');
 console.log('Mobile trial fit and reading-sheet wiring OK');
+
+assert.ok(!main.includes("el('div','excavation-meter')"),'Fouilles no longer render the redundant progress bars');
+assert.ok(main.includes("safe+' / '+safeTarget+' cases sûres'"),'The numeric counter remains live');
+assert.ok(css.includes('#app:has(#page-jouer.active.mobile-play-ready[data-trial-view="play"])>footer{display:none}'),'The footer does not add a scroll tail during mobile play');
+assert.ok(css.includes('min-height:100dvh')&&css.includes('padding-bottom:calc(64px + env(safe-area-inset-bottom,0px) + 6px)'),'Viewport and nav clearance are handled without locking scrolling');
