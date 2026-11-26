@@ -29,3 +29,6 @@ assert.equal((html.match(/class="difficulty-emblem"/g)||[]).length,4,'Four visua
 assert.ok(main.includes("el('span','game-choice-name',entry.name)"),'Clean names without duplicate numbering');
 assert.ok(css.includes('repeat(6,minmax(0,1fr))')&&css.includes('grid-column:span 3'),'Portrait grid keeps all five games accessible');
 assert.ok(css.includes("assets/minigames/minigame-emblems.webp")&&css.includes("assets/scenery/dusk-right.webp"),'Phase one reuses approved artwork');
+
+assert.ok(main.includes("'chemin-runique.webp'")&&main.includes("art.addEventListener('load'")&&main.includes("art.addEventListener('error'"),'Progressive artwork with existing emblem fallback');
+assert.ok(css.includes('.game-choice.has-trial-art::before{display:none}')&&css.includes('object-fit:cover'),'Individual artwork does not change the tile grid');
