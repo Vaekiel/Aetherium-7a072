@@ -1403,7 +1403,7 @@ let selectedGame=0;
 const trialSubtitles=['Ordre & observation','Mémoire & association','Logique des cristaux','Exploration & prudence','Recettes & alchimie'];
 definitions.forEach((entry,index)=>{
   const control=button('',()=>{selectGame(index);if(mobileView.matches||window.matchMedia('(max-height:520px) and (orientation:landscape)').matches)openTrial();},'game-choice');
-  control.append(el('span','game-choice-name',(index+1)+' · '+entry.name),
+  control.append(el('span','game-choice-name',entry.name),
     el('span','game-choice-hint',trialSubtitles[index]));
   control.setAttribute('aria-label','Choisir '+entry.name);
   control.setAttribute('aria-controls','trial-panel-'+index);
