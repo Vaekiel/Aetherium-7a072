@@ -115,3 +115,91 @@
  #page-jouer .trial-setup .game-picker .game-choice{min-height:44px;padding-right:8px;white-space:normal}
  #page-jouer .trial-setup .game-choice-name{font-size:12px}
 }
+
+/* Mobile play v2 — keep active mechanics and actions in the viewport.
+   Reading/records are available in a native modal; never clip live controls. */
+#trial-mobile-info,#expedition-mobile-story{display:none}
+.trial-reading-dialog{width:min(92vw,580px);max-height:85dvh;overflow:auto;box-sizing:border-box;padding:16px;border:1px solid #b39ab9;border-radius:8px;color:#eddfce;background:linear-gradient(145deg,#28243e,#161b30);box-shadow:0 12px 40px #09091bcc}
+.trial-reading-dialog::backdrop{background:#090c1bd9}
+.trial-reading-dialog h2{margin:0 0 8px;font:small-caps 22px/1.2 Georgia,serif;color:#f1d8b5}
+.trial-reading-dialog>button{min-height:44px;width:100%;margin-bottom:10px}
+.trial-reading-content{display:grid;gap:8px;line-height:1.45;overflow-wrap:anywhere}
+.trial-reading-content p{margin:0;font:14px/1.55 Georgia,serif}
+.trial-reading-content details,.trial-reading-content .memory-fresco{padding:9px;background:#1a2037;border:1px solid #776782;border-radius:4px}
+.trial-reading-content table{width:100%;font-size:11px;text-align:center;border-collapse:collapse;table-layout:fixed}
+.trial-reading-content th,.trial-reading-content td{padding:6px 2px;border-bottom:1px solid #71657a66;overflow-wrap:anywhere}
+.trial-reading-content .trial-challenges-list,.trial-reading-content .alchemy-grimoire-list{display:grid;gap:6px;margin-top:8px}
+.trial-reading-content .trial-challenge,.trial-reading-content .alchemy-grimoire-entry{display:grid;gap:3px;padding:7px;border:1px solid #71657a66}
+@media(max-width:850px){
+ #page-jouer.mobile-play-ready[data-trial-view="play"]>.kicker,
+ #page-jouer.mobile-play-ready[data-trial-view="play"]>.heading{display:none}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-subpage-back{display:flex;justify-content:space-between;align-items:center;gap:6px;margin:0 0 5px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] #trial-mobile-info{display:block}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-subpage-back button{min-height:40px;padding:6px 9px;font-size:12px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .play-stage .games .game{padding:8px!important;min-height:0}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-card-heading{display:flex;align-items:center;justify-content:space-between;gap:4px 8px;padding:0 0 4px;margin:0 0 4px;flex-wrap:wrap}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-card-heading .trial-title{flex:1 1 auto;padding:0;margin:0;font-size:clamp(17px,4.6vw,23px)}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-meta{gap:4px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-meta .reward{min-height:22px;padding:3px 5px;margin:0;font-size:10px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.trial-objective,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game .trial-meta .trial-mastery,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.memory-fresco,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.trial-records,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.alchemy-grimoire,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.alchemy-family-legend,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game .excavation-site-description,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game .excavation-artifact-note,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.trial-switcher{display:none!important}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.board{width:min(100%,var(--mobile-board-width,100%));max-width:100%;margin:0 auto!important;padding:4px!important;gap:4px!important;box-sizing:border-box}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.status{min-height:0;margin:5px 0!important;font-size:11px!important;line-height:1.3}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.small-actions{margin:4px 0 0!important;gap:5px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .small-actions button{min-height:44px!important;padding:5px 6px;font-size:12px;white-space:normal}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-ritual,.memory-ritual,.ether-lock-rule,.excavation-site-panel,.alchemy-ritual){padding:5px 6px;margin:0 0 4px;gap:5px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-ritual-glyph,.memory-ritual-glyph,.alchemy-ritual-icon){width:23px;height:23px;font-size:17px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-ritual-name,.memory-ritual-title,.ether-lock-rule-title,.alchemy-ritual-title,.excavation-site-name){font-size:13px;line-height:1.2}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-ritual-rule,.memory-ritual-rule,.ether-lock-rule-text,.alchemy-ritual-clue){font-size:11px;line-height:1.25}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-hud,.memory-hud){padding:4px 1px;gap:3px;font-size:11px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-meter,.memory-meter,.excavation-meter,.alchemy-meter){margin:0 0 4px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-meter,.memory-meter,.excavation-meter,.alchemy-meter) span{height:5px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.ether-lock-hud,.excavation-hud,.alchemy-hud){grid-template-columns:52px minmax(0,1fr);gap:6px;padding:4px 0;min-height:0}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.ether-lock-dial,.excavation-relic,.alchemy-cauldron){max-width:52px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.ether-lock-readout,.alchemy-recipe){gap:2px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.ether-target,.excavation-counter,.alchemy-name){font-size:18px;line-height:1.1}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.ether-slot,.alchemy-slot){min-height:23px;height:auto;padding:3px 2px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.ether-slots,.alchemy-slots){gap:3px;margin:0}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game .alchemy-ingredient-name{font-size:10px;padding:2px 1px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game .excavation-kicker{display:none}
+ /* Expedition selector and chapter controls are compact; narrative is not deleted. */
+ #page-expeditions.mobile-story-ready .expedition-hero{flex-direction:row;align-items:center;gap:6px;padding:7px 8px;margin:0 0 6px}
+ #page-expeditions.mobile-story-ready .expedition-hero .kicker,#page-expeditions.mobile-story-ready .expedition-hero p:last-child{display:none}
+ #page-expeditions.mobile-story-ready .expedition-hero h1{font-size:clamp(19px,5vw,25px);margin:0}
+ #page-expeditions.mobile-story-ready .expedition-back{width:auto;min-height:40px;padding:5px 7px;font-size:11px}
+ #page-expeditions.mobile-story-ready .expedition-panel{margin-bottom:6px}
+ #page-expeditions.mobile-story-ready .expedition-summary{padding:6px;min-height:40px;gap:5px;flex-wrap:wrap}
+ #page-expeditions.mobile-story-ready .expedition-symbol{display:none}
+ #page-expeditions.mobile-story-ready .expedition-summary-title{font-size:13px}
+ #page-expeditions.mobile-story-ready #expedition-mobile-story{display:block;min-height:36px;font-size:11px;padding:4px 7px;margin-left:auto}
+ #page-expeditions.mobile-story-ready .expedition-content{min-height:0;padding:7px}
+ #page-expeditions.mobile-story-ready .expedition-lead{margin:0 0 5px;padding:0;gap:3px}
+ #page-expeditions.mobile-story-ready .expedition-title{font-size:19px;margin:0}
+ #page-expeditions.mobile-story-ready .expedition-kicker{font-size:9px}
+ #page-expeditions.mobile-story-ready #expedition-content>.expedition-description,
+ #page-expeditions.mobile-story-ready #expedition-content>.expedition-after{display:none}
+ #page-expeditions.mobile-story-ready .expedition-choices{grid-template-columns:minmax(0,1fr);gap:5px;margin:5px 0}
+ #page-expeditions.mobile-story-ready .expedition-choice{min-height:49px;gap:6px;padding:6px}
+ #page-expeditions.mobile-story-ready .expedition-choice-symbol{width:28px;height:28px;font-size:19px}
+ #page-expeditions.mobile-story-ready .expedition-choice-copy strong{font-size:14px;line-height:1.15}
+ #page-expeditions.mobile-story-ready .expedition-choice-copy small{font-size:10px;line-height:1.2}
+ #page-expeditions.mobile-story-ready .expedition-chapter,#page-expeditions.mobile-story-ready .expedition-stage-title{margin:4px 0;font-size:14px}
+ #page-expeditions.mobile-story-ready .expedition-progress{margin:5px 0;gap:5px}
+ #page-expeditions.mobile-story-ready .expedition-actions{display:grid;grid-template-columns:1.3fr 1fr;gap:5px;margin:6px 0}
+ #page-expeditions.mobile-story-ready .expedition-actions button{width:100%;min-height:44px;font-size:12px;padding:5px;white-space:normal}
+ #page-expeditions.mobile-story-ready .expedition-vow{min-height:44px;padding:6px;gap:3px}
+ #page-expeditions.mobile-story-ready .expedition-vow strong{font-size:13px}
+ #page-expeditions.mobile-story-ready .expedition-vow small{font-size:11px;line-height:1.3}
+ #page-expeditions.mobile-story-ready .expedition-final-vows{gap:5px}
+ #page-expeditions.mobile-story-ready .expedition-finale-reward{margin:5px 0;padding:6px;gap:6px}
+ #page-expeditions.mobile-story-ready .expedition-finale-art{width:50px}
+ #page-expeditions.mobile-story-ready .expedition-finale-copy .expedition-description{display:none}
+ #page-expeditions.mobile-story-ready #lore-from-expedition{min-height:40px;margin:4px 7px 7px;padding:5px 9px;font-size:12px}
+}
