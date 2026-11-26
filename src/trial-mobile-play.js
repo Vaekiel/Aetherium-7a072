@@ -32,6 +32,10 @@ export function mountTrialMobilePlay(){
   const content=q('#expedition-content',expedition);
   read('Le récit des Marches',Array.from(content.querySelectorAll('.expedition-chapter,.expedition-fragment,.expedition-after,.expedition-stage-title,.expedition-description')));
  });
+ q('#circuit-info').addEventListener('click',()=>{
+  const reading=q('#circuit-reading');
+  read('Les Circuits des Marches',Array.from(reading.children));
+ });
  page.classList.add('mobile-play-ready');expedition.classList.add('mobile-story-ready');
  info.hidden=false;story.hidden=false;
  let frame=0,observed=null;
