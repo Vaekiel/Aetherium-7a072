@@ -250,7 +250,6 @@ function uiNode(tag='div',klass='',value=''){
  };
 }
 const chapterContent=uiNode('div'),chapterCounter=uiNode('span');
-const portalText=uiNode('span');
 const domState={difficulty:'maitrise',expedition:emptyExpedition()};
 const calls={saved:0,started:[],selected:[],rendered:0,navigated:[],scrolled:[]};
 const cards=Array.from({length:5},(_,index)=>({card:{
@@ -279,7 +278,7 @@ const choicesSandbox={
  button(label,fn,klass){const b=uiNode('button',klass,label);b.addEventListener('click',fn);return b},
  $:selector=>selector==='#expedition-content'?chapterContent:
   selector==='#expedition-counter'?chapterCounter:
-  selector==='#expedition-shortcut-progress'?portalText:null
+  null
 };
 const uiCode=main.slice(main.indexOf('function renderExpedition(){'),
  main.indexOf('function makeCard(',main.indexOf('function renderExpedition(){')));
@@ -287,7 +286,7 @@ assert.ok(uiCode.startsWith('function renderExpedition(){'));
 const ui=runInNewContext(uiCode+'({renderExpedition})',choicesSandbox);
 ui.renderExpedition();
 assert.equal(chapterCounter.textContent,'0/4 fragments');
-assert.equal(portalText.textContent,'4 chemins à découvrir');
+assert.ok(html.includes('<span>4 itinéraires</span>'),'Stable hub label');
 const choiceBlock=chapterContent.children.find(e=>e.classList.contains('expedition-choices'));
 assert.equal(choiceBlock.children.length,4);
 choiceBlock.children[1].click();
@@ -295,7 +294,7 @@ assert.equal(domState.expedition.route,'veilleurs');
 assert.equal(domState.expedition.mode,'maitrise');
 assert.equal(domState.expedition.step,0);
 assert.equal(calls.saved,1);
-assert.ok(portalText.textContent.includes('étape 1/3'),'The compact shortcut reflects the active itinerary');
+assert.equal(domState.expedition.step,0,'Current step remains in expedition state');
 const actions=chapterContent.children.find(e=>e.classList.contains('expedition-actions'));
 assert.equal(actions.children.length,2);
 actions.children[0].click();
@@ -317,7 +316,7 @@ assert.equal(domState.expedition.route,'traversee-reflets');
 assert.equal(domState.expedition.mode,'maitrise');
 assert.equal(calls.saved,4);
 assert.ok(chapterContent.children.some(e=>e.classList.contains('expedition-lead')));
-assert.ok(portalText.textContent.includes('La Traversée des Reflets'));
+assert.equal(domState.expedition.route,'traversee-reflets','The route remains available inside the expedition');
 const reversActions=chapterContent.children.find(e=>e.classList.contains('expedition-actions'));
 reversActions.children[0].click();
 assert.equal(domState.expedition.armed,true);
