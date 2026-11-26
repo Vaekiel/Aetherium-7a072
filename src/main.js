@@ -1,4 +1,4 @@
-import {mountTrialMobilePlay} from './trial-mobile-play.js?v=1';
+import {mountTrialMobilePlay} from './trial-mobile-play.js?v=2';
 import {ARCANE_CIRCUITS,createCircuitSession} from './arcane-circuits.js?v=1';
 import {journeyProgress} from './journey-progress.js?v=1';
 import {loreArchive} from './lore-archive.js?v=1';
@@ -1413,8 +1413,7 @@ definitions.forEach((entry,index)=>{
 function setTrialView(view){
   const page=$('#page-jouer');
   page.dataset.trialView=view;
-  $('.trial-subpage-back',page).hidden=view==='hub';
-  if(view==='circuits')$('#arcane-circuits').open=true;
+  $('.trial-subpage-back',page).hidden=view==='hub'||view==='circuits';
   window.scrollTo(0,0);
 }
 function refreshTrialPreview(){
@@ -1434,6 +1433,7 @@ $('#trial-launch').addEventListener('click',()=>openTrial(true));
 $('#trial-guide-shortcut').addEventListener('click',()=>{setTrialView('guide');$('#guide-title').focus({preventScroll:true})});
 $('#trial-return').addEventListener('click',()=>{setTrialView('hub');picker.children[selectedGame]?.focus({preventScroll:true})});
 $('#circuit-shortcut').addEventListener('click',showCircuits);
+$('#circuit-hub-back').addEventListener('click',()=>{setTrialView('hub');$('#circuit-shortcut').focus({preventScroll:true})});
 function selectGame(index,{jumpToStage=false,focusTrial=false}={}){
   if(index<0||index>=mini.length)return;
   if(mini[index].mode!==state.difficulty){trialStarters[index]();renderTrialMastery();}
@@ -1486,51 +1486,63 @@ difficultyButtons.forEach(control=>control.addEventListener('click',()=>{
 renderDifficultyChoice();
 function showCircuits(){
   setTrialView('circuits');
-  const panel=$('#arcane-circuits');
-  panel.open=true;
-  const summary=panel.querySelector('summary');
-  summary.focus({preventScroll:true});summary.scrollIntoView({block:'start',behavior:'auto'});
+  $('#circuit-view-title').focus({preventScroll:true});
 }
 function renderCircuits(){
-  const panel=$('#arcane-circuits');
   const root=$('#circuit-content');
   const v=circuitSession.view();
   const blocked=state.expedition?.armed===true;
-  $('#circuit-summary').textContent=v?(v.finished?'Circuit achevé · '+v.total+'/'+v.max:'Étape '+(v.step+1)+'/'+v.circuit.games.length):'3 circuits permanents';
+  $('#circuit-summary').textContent=v?(v.finished?'Achevé · '+v.total+'/'+v.max:'Étape '+(v.step+1)+'/'+v.circuit.games.length):'3 circuits permanents';
   $('#circuit-shortcut-progress').textContent=$('#circuit-summary').textContent;
+  const reading=$('#circuit-reading-routes');
+  reading.replaceChildren();
+  for(const c of ARCANE_CIRCUITS){
+    const detail=el('section','circuit-reading-route');
+    detail.append(el('h3','',c.title),el('p','',c.description),
+      el('p','',DIFFICULTIES.find(d=>d.id===c.mode).label+' · '+c.games.map(i=>definitions[i].name).join(' → ')));
+    reading.append(detail);
+  }
   root.replaceChildren();
   if(blocked)root.append(el('p','circuit-notice','Une étape d’expédition est engagée. Termine-la ou quitte le parcours avant de lancer une étape de circuit.'));
   if(!v){
+    const lead=el('div','expedition-lead');
+    const copy=el('div','expedition-lead-text');
+    copy.append(el('span','expedition-kicker','LES CIRCUITS · MARCHES DE VERRE'),el('h3','expedition-title','Choisis ton circuit'));
+    lead.append(copy);root.append(lead);
+    const choices=el('div','expedition-choices circuit-route-choices');
     for(const c of ARCANE_CIRCUITS){
-      const row=el('article','circuit-choice');
-      row.dataset.circuit=c.id;
-      const copy=el('div','circuit-copy');
       const mode=DIFFICULTIES.find(d=>d.id===c.mode).label;
       const previous=circuitSession.best(c.id);
-      copy.append(el('strong','',c.title),el('small','',mode+' · '+c.games.length+' épreuves'),el('p','',c.description),
-        el('small','',c.games.map(i=>definitions[i].name).join(' → ')));
-      if(previous!==null)copy.append(el('small','circuit-best','Record de session : '+previous+'/300'));
-      const launch=button('Choisir',()=>{if(circuitSession.start(c.id)){renderCircuits();showCircuits()}},'secondary circuit-select');
-      row.append(copy,launch);root.append(row);
+      const pick=button('',()=>{if(circuitSession.start(c.id)){renderCircuits();showCircuits()}},'expedition-choice circuit-route-choice');
+      pick.dataset.circuit=c.id;
+      const symbol=c.id==='lumieres'?'✧':c.id==='passeurs'?'◇':'✦';
+      const text=el('span','expedition-choice-copy');
+      text.append(el('strong','',c.title),el('small','',mode+' · '+c.games.length+' épreuves'+(previous===null?'':' · Record '+previous+'/300')));
+      pick.append(el('span','expedition-choice-symbol',symbol),text,el('span','expedition-choice-status','›'));
+      pick.setAttribute('aria-label',c.title+', '+mode+', '+c.games.length+' épreuves');
+      choices.append(pick);
     }
+    root.append(choices);
     return;
   }
-  const header=el('div','circuit-current');
-  header.append(el('h3','',v.circuit.title),el('small','',DIFFICULTIES.find(d=>d.id===v.circuit.mode).label+' · '+v.total+' / '+v.max+' points'));
-  root.append(header);
+  const lead=el('div','expedition-lead');
+  const title=el('div','expedition-lead-text');
+  title.append(el('span','expedition-kicker','CIRCUIT · '+DIFFICULTIES.find(d=>d.id===v.circuit.mode).label.toUpperCase()),el('h3','expedition-title',v.circuit.title));
+  lead.append(title);root.append(lead);
+  root.append(el('p','expedition-chapter',v.total+' / '+v.max+' points'+(v.best===null?'':' · Record : '+v.best+'/'+v.max)));
   const steps=el('ol','circuit-steps');
   v.circuit.games.forEach((game,index)=>{
     const row=el('li',index<v.step?'is-done':index===v.step?'is-current':'');
-    row.append(el('span','circuit-step-number',index<v.step?'✓':String(index+1)),
+    row.append(el('span','expedition-progress-step circuit-step-number'+(index<v.step?' is-done':index===v.step?' is-now':''),index<v.step?'✓':String(index+1)),
       el('strong','',definitions[game].name),
       el('small','',index<v.step?v.scores[index]+'/100':index===v.step?'À jouer':'À venir'));
     steps.append(row);
   });
   root.append(steps);
-  const actions=el('div','circuit-actions');
+  const actions=el('div','expedition-actions circuit-compact-actions');
   if(v.finished){
     root.append(el('p','circuit-result','✦ Circuit achevé ! '+v.total+' / '+v.max+' points. Record de cette session : '+v.best+' / '+v.max+'.'));
-    actions.append(button('Rejouer ce circuit',()=>{circuitSession.start(v.circuit.id);renderCircuits()},'primary circuit-replay'));
+    actions.append(button('Rejouer ce circuit',()=>{circuitSession.start(v.circuit.id);renderCircuits()},'primary expedition-continue circuit-replay'));
   }else{
     const play=button(v.armed?'Relancer l’étape':'Jouer l’étape '+(v.step+1),()=>{
       const next=circuitSession.view();
@@ -1541,14 +1553,14 @@ function renderCircuits(){
       trialStarters[next.game]();
       selectGame(next.game,{jumpToStage:true,focusTrial:true});
       renderTrialMastery();renderCircuits();
-    },'primary circuit-play');
+    },'primary expedition-continue circuit-play');
     play.disabled=blocked;
     actions.append(play);
-    if(v.armed)actions.append(button('Mettre en pause',()=>{circuitSession.pause();renderCircuits()},'secondary circuit-pause'));
+    if(v.armed)actions.append(button('Mettre en pause',()=>{circuitSession.pause();renderCircuits()},'secondary expedition-leave circuit-pause'));
   }
   actions.append(button(v.finished?'Autres circuits':'Quitter le circuit',()=>{
     circuitSession.leave();renderCircuits();
-  },'secondary circuit-leave'));
+  },'secondary expedition-leave circuit-leave'));
   root.append(actions);
 }
 function recordCircuitVictory(index,mode,score,game){
