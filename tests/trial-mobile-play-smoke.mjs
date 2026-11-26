@@ -24,3 +24,8 @@ const portals=html.slice(html.indexOf('<div class="trial-hub-portals">'),html.in
 assert.equal((portals.match(/class="expedition-portal"/g)||[]).length,2,'Both activities use the same portal card');
 assert.equal((portals.match(/class="expedition-portal-button"/g)||[]).length,2,'Both cards use the same Explorer button');
 assert.ok(!/shortcut-progress/.test(portals)&&!main.includes('expedition-shortcut-progress')&&!main.includes('circuit-shortcut-progress'),'No active itinerary or stage in the hub');
+
+assert.equal((html.match(/class="difficulty-emblem"/g)||[]).length,4,'Four visual difficulty seals');
+assert.ok(main.includes("el('span','game-choice-name',entry.name)"),'Clean names without duplicate numbering');
+assert.ok(css.includes('repeat(6,minmax(0,1fr))')&&css.includes('grid-column:span 3'),'Portrait grid keeps all five games accessible');
+assert.ok(css.includes("assets/minigames/minigame-emblems.webp")&&css.includes("assets/scenery/dusk-right.webp"),'Phase one reuses approved artwork');
