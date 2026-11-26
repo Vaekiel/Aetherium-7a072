@@ -38,9 +38,6 @@
 #page-jouer .trial-hub-portals .expedition-portal-copy strong{font-size:16px}
 #page-jouer .trial-hub-portals .expedition-portal-copy span{font-size:11px}
 #page-jouer .trial-hub-portals .expedition-portal-button{grid-column:1/-1;min-height:44px;width:100%;margin:0}
-#page-jouer .trial-circuit-portal{display:grid;gap:5px;min-height:80px;text-align:left;white-space:normal;padding:10px;border:1px solid #88768e91;background:linear-gradient(145deg,#28233c,#191e31);color:#e9d8bd}
-#page-jouer .trial-circuit-portal strong{font:16px/1.2 Georgia,serif}
-#page-jouer .trial-circuit-portal small{font:12px/1.2 Georgia,serif;color:#c5b7d5}
 #page-jouer[data-trial-view="hub"]>.heading{margin-bottom:10px}
 #page-jouer[data-trial-view="hub"] .trial-setup{margin-bottom:0}
 #page-jouer[data-trial-view="play"] .games{display:block}
@@ -59,10 +56,9 @@
  #page-jouer .trial-hub-portals{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
  #page-jouer .trial-hub-portals .expedition-portal{grid-template-columns:minmax(0,1fr);padding:7px;gap:3px}
  #page-jouer .trial-hub-portals .expedition-portal-symbol{display:none}
- #page-jouer .trial-hub-portals .expedition-portal-copy strong,#page-jouer .trial-circuit-portal strong{font-size:13px}
- #page-jouer .trial-hub-portals .expedition-portal-copy span,#page-jouer .trial-circuit-portal small{font-size:10px}
+ #page-jouer .trial-hub-portals .expedition-portal-copy strong{font-size:13px}
+ #page-jouer .trial-hub-portals .expedition-portal-copy span{font-size:10px}
  #page-jouer .trial-hub-portals .expedition-portal-button{min-height:33px;padding:4px;font-size:11px}
- #page-jouer .trial-circuit-portal{min-height:65px;padding:7px}
  #page-jouer[data-trial-view="hub"]>.heading h1{font-size:clamp(20px,5vw,27px);margin:0}
  #page-jouer[data-trial-view="hub"]>.heading>span{display:none}
  #page-jouer[data-trial-view="hub"]>.kicker{font-size:10px;margin-bottom:3px}
@@ -88,7 +84,6 @@
  #page-jouer .trial-setup .difficulty-options{flex:1}
  #page-jouer .trial-hub-portals{grid-template-columns:1fr}
  #page-jouer .trial-hub-portals .expedition-portal-button{min-height:30px}
- #page-jouer .trial-circuit-portal{min-height:45px}
 }
 
 #page-jouer .trial-guide-shortcut{font:12px/1.2 Georgia,serif;min-height:40px;padding:5px 9px}
@@ -108,7 +103,6 @@
  #page-jouer .trial-setup .game-choice-name{font-size:11px;white-space:normal;overflow-wrap:normal}
  #page-jouer .trial-hub-portals .expedition-portal{padding:5px;gap:2px}
  #page-jouer .trial-hub-portals .expedition-portal-button{min-height:32px}
- #page-jouer .trial-circuit-portal{padding:6px;min-height:40px;gap:2px}
 }
 @media(max-height:620px) and (orientation:portrait){
  #page-jouer .trial-setup .game-picker{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -242,3 +236,9 @@
  }
  #app:has(#page-jouer.active[data-trial-view="circuits"])>footer{display:none}
 }
+
+/* Identical, stable entry cards; active route progress belongs to the activity itself. */
+#page-jouer .trial-hub-portals .expedition-portal{grid-template-rows:1fr auto;align-content:stretch}
+#page-jouer .trial-hub-portals .expedition-portal-copy{justify-content:center;gap:3px}
+#page-jouer .trial-hub-portals .expedition-portal-copy strong{white-space:normal;overflow-wrap:normal}
+#page-jouer .trial-hub-portals .expedition-portal-button{align-self:end}
