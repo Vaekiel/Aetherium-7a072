@@ -19,3 +19,8 @@ assert.ok(!main.includes("el('div','excavation-meter')"),'Fouilles no longer ren
 assert.ok(main.includes("safe+' / '+safeTarget+' cases sûres'"),'The numeric counter remains live');
 assert.ok(css.includes('#app:has(#page-jouer.active.mobile-play-ready[data-trial-view="play"])>footer{display:none}'),'The footer does not add a scroll tail during mobile play');
 assert.ok(css.includes('min-height:100dvh')&&css.includes('padding-bottom:calc(64px + env(safe-area-inset-bottom,0px) + 6px)'),'Viewport and nav clearance are handled without locking scrolling');
+
+const portals=html.slice(html.indexOf('<div class="trial-hub-portals">'),html.indexOf('<div class="trial-subpage-back"'));
+assert.equal((portals.match(/class="expedition-portal"/g)||[]).length,2,'Both activities use the same portal card');
+assert.equal((portals.match(/class="expedition-portal-button"/g)||[]).length,2,'Both cards use the same Explorer button');
+assert.ok(!/shortcut-progress/.test(portals)&&!main.includes('expedition-shortcut-progress')&&!main.includes('circuit-shortcut-progress'),'No active itinerary or stage in the hub');
