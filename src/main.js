@@ -1403,6 +1403,25 @@ let selectedGame=0;
 const trialSubtitles=['Ordre & observation','Mémoire & association','Logique des cristaux','Exploration & prudence','Recettes & alchimie'];
 definitions.forEach((entry,index)=>{
   const control=button('',()=>{selectGame(index);if(mobileView.matches||window.matchMedia('(max-height:520px) and (orientation:landscape)').matches)openTrial();},'game-choice');
+  // Individual landscape artworks progressively replace the emblem atlas.
+  // Until a given artwork is published, the original emblem remains visible.
+  const artwork=['chemin-runique.webp'][index];
+  if(artwork){
+    const art=el('img','trial-choice-art');
+    art.alt='';
+    art.decoding='async';
+    art.hidden=true;
+    art.addEventListener('load',()=>{
+      art.hidden=false;
+      control.classList.add('has-trial-art');
+    });
+    art.addEventListener('error',()=>{
+      art.hidden=true;
+      control.classList.remove('has-trial-art');
+    });
+    control.append(art);
+    art.src='./assets/minigames/'+artwork;
+  }
   control.append(el('span','game-choice-name',entry.name),
     el('span','game-choice-hint',trialSubtitles[index]));
   control.setAttribute('aria-label','Choisir '+entry.name);
