@@ -350,3 +350,20 @@
  #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal{padding:4px;gap:3px;grid-template-columns:24px 1fr auto;grid-template-rows:1fr}
  #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-button{grid-column:3;min-height:44px;width:auto;padding:4px;font-size:11px}
 }
+
+/* Phase 2 — individual landscape artwork. Match the existing tile height. */
+#page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice.has-trial-art::before{display:none}
+#page-jouer[data-trial-view="hub"] .trial-choice-art[hidden]{display:none!important}
+#page-jouer[data-trial-view="hub"] .trial-choice-art{
+ display:block;width:100%;height:clamp(48px,6.6vw,92px);object-fit:cover;object-position:center 55%;
+ border:1px solid #b79984;border-radius:4px;box-sizing:border-box;flex:none
+}
+@media(max-width:850px){
+ #page-jouer[data-trial-view="hub"] .trial-choice-art{height:clamp(44px,9svh,75px)}
+}
+@media(max-height:700px) and (max-width:599px){
+ #page-jouer[data-trial-view="hub"] .trial-choice-art{height:clamp(38px,8svh,55px)}
+}
+@media(max-height:520px) and (orientation:landscape){
+ #page-jouer[data-trial-view="hub"] .trial-choice-art{height:clamp(30px,8svh,45px)}
+}
