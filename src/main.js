@@ -1,3 +1,4 @@
+import {mountTrialMobilePlay} from './trial-mobile-play.js?v=1';
 import {ARCANE_CIRCUITS,createCircuitSession} from './arcane-circuits.js?v=1';
 import {journeyProgress} from './journey-progress.js?v=1';
 import {loreArchive} from './lore-archive.js?v=1';
@@ -1461,7 +1462,7 @@ function selectGame(index,{jumpToStage=false,focusTrial=false}={}){
     openTrial(focusTrial);
     const card=mini[index].card;
     if(focusTrial)$('#trial-title-'+index).focus({preventScroll:true});
-    card.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    if(!mobileView.matches)card.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
   }
 }
 selectGame(0);
@@ -1713,7 +1714,7 @@ function renderExpedition(){
     navigate('jouer');
     openTrial();
     const target=mini[stage.game].card;
-    target.scrollIntoView({behavior:'smooth',block:'start'});
+    if(!mobileView.matches)target.scrollIntoView({behavior:'smooth',block:'start'});
     target.querySelector('button:not([disabled])')?.focus({preventScroll:true});
   },'primary expedition-continue');
   play.disabled=isFinale&&view.current.step===3&&!view.current.choice;
@@ -3025,6 +3026,7 @@ selectBooster('origines');
 renderExpedition();
 update();
 navigate(APP_PAGES.includes(location.hash.slice(1))?location.hash.slice(1):'jouer');
+mountTrialMobilePlay();
 window.addEventListener('hashchange',()=>{
   const page=location.hash.slice(1);
   if(APP_PAGES.includes(page)&&!$('#page-'+page).classList.contains('active'))navigate(page);
