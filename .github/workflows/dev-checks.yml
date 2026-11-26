@@ -22,3 +22,8 @@ jobs:
           node --experimental-default-type=module --test tests/save-backup.test.mjs
           node tests/save-backup-smoke.mjs
           node --experimental-default-type=module tests/onboarding-smoke.mjs
+          node --check --input-type=module < src/trial-mobile-play.js
+          node tests/trial-mobile-play-smoke.mjs
+          node --experimental-default-type=module tests/trial-progress-smoke.mjs
+          node --experimental-default-type=module tests/expedition-smoke.mjs
+          node --experimental-default-type=module tests/arcane-circuits-smoke.mjs
