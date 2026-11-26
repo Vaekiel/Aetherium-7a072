@@ -242,3 +242,111 @@
 #page-jouer .trial-hub-portals .expedition-portal-copy{justify-content:center;gap:3px}
 #page-jouer .trial-hub-portals .expedition-portal-copy strong{white-space:normal;overflow-wrap:normal}
 #page-jouer .trial-hub-portals .expedition-portal-button{align-self:end}
+
+/* Phase 1: illustrated hall of trials. Only the hub, not the game screens. */
+#page-jouer[data-trial-view="hub"]>.kicker{color:#d5b68b;letter-spacing:.11em;margin:0 0 5px}
+#page-jouer[data-trial-view="hub"]>.heading{
+ position:relative;isolation:isolate;min-height:84px;gap:7px;padding:14px 13px 15px 72px;margin:0 0 12px;
+ border:1px solid #aa8d829c;border-radius:4px;
+ background:linear-gradient(90deg,#14172eea 12%,#1b183cce 58%,#24203d45),url('../assets/scenery/dusk-right.webp') right 42%/auto 155% no-repeat,#191a32;
+ box-shadow:inset 0 0 0 3px #d8be8b13,0 6px 16px #0a0c2070
+}
+#page-jouer[data-trial-view="hub"]>.heading::before{content:"";position:absolute;left:10px;top:50%;width:52px;aspect-ratio:1;transform:translateY(-50%);background:url('../assets/minigames/minigame-emblems.webp') 0% 0%/300% 200% no-repeat;filter:drop-shadow(0 0 8px #9f82d666);pointer-events:none}
+#page-jouer[data-trial-view="hub"]>.heading h1{color:#ffe7c0;text-shadow:0 2px 6px #0b0c1c,0 0 13px #d0a66933;line-height:1.13}
+#page-jouer[data-trial-view="hub"]>.heading>span{color:#dfcfe3}
+#page-jouer[data-trial-view="hub"] .trial-setup{gap:12px}
+#page-jouer[data-trial-view="hub"] .difficulty-panel{border:0;background:none;box-shadow:none;padding:0;gap:7px;display:flex;flex-direction:column;align-items:stretch}
+#page-jouer[data-trial-view="hub"] .difficulty-description{flex:auto;flex-direction:row;align-items:center;gap:12px}
+#page-jouer[data-trial-view="hub"] .difficulty-description strong,#page-jouer[data-trial-view="hub"] .trial-setup-title{display:flex;align-items:center;gap:8px;color:#e9d1ab;font:small-caps 18px/1.2 Georgia,serif}
+#page-jouer[data-trial-view="hub"] .difficulty-description strong::before,#page-jouer[data-trial-view="hub"] .trial-setup-title::before{content:'◇';color:#c7a375;font:14px/1 Georgia,serif}
+#page-jouer[data-trial-view="hub"] .trial-setup-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,#c4a07cb3,transparent)}
+#page-jouer[data-trial-view="hub"] .difficulty-options{flex:auto;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:0}
+#page-jouer[data-trial-view="hub"] .difficulty-options button{--seal:#cbb6e8;min-width:0;min-height:70px;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px;padding:6px 3px;color:#f0e2d0;font:14px/1.15 Georgia,serif;border:1px solid #a48a80;border-radius:7px;background:radial-gradient(ellipse at 50% 20%,#42405d88,transparent 70%),linear-gradient(155deg,#25243f,#171b31);box-shadow:inset 0 0 0 2px #c5a68b18}
+#page-jouer[data-trial-view="hub"] .difficulty-options [data-difficulty="initiation"]{--seal:#98e5bd}
+#page-jouer[data-trial-view="hub"] .difficulty-options [data-difficulty="aventure"]{--seal:#b5c4ff}
+#page-jouer[data-trial-view="hub"] .difficulty-options [data-difficulty="maitrise"]{--seal:#f3cc82}
+#page-jouer[data-trial-view="hub"] .difficulty-emblem{display:block;width:27px;height:27px;flex:none;color:var(--seal);filter:drop-shadow(0 0 5px #aa8bd855)}
+#page-jouer[data-trial-view="hub"] .difficulty-options button.is-active{border-color:var(--seal);background:radial-gradient(ellipse at 50% 10%,#72558c99,transparent 85%),#302543;box-shadow:inset 0 0 0 2px #d2b88a30,0 0 10px #a47de047}
+#page-jouer[data-trial-view="hub"] .difficulty-options button.is-active::after{content:'';position:absolute;bottom:-3px;left:calc(50% - 3px);width:6px;height:6px;transform:rotate(45deg);background:var(--seal)}
+#page-jouer[data-trial-view="hub"] .difficulty-options .future-difficulty{--seal:#aaa2c3;opacity:.65;border-style:dashed}
+#page-jouer[data-trial-view="hub"] .future-difficulty small{font-size:10px;margin-top:-2px}
+#page-jouer[data-trial-view="hub"] .trial-hub-layout{grid-template-columns:minmax(0,1fr) minmax(210px,.28fr);gap:10px;align-items:start}
+#page-jouer[data-trial-view="hub"] .trial-hub-picker{grid-column:1;padding:0;border:0;background:none}
+#page-jouer[data-trial-view="hub"] .trial-setup .game-picker{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin:0;padding:2px;overflow:visible}
+#page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:0;min-width:0;padding:9px 5px 8px;gap:4px;text-align:center;border:1px solid #a78c82;border-radius:7px;background:radial-gradient(ellipse at 50% 15%,#4c376b70,transparent 70%),linear-gradient(160deg,#22273e,#201b35);box-shadow:inset 0 0 0 2px #c5a68b19,0 4px 10px #080b2060}
+#page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice::before{position:relative;left:auto;top:auto;bottom:auto;transform:none;display:block;flex:none;width:clamp(48px,6.6vw,92px);height:auto;aspect-ratio:1;filter:drop-shadow(0 2px 5px #090b22a0);image-rendering:auto}
+#page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice.active{border-color:#d7b4ff;background:radial-gradient(ellipse at 50% 20%,#69449d8c,transparent 80%),#2b2342;box-shadow:inset 0 0 0 2px #c9a4f436,0 0 10px #a97df460}
+#page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice.active::after{left:calc(50% - 3px);right:auto;bottom:-3px;width:6px;height:6px;background:#e6c6ff}
+#page-jouer[data-trial-view="hub"] .trial-setup .game-choice-name{color:#f7e5cd;font:600 clamp(12px,1.15vw,16px)/1.16 Georgia,serif;overflow-wrap:normal;text-wrap:balance}
+#page-jouer[data-trial-view="hub"] .trial-setup .game-choice-hint{font:11px/1.2 Georgia,serif;color:#c7bad6}
+#page-jouer[data-trial-view="hub"] .trial-preview{grid-column:1;grid-row:2;display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,.35fr);gap:5px 12px;border-color:#a88b93;background:linear-gradient(120deg,#242039,#181f34);padding:10px}
+#page-jouer[data-trial-view="hub"] .trial-preview h2{font-size:23px}
+#page-jouer[data-trial-view="hub"] .trial-preview p,#page-jouer[data-trial-view="hub"] .trial-preview-meta{grid-column:1}
+#page-jouer[data-trial-view="hub"] #trial-launch{grid-column:2;grid-row:1/5;align-self:center;margin:0}
+#page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-column:2;grid-row:1/3;grid-template-columns:1fr;gap:8px;align-self:stretch}
+#page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal{position:relative;isolation:isolate;overflow:hidden;grid-template-columns:30px minmax(0,1fr);grid-template-rows:1fr auto;gap:6px;padding:10px;min-width:0;border:1px solid #b79984;border-radius:7px;background:linear-gradient(110deg,#141a32ef,#2a2449b8),url('../assets/scenery/dusk-right.webp') center/cover no-repeat;box-shadow:inset 0 0 0 2px #ddc19d18}
+#page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal:nth-child(2){background:linear-gradient(110deg,#17172fed,#3c2454af),url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat}
+#page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-symbol{display:grid;width:30px;height:30px;font-size:23px;border-color:#c5a583;box-shadow:0 0 8px #9573cf40}
+#page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-copy strong{font:small-caps 18px/1.15 Georgia,serif}
+#page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-copy span{font-size:11px;color:#d9c9e2}
+#page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-button,#page-jouer[data-trial-view="hub"] #trial-launch{min-height:44px;border:1px solid #d5b28a;border-radius:5px;color:#f5e4d1;background:linear-gradient(180deg,#654a80,#382a51);box-shadow:inset 0 0 0 2px #f1c89619,0 0 9px #a674e12b}
+@media(max-width:850px){
+ #page-jouer[data-trial-view="hub"]>.heading{min-height:62px;padding:8px 8px 8px 52px;margin-bottom:8px;flex-wrap:nowrap}
+ #page-jouer[data-trial-view="hub"]>.heading::before{width:37px;left:7px}
+ #page-jouer[data-trial-view="hub"]>.heading h1{font-size:clamp(17px,5.1vw,25px)}
+ #page-jouer[data-trial-view="hub"] .trial-guide-shortcut{font-size:10px;padding:4px 6px}
+ #page-jouer[data-trial-view="hub"] .trial-setup{gap:8px}
+ #page-jouer[data-trial-view="hub"] .difficulty-panel{gap:5px}
+ #page-jouer[data-trial-view="hub"] .difficulty-description strong,#page-jouer[data-trial-view="hub"] .trial-setup-title{font-size:15px}
+ #page-jouer[data-trial-view="hub"] .difficulty-options{gap:5px}
+ #page-jouer[data-trial-view="hub"] .difficulty-options button{min-height:60px;font-size:12px;padding:4px 2px;gap:2px}
+ #page-jouer[data-trial-view="hub"] .difficulty-emblem{width:24px;height:24px}
+ #page-jouer[data-trial-view="hub"] .trial-hub-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+ #page-jouer[data-trial-view="hub"] .trial-hub-picker{grid-column:1;grid-row:1}
+ #page-jouer[data-trial-view="hub"] .trial-hub-picker .trial-setup-title{display:flex;margin:0 0 5px}
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-picker{grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;padding:1px 2px 4px}
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice{grid-column:span 2;padding:5px 3px;gap:3px;justify-content:center}
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice:nth-child(n+4){grid-column:span 3}
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice::before{width:clamp(44px,9svh,75px)}
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-choice-name{font-size:clamp(11px,3.35vw,15px)}
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-choice-hint{font-size:10px;line-height:1.15}
+ #page-jouer[data-trial-view="hub"] .trial-preview{display:none}
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-column:1;grid-row:2;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal{grid-template-columns:25px minmax(0,1fr);gap:4px;padding:6px}
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-symbol{width:25px;height:25px;font-size:18px}
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-copy strong{font-size:13px}
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-copy span{font-size:10px;white-space:normal}
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-button{min-height:44px;font-size:12px}
+}
+@media(min-width:600px) and (max-width:850px){
+ #page-jouer[data-trial-view="hub"] .trial-hub-layout{grid-template-columns:minmax(0,1fr) minmax(160px,.55fr)}
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-column:2;grid-row:1;grid-template-columns:1fr}
+}
+@media(max-height:700px) and (max-width:599px){
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice::before{width:clamp(38px,8svh,55px)}
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-choice-hint{display:none}
+ #page-jouer[data-trial-view="hub"] .difficulty-options button{min-height:53px}
+ #page-jouer[data-trial-view="hub"] .difficulty-emblem{width:21px;height:21px}
+}
+@media(max-height:520px) and (orientation:landscape){
+ #page-jouer[data-trial-view="hub"]>.heading{min-height:40px;padding:5px 8px 5px 40px;margin-bottom:5px}
+ #page-jouer[data-trial-view="hub"]>.heading::before{width:29px;left:6px}
+ #page-jouer[data-trial-view="hub"]>.heading>span,#page-jouer[data-trial-view="hub"] .difficulty-description small{display:none}
+ #page-jouer[data-trial-view="hub"] .difficulty-panel{flex-direction:row;align-items:center;gap:6px}
+ #page-jouer[data-trial-view="hub"] .difficulty-description{flex:none}
+ #page-jouer[data-trial-view="hub"] .difficulty-options{flex:1}
+ #page-jouer[data-trial-view="hub"] .difficulty-options button{min-height:44px;flex-direction:row;gap:3px;font-size:11px}
+ #page-jouer[data-trial-view="hub"] .difficulty-emblem{width:20px;height:20px}
+ #page-jouer[data-trial-view="hub"] .trial-setup{gap:5px}
+ #page-jouer[data-trial-view="hub"] .trial-hub-layout{grid-template-columns:minmax(0,1fr) minmax(145px,.55fr)}
+ #page-jouer[data-trial-view="hub"] .trial-hub-picker{grid-column:1;grid-row:1}
+ #page-jouer[data-trial-view="hub"] .trial-hub-picker .trial-setup-title{display:none}
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-picker{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice:nth-child(n){grid-column:auto;padding:4px 2px;gap:2px}
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice::before{width:clamp(30px,8svh,45px)}
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-choice-name{font-size:11px}
+ #page-jouer[data-trial-view="hub"] .trial-preview,#page-jouer[data-trial-view="hub"] .trial-setup .game-choice-hint{display:none}
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-column:2;grid-row:1;grid-template-columns:1fr;gap:4px}
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal{padding:4px;gap:3px;grid-template-columns:24px 1fr auto;grid-template-rows:1fr}
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-button{grid-column:3;min-height:44px;width:auto;padding:4px;font-size:11px}
+}
