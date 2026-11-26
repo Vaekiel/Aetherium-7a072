@@ -142,8 +142,8 @@ assert.ok(main.includes("navigate('jouer');\n    const target=mini[stage.game].c
   'The journey launches the original mini-games on their proper page');
 assert.ok(main.includes("g.actions?.append(button('✧ Suite de l’expédition'"),
   'A qualifying victory offers a manual return to the adventure');
-assert.ok(css.includes('#page-expeditions .expedition-panel'));
-assert.ok(css.includes('#page-expeditions .expedition-hero'));
+assert.ok(css.includes(':is(#page-expeditions,#arcane-circuits) .expedition-panel'));
+assert.ok(css.includes(':is(#page-expeditions,#arcane-circuits) .expedition-hero'));
 assert.ok(css.includes('#page-jouer .expedition-portal'));
 assert.ok(!css.includes('#page-jouer .expedition-panel'),
   'The full chapter must no longer style the classic challenge screen');
