@@ -31,4 +31,6 @@ assert.ok(css.includes('repeat(6,minmax(0,1fr))')&&css.includes('grid-column:spa
 assert.ok(css.includes("assets/minigames/minigame-emblems.webp")&&css.includes("assets/scenery/dusk-right.webp"),'Phase one reuses approved artwork');
 
 assert.ok(main.includes("'chemin-runique.webp'")&&main.includes("art.addEventListener('load'")&&main.includes("art.addEventListener('error'"),'Progressive artwork with existing emblem fallback');
-assert.ok(css.includes('.game-choice.has-trial-art::before{display:none}')&&css.includes('object-fit:cover'),'Individual artwork does not change the tile grid');
+assert.ok(css.includes('.game-choice.has-trial-art::before{')&&css.includes('visibility:hidden;filter:none')&&css.includes('position:absolute;inset:0;width:100%;height:100%')&&css.includes('object-fit:cover'),'Individual artwork does not change the tile grid');
+
+assert.ok(main.includes("el('span','trial-art-shade')")&&css.includes('.trial-art-shade'),'Full-card art keeps a contrast layer behind real text');

@@ -1419,7 +1419,9 @@ definitions.forEach((entry,index)=>{
       art.hidden=true;
       control.classList.remove('has-trial-art');
     });
-    control.append(art);
+    const shade=el('span','trial-art-shade');
+    shade.setAttribute('aria-hidden','true');
+    control.append(art,shade);
     art.src='./assets/minigames/'+artwork;
   }
   control.append(el('span','game-choice-name',entry.name),
