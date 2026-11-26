@@ -26,9 +26,6 @@
 .excavation-kicker{color:#d3c3d0;font:10px/1.35 system-ui,sans-serif;letter-spacing:.12em}
 .excavation-counter{color:#f1d9aa;font:700 clamp(17px,2vw,24px)/1.2 Georgia,serif;font-variant-numeric:tabular-nums}
 .excavation-danger{color:#a9d5e5;font:12px/1.3 system-ui,sans-serif}
-.excavation-meter{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px;margin:1px 2px 12px}
-.excavation-meter span{height:7px;display:block;border:1px solid #716b81;background:linear-gradient(#34314c,#222437);transform:skew(-8deg);border-radius:1px}
-.excavation-meter span.filled{border-color:#a9eaff;background:linear-gradient(90deg,#3c85a5,#8be6ef);box-shadow:0 0 7px #79c9e69c}
 .game.excavation-trial .board.excavation-board{
   --cols:5;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
   gap:clamp(3px,.7vw,7px);margin:0 -4px;
