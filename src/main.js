@@ -1390,33 +1390,19 @@ let selectedGame=0;
 const trialSubtitles=['Ordre & observation','Mémoire & association','Logique des cristaux','Exploration & prudence','Recettes & alchimie'];
 definitions.forEach((entry,index)=>{
   const control=button('',()=>{selectGame(index);if(mobileView.matches||window.matchMedia('(max-height:520px) and (orientation:landscape)').matches)openTrial();},'game-choice');
-  // Individual landscape artworks progressively replace the emblem atlas.
-  // Until a given artwork is published, the original emblem remains visible.
-  const artwork=['chemin-runique.webp','memoire-ancienne.webp','serrure-ether.webp','fouilles-interdites-768.webp','laboratoire-arcanique.webp'][index];
-  if(artwork){
-    const art=el('img','trial-choice-art');
-    art.alt='';
-    art.decoding='async';
-    art.hidden=true;
-    art.addEventListener('load',()=>{
-      art.hidden=false;
-      control.classList.add('has-trial-art');
-    });
-    art.addEventListener('error',()=>{
-      art.hidden=true;
-      control.classList.remove('has-trial-art');
-    });
-    const shade=el('span','trial-art-shade');
-    shade.setAttribute('aria-hidden','true');
-    control.append(art,shade);
-    art.src='./assets/minigames/'+artwork;
-  }
   control.append(el('span','game-choice-name',entry.name));
   control.setAttribute('aria-label','Choisir '+entry.name);
   control.setAttribute('aria-controls','trial-panel-'+index);
   control.setAttribute('aria-pressed',String(index===0));
   picker.append(control);
 });
+// Preserve the approved artwork exactly, including its five painted seals and
+// captions. Real accessible buttons stay above it; retain live labels if it fails.
+const miniMural=new Image();
+miniMural.decoding='async';
+miniMural.addEventListener('load',()=>picker.classList.add('has-mini-mural'),{once:true});
+miniMural.addEventListener('error',()=>picker.classList.remove('has-mini-mural'),{once:true});
+miniMural.src='./assets/minigames/minijeux-validee.webp?v=1';
 function setTrialView(view){
   const page=$('#page-jouer');
   page.dataset.trialView=view;

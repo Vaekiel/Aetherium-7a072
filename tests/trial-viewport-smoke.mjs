@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const html=readFileSync('index.html','utf8'),css=readFileSync('src/trial-viewport.css','utf8'),js=readFileSync('src/main.js','utf8');
-assert.ok(html.includes('src/trial-viewport.css?v=7'));
+assert.ok(html.includes('src/trial-viewport.css?v=8'));
 assert.ok(css.includes('height:100dvh;min-height:0'));
 assert.ok(css.includes('body:has(#page-jouer.active[data-trial-view="hub"])'));
 assert.ok(css.includes('var(--aetherium-mobile-nav-height,64px) + var(--aetherium-footer-height,44px)'));
@@ -38,3 +38,12 @@ assert.equal((html.match(/class="adventure-emblem"/g)||[]).length,3);
 for(const name of ['confrontations','expeditions','circuits'])assert.equal((html.match(new RegExp('data-emblem="'+name+'"','g'))||[]).length,1);
 assert.ok(css.includes('--tile-emblem-size:')&&css.includes('width:var(--tile-emblem-size);height:var(--tile-emblem-size)'));
 console.log('Adventure seals: three decorative pixel SVGs with shared responsive dimensions.');
+
+assert.ok(html.includes('mini-mural=1'));
+assert.ok(readFileSync('assets/minigames/minijeux-validee.webp').subarray(0,4).toString()==='RIFF');
+assert.ok(js.includes("miniMural.addEventListener('load'")&&js.includes("miniMural.addEventListener('error'"));
+assert.ok(js.includes("control.setAttribute('aria-label','Choisir '+entry.name)")&&js.includes("control.setAttribute('aria-pressed',String(index===0))"));
+assert.ok(css.includes('#game-picker.game-picker.has-mini-mural')&&css.includes('minijeux-validee.webp?v=1'));
+for(const [i,column,row] of [[1,'1/3',1],[2,'3/5',1],[3,'5/7',1],[4,'1/4',2],[5,'4/7',2]])assert.ok(css.includes('.game-choice:nth-child('+i+'){grid-column:'+column+';grid-row:'+row+'}'));
+assert.ok(css.includes('clip-path:inset(50%)')&&css.includes('>.game-choice.active{'));
+console.log('Approved minigame mural: single asset, five live controls, fallback text and selected state.');

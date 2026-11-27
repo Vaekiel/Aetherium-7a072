@@ -8,3 +8,7 @@ Règle de design pour l’accueil des Épreuves : difficulté, mini-jeux et aven
 - Les difficultés et aventures utilisent des sceaux pixel art octogonaux au même format SVG 48 × 48, de même taille adaptative (`--tile-emblem-size`), centrés au-dessus du titre (à côté en paysage compact). Les difficultés conservent leur état de sélection et la mention À venir pour Ascension. Les aventures utilisent les épées croisées (violet), la boussole (or) et le circuit runique (cyan). Les aventures et mini-jeux n’affichent pas de bouton d’action redondant sur leur illustration : la tuile est le contrôle.
 - Les informations secondaires des aventures sont conservées dans les libellés accessibles et les infobulles, et détaillées dans les écrans correspondants.
 - Ne pas modifier les dimensions des grilles pour ajouter du texte. Garder les images, la fresque continue et l’accueil sans défilement.
+
+## Exception validée — fresque des mini-jeux
+
+L’illustration du Sanctuaire validée contient déjà les cinq titres et sceaux : elle est conservée telle quelle en WebP. Les cinq vrais boutons, avec leurs libellés accessibles, couvrent les zones de l’image (3 en haut, 2 en bas). Les titres HTML ne sont masqués visuellement qu’après chargement réussi du fond. Aucun titre ou sceau supplémentaire ne doit se superposer à ceux du dessin. En cas d’échec de chargement, les noms et emblèmes de secours restent visibles. La taille des titres dessinés dépend du format de la fresque, contrairement aux titres HTML des autres sections.
