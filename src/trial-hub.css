@@ -259,6 +259,7 @@
 #page-jouer[data-trial-view="hub"] .difficulty-description{flex:auto;flex-direction:row;align-items:center;gap:12px}
 #page-jouer[data-trial-view="hub"] .difficulty-description strong,#page-jouer[data-trial-view="hub"] .trial-setup-title{display:flex;align-items:center;gap:8px;color:#e9d1ab;font:small-caps 18px/1.2 Georgia,serif}
 #page-jouer[data-trial-view="hub"] .difficulty-description strong::before,#page-jouer[data-trial-view="hub"] .trial-setup-title::before{content:'◇';color:#c7a375;font:14px/1 Georgia,serif}
+#page-jouer[data-trial-view="hub"] .difficulty-description strong::after,
 #page-jouer[data-trial-view="hub"] .trial-setup-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,#c4a07cb3,transparent)}
 #page-jouer[data-trial-view="hub"] .difficulty-options{flex:auto;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:0}
 #page-jouer[data-trial-view="hub"] .difficulty-options button{--seal:#cbb6e8;min-width:0;min-height:70px;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px;padding:6px 3px;color:#f0e2d0;font:14px/1.15 Georgia,serif;border:1px solid #a48a80;border-radius:7px;background:radial-gradient(ellipse at 50% 20%,#42405d88,transparent 70%),linear-gradient(155deg,#25243f,#171b31);box-shadow:inset 0 0 0 2px #c5a68b18}
@@ -285,7 +286,7 @@
 #page-jouer[data-trial-view="hub"] #trial-launch{grid-column:2;grid-row:1/5;align-self:center;margin:0}
 #page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-column:2;grid-row:1/3;grid-template-columns:1fr;gap:8px;align-self:stretch}
 #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal{position:relative;isolation:isolate;overflow:hidden;grid-template-columns:30px minmax(0,1fr);grid-template-rows:1fr auto;gap:6px;padding:10px;min-width:0;border:1px solid #b79984;border-radius:7px;background:linear-gradient(110deg,#141a32ef,#2a2449b8),url('../assets/scenery/dusk-right.webp') center/cover no-repeat;box-shadow:inset 0 0 0 2px #ddc19d18}
-#page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal:nth-child(2){background:linear-gradient(110deg,#17172fed,#3c2454af),url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat}
+#page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal:nth-of-type(2){background:linear-gradient(110deg,#17172fed,#3c2454af),url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat}
 #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-symbol{display:grid;width:30px;height:30px;font-size:23px;border-color:#c5a583;box-shadow:0 0 8px #9573cf40}
 #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-copy strong{font:small-caps 18px/1.15 Georgia,serif}
 #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-copy span{font-size:11px;color:#d9c9e2}
@@ -427,4 +428,17 @@
    The original file, composition and other four illustrations remain untouched. */
 #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice.has-trial-art .trial-choice-art[src$="fouilles-interdites-768.webp"]{
  filter:brightness(1.28) saturate(1.30) contrast(1.15);
+}
+
+/* Shared section headings — Difficulté, Mini-jeux and Aventures. */
+#page-jouer[data-trial-view="hub"] .difficulty-description strong{flex:1;min-width:0;white-space:nowrap;letter-spacing:.035em}
+#page-jouer[data-trial-view="hub"] .difficulty-description strong::after{min-width:12px}
+#page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-template-rows:auto minmax(0,1fr) minmax(0,1fr)}
+#page-jouer[data-trial-view="hub"] .trial-hub-portals>.trial-setup-title{grid-column:1/-1;margin:0;min-width:0;align-self:start;flex-wrap:nowrap}
+@media(max-width:599px){
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-template-rows:auto minmax(0,1fr)}
+}
+@media(max-height:520px) and (orientation:landscape){
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-template-rows:auto minmax(0,1fr) minmax(0,1fr)}
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals>.trial-setup-title{font-size:13px}
 }
