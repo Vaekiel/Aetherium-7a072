@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const html=readFileSync('index.html','utf8'),css=readFileSync('src/trial-viewport.css','utf8'),js=readFileSync('src/main.js','utf8');
-assert.ok(html.includes('src/trial-viewport.css?v=3'));
+assert.ok(html.includes('src/trial-viewport.css?v=4'));
 assert.ok(css.includes('height:100dvh;min-height:0'));
 assert.ok(css.includes('body:has(#page-jouer.active[data-trial-view="hub"])'));
 assert.ok(css.includes('var(--aetherium-mobile-nav-height,64px) + var(--aetherium-footer-height,44px)'));
@@ -16,3 +16,8 @@ console.log('Trial viewport: dynamic height, scoped scroll lock, adaptive grids,
 assert.ok(css.includes("difficultes-fresque.webp")&&css.includes("gap:0;grid-template-columns:repeat(4,minmax(0,1fr))"));
 assert.ok(css.includes("box-shadow:none;opacity:1")&&css.includes("button.is-active"));
 console.log('Continuous difficulty panorama: shared image, live difficulty states and responsive heights.');
+
+const hubCss=readFileSync('src/trial-hub.css','utf8');
+for(const obsolete of ['initiation.webp','aventure-mine.webp','maitrise.webp','ascension.webp'])assert.ok(!hubCss.includes(obsolete),'Old individual difficulty background must not obscure panorama: '+obsolete);
+assert.ok(html.includes('src/trial-hub.css?v=30'));
+assert.ok(css.includes('#difficulty-options>button:is([data-difficulty],.future-difficulty)')&&css.includes('center 58%/100% auto'));

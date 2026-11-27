@@ -151,7 +151,7 @@ body:has(#page-jouer.active[data-trial-view="hub"]){
    no per-tile scaling/cropping, no seams, and disabled Ascension stays legible. */
 #page-jouer[data-trial-view="hub"] .difficulty-options{
  position:relative;isolation:isolate;gap:0;grid-template-columns:repeat(4,minmax(0,1fr));
- border-radius:7px;background:linear-gradient(180deg,#0a0c1a8c 0%,#0a0c1a18 54%,#0a0c1a26 100%),url('../assets/minigames/difficultes-fresque.webp') center 58%/cover no-repeat;
+ border-radius:7px;background:linear-gradient(180deg,#0a0c1a8c 0%,#0a0c1a18 54%,#0a0c1a26 100%),url('../assets/minigames/difficultes-fresque.webp?v=1') center 58%/100% auto no-repeat,#17192c;
 }
 #page-jouer[data-trial-view="hub"] .difficulty-options button,
 #page-jouer[data-trial-view="hub"] .difficulty-options button.is-active,
@@ -190,4 +190,10 @@ body:has(#page-jouer.active[data-trial-view="hub"]){
  #page-jouer[data-trial-view="hub"] .difficulty-options button.is-active,
  #page-jouer[data-trial-view="hub"] .difficulty-options .future-difficulty{min-height:40px;padding:3px 2px;gap:3px;flex-direction:row;justify-content:center;align-items:center;font-size:11px}
  #page-jouer[data-trial-view="hub"] .difficulty-options .future-difficulty small{font-size:8px;padding:1px 3px}
+}
+
+/* Explicitly clear any legacy per-mode paint; the continuous image belongs to the grid. */
+#page-jouer[data-trial-view="hub"] #difficulty-options>button:is([data-difficulty],.future-difficulty),
+#page-jouer[data-trial-view="hub"] #difficulty-options>button:is([data-difficulty],.future-difficulty).is-active{
+ background:transparent;
 }
