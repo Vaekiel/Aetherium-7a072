@@ -389,9 +389,9 @@ body:has(#page-jouer.active[data-trial-view="hub"]){
  #page-jouer[data-trial-view="hub"] #game-picker.has-mini-mural>.game-choice{flex-direction:row;gap:2px}
 }
 
-/* Large-screen hub: keep both 16:9 murals in their native proportions.
-   The phone viewport rules above are deliberately unchanged. Let the document
-   scroll only when its content genuinely exceeds the available height. */
+/* Large-screen hub: reuse the validated phone portrait composition.
+   Keep the main navigation responsive; only the trial hub becomes a centered,
+   single-column canvas. Allow natural scroll on short or zoomed viewports. */
 @media (min-width:600px) and (min-height:521px), (min-width:1100px){
  html:has(#page-jouer.active[data-trial-view="hub"]),
  body:has(#page-jouer.active[data-trial-view="hub"]){
@@ -401,34 +401,32 @@ body:has(#page-jouer.active[data-trial-view="hub"]){
   height:auto;min-height:100dvh;max-height:none;overflow:visible;
  }
  #app:has(#page-jouer.active[data-trial-view="hub"])>.layout{
-  flex:1 0 auto;width:100%;max-width:1240px;min-height:0;
-  margin-inline:auto;padding:clamp(10px,1.8dvh,22px) clamp(14px,2vw,26px);
+  flex:1 0 auto;width:100%;max-width:clamp(400px,65dvh,560px);
+  min-height:0;margin-inline:auto;padding:8px 10px 12px;
  }
  #page-jouer.active[data-trial-view="hub"]{
-  flex:0 0 auto;gap:12px;
-  --tile-title-size:clamp(14px,1.45vw,18px);
-  --tile-emblem-size:clamp(25px,3.8vw,40px);
+  flex:0 0 auto;gap:7px;--tile-title-size:14px;--tile-emblem-size:25px;
  }
- #page-jouer[data-trial-view="hub"] .trial-setup{flex:0 0 auto;gap:12px}
- #page-jouer[data-trial-view="hub"] .difficulty-panel{gap:7px}
+ #page-jouer[data-trial-view="hub"] .trial-setup{flex:0 0 auto;gap:8px}
+ #page-jouer[data-trial-view="hub"] .difficulty-panel{display:flex;flex-direction:column;align-items:stretch;gap:4px}
  #page-jouer[data-trial-view="hub"] .difficulty-description{display:flex}
+ #page-jouer[data-trial-view="hub"] .difficulty-description small{display:none}
  #page-jouer[data-trial-view="hub"] .difficulty-description strong,
- #page-jouer[data-trial-view="hub"] .trial-setup-title{font-size:18px}
+ #page-jouer[data-trial-view="hub"] .trial-setup-title{font-size:14px}
  #page-jouer[data-trial-view="hub"] #difficulty-options>button{
-  flex-direction:column;min-height:clamp(92px,15dvh,150px);padding:8px 4px 17px;gap:5px;
+  flex-direction:column;min-height:clamp(72px,12dvh,108px);padding:3px 1px 14px;gap:3px;
  }
- #page-jouer[data-trial-view="hub"] #difficulty-options>button.future-difficulty small{font-size:11px;bottom:4px}
  #page-jouer[data-trial-view="hub"] .trial-hub-layout{
-  flex:0 0 auto;grid-template-columns:repeat(2,minmax(0,1fr));
-  grid-template-rows:auto auto;gap:12px;align-items:start;
+  flex:0 0 auto;grid-template-columns:minmax(0,1fr);
+  grid-template-rows:auto auto;gap:6px;align-items:start;
  }
  #page-jouer[data-trial-view="hub"] .trial-hub-picker,
  #page-jouer[data-trial-view="hub"] .trial-hub-portals{
-  display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;gap:7px;
+  display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;gap:4px;
   min-width:0;min-height:0;align-self:start;
  }
  #page-jouer[data-trial-view="hub"] .trial-hub-picker{grid-column:1;grid-row:1}
- #page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-column:2;grid-row:1}
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-column:1;grid-row:2}
  #page-jouer[data-trial-view="hub"] .trial-hub-picker .trial-setup-title,
  #page-jouer[data-trial-view="hub"] .trial-hub-portals>.trial-setup-title{display:flex}
  #page-jouer[data-trial-view="hub"] .trial-setup #game-picker.game-picker,
@@ -443,18 +441,8 @@ body:has(#page-jouer.active[data-trial-view="hub"]){
  #page-jouer[data-trial-view="hub"] .trial-setup #game-picker.game-picker:not(.has-mini-mural)>.game-choice:nth-child(n+4){grid-column:span 3}
  #page-jouer[data-trial-view="hub"] #game-picker.has-mini-mural>.game-choice,
  #page-jouer[data-trial-view="hub"] .adventures-mural>.expedition-portal .expedition-portal-button{
-  flex-direction:column;gap:6px;padding:5px;
- }
- #page-jouer[data-trial-view="hub"] .trial-preview{
-  grid-column:1/-1;grid-row:2;min-height:0;padding:12px;
+  flex-direction:column;gap:3px;padding:2px;
  }
 }
-@media (min-width:600px) and (max-width:850px) and (min-height:521px){
- #page-jouer[data-trial-view="hub"] .trial-hub-layout{grid-template-rows:auto}
-}
-@media (min-width:600px) and (max-width:950px) and (min-height:521px) and (orientation:portrait){
- #app:has(#page-jouer.active[data-trial-view="hub"])>.layout{max-width:760px}
- #page-jouer[data-trial-view="hub"] .trial-hub-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto}
- #page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-column:1;grid-row:2}
- #page-jouer[data-trial-view="hub"] .trial-preview{grid-row:3}
-}
+ /* Direct launch on every device: no additional preview panel. */
+#page-jouer[data-trial-view="hub"] .trial-preview{display:none}
