@@ -473,32 +473,32 @@
 /* Approved Initiation landscape: retain a neutral title scrim and the seal.
    The existing scenery is a fallback until the new asset is uploaded. */
 #page-jouer[data-trial-view="hub"] .difficulty-options button[data-difficulty="initiation"]{
- background:linear-gradient(180deg,rgba(8,12,24,.08) 0%,rgba(8,12,24,.16) 52%,rgba(8,12,24,.65) 100%),url('../assets/minigames/initiation.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
+ background:linear-gradient(90deg,rgba(10,12,25,.55) 0%,rgba(10,12,25,.48) 56%,rgba(10,12,25,.30) 100%),url('../assets/minigames/initiation.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
 }
 #page-jouer[data-trial-view="hub"] .difficulty-options button[data-difficulty="initiation"].is-active{
- background:linear-gradient(180deg,rgba(8,12,24,.02) 0%,rgba(8,12,24,.12) 52%,rgba(8,12,24,.60) 100%),url('../assets/minigames/initiation.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
+ background:linear-gradient(90deg,rgba(10,12,25,.55) 0%,rgba(10,12,25,.48) 56%,rgba(10,12,25,.30) 100%),url('../assets/minigames/initiation.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
 }
 
 /* Approved Aventure landscape: retain a neutral title scrim and the seal.
    The existing scenery is a fallback until the new asset is uploaded. */
 #page-jouer[data-trial-view="hub"] .difficulty-options button[data-difficulty="aventure"]{
- background:linear-gradient(180deg,rgba(8,12,24,.08) 0%,rgba(8,12,24,.16) 52%,rgba(8,12,24,.65) 100%),url('../assets/minigames/aventure-mine.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
+ background:linear-gradient(90deg,rgba(10,12,25,.55) 0%,rgba(10,12,25,.48) 56%,rgba(10,12,25,.30) 100%),url('../assets/minigames/aventure-mine.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
 }
 #page-jouer[data-trial-view="hub"] .difficulty-options button[data-difficulty="aventure"].is-active{
- background:linear-gradient(180deg,rgba(8,12,24,.02) 0%,rgba(8,12,24,.12) 52%,rgba(8,12,24,.60) 100%),url('../assets/minigames/aventure-mine.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
+ background:linear-gradient(90deg,rgba(10,12,25,.55) 0%,rgba(10,12,25,.48) 56%,rgba(10,12,25,.30) 100%),url('../assets/minigames/aventure-mine.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
 }
 
 /* Approved Maîtrise observatory: retain a neutral title scrim and the seal.
    The existing scenery is a fallback until the new asset is uploaded. */
 #page-jouer[data-trial-view="hub"] .difficulty-options button[data-difficulty="maitrise"]{
- background:linear-gradient(180deg,rgba(8,12,24,.08) 0%,rgba(8,12,24,.16) 52%,rgba(8,12,24,.65) 100%),url('../assets/minigames/maitrise.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
+ background:linear-gradient(90deg,rgba(10,12,25,.55) 0%,rgba(10,12,25,.48) 56%,rgba(10,12,25,.30) 100%),url('../assets/minigames/maitrise.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
 }
 #page-jouer[data-trial-view="hub"] .difficulty-options button[data-difficulty="maitrise"].is-active{
- background:linear-gradient(180deg,rgba(8,12,24,.02) 0%,rgba(8,12,24,.12) 52%,rgba(8,12,24,.60) 100%),url('../assets/minigames/maitrise.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
+ background:linear-gradient(90deg,rgba(10,12,25,.55) 0%,rgba(10,12,25,.48) 56%,rgba(10,12,25,.30) 100%),url('../assets/minigames/maitrise.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
 }
 
 /* Approved Ascension sky — visual preview only; difficulty remains disabled. */
 #page-jouer[data-trial-view="hub"] .difficulty-options button.future-difficulty{
- background:linear-gradient(180deg,rgba(8,12,24,.08) 0%,rgba(8,12,24,.16) 52%,rgba(8,12,24,.65) 100%),url('../assets/minigames/ascension.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
+ background:linear-gradient(90deg,rgba(10,12,25,.55) 0%,rgba(10,12,25,.48) 56%,rgba(10,12,25,.30) 100%),url('../assets/minigames/ascension.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
  opacity:.85;
 }
