@@ -286,8 +286,8 @@
 #page-jouer[data-trial-view="hub"] .trial-preview p,#page-jouer[data-trial-view="hub"] .trial-preview-meta{grid-column:1}
 #page-jouer[data-trial-view="hub"] #trial-launch{grid-column:2;grid-row:1/5;align-self:center;margin:0}
 #page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-column:2;grid-row:1/3;grid-template-columns:1fr;gap:8px;align-self:stretch}
-#page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal{position:relative;isolation:isolate;overflow:hidden;grid-template-columns:30px minmax(0,1fr);grid-template-rows:1fr auto;gap:6px;padding:10px;min-width:0;border:1px solid #b79984;border-radius:7px;background:linear-gradient(110deg,#141a32ef,#2a2449b8),url('../assets/scenery/dusk-right.webp') center/cover no-repeat;box-shadow:inset 0 0 0 2px #ddc19d18}
-#page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal:nth-of-type(2){background:linear-gradient(110deg,#17172fed,#3c2454af),url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat}
+#page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal{position:relative;isolation:isolate;overflow:hidden;grid-template-columns:30px minmax(0,1fr);grid-template-rows:1fr auto;gap:6px;padding:10px;min-width:0;border:1px solid #b79984;border-radius:7px;background:linear-gradient(90deg,rgba(10,12,25,.55) 0%,rgba(10,12,25,.48) 56%,rgba(10,12,25,.30) 100%),url('../assets/minigames/expeditions.webp') center/cover no-repeat;box-shadow:inset 0 0 0 2px #ddc19d18}
+#page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal:nth-of-type(2){background:linear-gradient(90deg,rgba(10,12,25,.55) 0%,rgba(10,12,25,.48) 56%,rgba(10,12,25,.30) 100%),url('../assets/minigames/circuits.webp') center/cover no-repeat}
 #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-symbol{display:grid;width:30px;height:30px;font-size:23px;border-color:#c5a583;box-shadow:0 0 8px #9573cf40}
 #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-copy strong{font:small-caps 18px/1.15 Georgia,serif}
 #page-jouer[data-trial-view="hub"] .trial-hub-portals .expedition-portal-copy span{font-size:11px;color:#d9c9e2}
