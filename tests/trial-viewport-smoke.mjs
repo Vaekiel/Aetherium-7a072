@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const html=readFileSync('index.html','utf8'),css=readFileSync('src/trial-viewport.css','utf8'),js=readFileSync('src/main.js','utf8');
-assert.ok(html.includes('src/trial-viewport.css?v=9'));
+assert.ok(html.includes('src/trial-viewport.css?v=10'));
 assert.ok(css.includes('height:100dvh;min-height:0'));
 assert.ok(css.includes('body:has(#page-jouer.active[data-trial-view="hub"])'));
 assert.ok(css.includes('var(--aetherium-mobile-nav-height,64px) + var(--aetherium-footer-height,44px)'));
@@ -53,3 +53,5 @@ assert.ok(js.includes("control.insertAdjacentHTML('beforeend',miniGameEmblems[in
 assert.ok(css.includes('font-size:var(--tile-title-size)')&&css.includes('width:var(--tile-emblem-size);height:var(--tile-emblem-size)'));
 assert.ok(!css.includes('position:absolute;width:1px;height:1px;padding:0;margin:0;overflow:hidden;'));
 console.log('All five minigames use live responsive titles and seals.');
+
+assert.ok(css.includes('aventures-fresque.webp?v=2'));
