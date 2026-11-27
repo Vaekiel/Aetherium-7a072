@@ -389,9 +389,9 @@ body:has(#page-jouer.active[data-trial-view="hub"]){
  #page-jouer[data-trial-view="hub"] #game-picker.has-mini-mural>.game-choice{flex-direction:row;gap:2px}
 }
 
-/* Large-screen hub: reuse the validated phone portrait composition.
-   Keep the main navigation responsive; only the trial hub becomes a centered,
-   single-column canvas. Allow natural scroll on short or zoomed viewports. */
+/* Three responsive hub compositions, shared DOM and assets.
+   Phone: the validated compact layout above. Tablet: stacked native-ratio
+   murals. Desktop / wide landscape: two equal murals, no preview panel. */
 @media (min-width:600px) and (min-height:521px), (min-width:1100px){
  html:has(#page-jouer.active[data-trial-view="hub"]),
  body:has(#page-jouer.active[data-trial-view="hub"]){
@@ -401,28 +401,34 @@ body:has(#page-jouer.active[data-trial-view="hub"]){
   height:auto;min-height:100dvh;max-height:none;overflow:visible;
  }
  #app:has(#page-jouer.active[data-trial-view="hub"])>.layout{
-  flex:1 0 auto;width:100%;max-width:clamp(400px,65dvh,560px);
-  min-height:0;margin-inline:auto;padding:8px 10px 12px;
+  flex:1 0 auto;width:100%;max-width:clamp(440px,57dvh,820px);
+  min-height:0;margin-inline:auto;padding:12px clamp(12px,2vw,24px) 16px;
  }
  #page-jouer.active[data-trial-view="hub"]{
-  flex:0 0 auto;gap:7px;--tile-title-size:14px;--tile-emblem-size:25px;
+  flex:0 0 auto;gap:10px;
+  --tile-title-size:clamp(15px,2.1vw,19px);
+  --tile-emblem-size:clamp(28px,4.2vw,38px);
  }
- #page-jouer[data-trial-view="hub"] .trial-setup{flex:0 0 auto;gap:8px}
- #page-jouer[data-trial-view="hub"] .difficulty-panel{display:flex;flex-direction:column;align-items:stretch;gap:4px}
+ #page-jouer[data-trial-view="hub"]>.kicker{display:block;font-size:12px;line-height:1.25}
+ #page-jouer[data-trial-view="hub"] .trial-setup{flex:0 0 auto;gap:12px}
+ #page-jouer[data-trial-view="hub"] .difficulty-panel{
+  display:flex;flex-direction:column;align-items:stretch;gap:6px;min-width:0;
+ }
  #page-jouer[data-trial-view="hub"] .difficulty-description{display:flex}
  #page-jouer[data-trial-view="hub"] .difficulty-description small{display:none}
  #page-jouer[data-trial-view="hub"] .difficulty-description strong,
- #page-jouer[data-trial-view="hub"] .trial-setup-title{font-size:14px}
+ #page-jouer[data-trial-view="hub"] .trial-setup-title{font-size:17px}
  #page-jouer[data-trial-view="hub"] #difficulty-options>button{
-  flex-direction:column;min-height:clamp(72px,12dvh,108px);padding:3px 1px 14px;gap:3px;
+  flex-direction:column;min-height:clamp(88px,12dvh,136px);padding:6px 3px 18px;gap:5px;
  }
+ #page-jouer[data-trial-view="hub"] #difficulty-options>button.future-difficulty small{font-size:11px;bottom:4px}
  #page-jouer[data-trial-view="hub"] .trial-hub-layout{
   flex:0 0 auto;grid-template-columns:minmax(0,1fr);
-  grid-template-rows:auto auto;gap:6px;align-items:start;
+  grid-template-rows:auto auto;gap:12px;align-items:start;
  }
  #page-jouer[data-trial-view="hub"] .trial-hub-picker,
  #page-jouer[data-trial-view="hub"] .trial-hub-portals{
-  display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;gap:4px;
+  display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;gap:6px;
   min-width:0;min-height:0;align-self:start;
  }
  #page-jouer[data-trial-view="hub"] .trial-hub-picker{grid-column:1;grid-row:1}
@@ -441,8 +447,31 @@ body:has(#page-jouer.active[data-trial-view="hub"]){
  #page-jouer[data-trial-view="hub"] .trial-setup #game-picker.game-picker:not(.has-mini-mural)>.game-choice:nth-child(n+4){grid-column:span 3}
  #page-jouer[data-trial-view="hub"] #game-picker.has-mini-mural>.game-choice,
  #page-jouer[data-trial-view="hub"] .adventures-mural>.expedition-portal .expedition-portal-button{
-  flex-direction:column;gap:3px;padding:2px;
+  flex-direction:column;gap:5px;padding:4px;
  }
+}
+/* Desktop and landscape tablet: make use of the horizontal space without
+   stretching the artwork or requiring a second click to enter a minigame. */
+@media (min-width:850px) and (min-height:521px) and (orientation:landscape), (min-width:1100px) and (orientation:landscape){
+ #app:has(#page-jouer.active[data-trial-view="hub"])>.layout{
+  max-width:clamp(820px,168dvh,1440px);padding:clamp(8px,1.8dvh,24px) clamp(16px,2vw,28px);
+ }
+ #page-jouer.active[data-trial-view="hub"]{
+  gap:clamp(7px,1.3dvh,16px);
+  --tile-title-size:clamp(15px,1.4vw,20px);
+  --tile-emblem-size:clamp(27px,2.8vw,42px);
+ }
+ #page-jouer[data-trial-view="hub"] .trial-setup{gap:clamp(8px,1.7dvh,20px)}
+ #page-jouer[data-trial-view="hub"] .difficulty-description strong,
+ #page-jouer[data-trial-view="hub"] .trial-setup-title{font-size:clamp(17px,1.5vw,22px)}
+ #page-jouer[data-trial-view="hub"] #difficulty-options>button{
+  min-height:clamp(88px,16dvh,150px);
+ }
+ #page-jouer[data-trial-view="hub"] .trial-hub-layout{
+  grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto;
+  gap:clamp(10px,1.5vw,22px);
+ }
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-column:2;grid-row:1}
 }
  /* Direct launch on every device: no additional preview panel. */
 #page-jouer[data-trial-view="hub"] .trial-preview{display:none}

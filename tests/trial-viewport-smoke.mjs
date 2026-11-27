@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const html=readFileSync('index.html','utf8'),css=readFileSync('src/trial-viewport.css','utf8'),js=readFileSync('src/main.js','utf8');
-assert.ok(html.includes('src/trial-viewport.css?v=12'));
+assert.ok(html.includes('src/trial-viewport.css?v=13'));
 assert.ok(css.includes('height:100dvh;min-height:0'));
 assert.ok(css.includes('body:has(#page-jouer.active[data-trial-view="hub"])'));
 assert.ok(css.includes('var(--aetherium-mobile-nav-height,64px) + var(--aetherium-footer-height,44px)'));
@@ -56,11 +56,13 @@ console.log('All five minigames use live responsive titles and seals.');
 
 assert.ok(css.includes('aventures-fresque.webp?v=2'));
 
-const wide=css.slice(css.indexOf('/* Large-screen hub:'));
+const wide=css.slice(css.indexOf('/* Three responsive hub compositions'));
+const desktop=wide.slice(wide.indexOf('/* Desktop and landscape tablet:'));
 assert.ok(wide.includes('(min-width:600px) and (min-height:521px)'));
-assert.ok(wide.includes('max-width:clamp(400px,65dvh,560px)'));
+assert.ok(wide.includes('max-width:clamp(440px,57dvh,820px)'));
 assert.ok(wide.includes('aspect-ratio:16/9')&&wide.includes('height:auto;max-height:none'));
 assert.ok(wide.includes('height:auto;min-height:100%;overflow:visible'));
 assert.ok(wide.includes('grid-template-columns:minmax(0,1fr)')&&wide.includes('.trial-hub-portals{grid-column:1;grid-row:2}'));
+assert.ok(desktop.includes('(orientation:landscape)')&&desktop.includes('grid-template-columns:repeat(2,minmax(0,1fr))')&&desktop.includes('.trial-hub-portals{grid-column:2;grid-row:1}'));
 assert.ok(wide.includes('.trial-preview{display:none}'));
-console.log('All devices: centered mobile-style hub, stacked murals and direct game launch.');
+console.log('Responsive hub: phone unchanged, portrait tablet stacked, wide desktop two native-ratio murals.');
