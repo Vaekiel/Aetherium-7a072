@@ -19,7 +19,7 @@ console.log('Continuous difficulty panorama: shared image, live difficulty state
 
 const hubCss=readFileSync('src/trial-hub.css','utf8');
 for(const obsolete of ['initiation.webp','aventure-mine.webp','maitrise.webp','ascension.webp'])assert.ok(!hubCss.includes(obsolete),'Old individual difficulty background must not obscure panorama: '+obsolete);
-assert.ok(html.includes('src/trial-hub.css?v=31'));
+assert.ok(html.includes('src/trial-hub.css?v=32'));
 assert.ok(css.includes('#difficulty-options>button:is([data-difficulty],.future-difficulty)')&&css.includes('center 58%/100% auto'));
 
 assert.ok(html.indexOf('id="confrontation-shortcut"')<html.indexOf('id="expedition-shortcut"')&&html.indexOf('id="expedition-shortcut"')<html.indexOf('id="circuit-shortcut"'));

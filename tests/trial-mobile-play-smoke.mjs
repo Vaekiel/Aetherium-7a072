@@ -14,6 +14,12 @@ assert.ok(main.includes("if(!mobileView.matches)target.scrollIntoView"),'Mobile 
 assert.ok(main.includes('grant(earned)'),'Rewards remain wired');
 assert.ok(html.includes('class="future-difficulty" disabled'),'Ascension remains unavailable');
 console.log('Mobile trial fit and reading-sheet wiring OK');
+assert.ok(css.includes('@media(min-width:851px)')&&css.includes('max-width:740px')&&css.includes('var(--mobile-board-width,400px)'),'Desktop play uses compact height-fitted boards');
+assert.ok(module.includes("q('#app>footer.game-footer')")&&module.includes('compact.matches?nav:footer'),'Use the fixed footer boundary on desktop');
+assert.ok(module.includes('Math.min(112,fittedTile)')&&module.includes('compact.matches?0:window.scrollY'),'Desktop tile cap and stable scroll measurement');
+assert.ok(main.includes('./trial-mobile-play.js?v=3')&&html.includes('trial-hub.css?v=32'));
+console.log('Desktop trial fit: viewport footer, stable scroll budget and bounded tile size OK');
+
 
 assert.ok(!main.includes("el('div','excavation-meter')"),'Fouilles no longer render the redundant progress bars');
 assert.ok(main.includes("safe+' / '+safeTarget+' cases sûres'"),'The numeric counter remains live');
@@ -34,8 +40,3 @@ assert.ok(main.includes("'chemin-runique.webp'")&&main.includes("art.addEventLis
 assert.ok(css.includes('.game-choice.has-trial-art::before{')&&css.includes('visibility:hidden;filter:none')&&css.includes('position:absolute;inset:0;width:100%;height:100%')&&css.includes('object-fit:cover'),'Individual artwork does not change the tile grid');
 
 assert.ok(main.includes("el('span','trial-art-shade')")&&css.includes('.trial-art-shade'),'Full-card art keeps a contrast layer behind real text');
-
-assert.ok(css.includes('@media(min-width:851px)')&&css.includes('max-width:740px')&&css.includes('var(--mobile-board-width,400px)'),'Desktop play uses compact height-fitted boards');
-assert.ok(module.includes("q('#app>footer.game-footer')")&&module.includes('compact.matches?nav:footer'),'Use the fixed footer boundary on desktop');
-assert.ok(module.includes('Math.min(112,fittedTile)')&&module.includes('compact.matches?0:window.scrollY'),'Desktop tile cap and stable scroll measurement');
-assert.ok(main.includes('./trial-mobile-play.js?v=3')&&html.includes('trial-hub.css?v=32'));
