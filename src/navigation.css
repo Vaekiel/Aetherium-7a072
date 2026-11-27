@@ -4,9 +4,19 @@
 
 /* Four core destinations share the same HD pixel-art emblem family. */
 .top nav .nav-icon{
- background-image:url('../assets/minigames/minigame-emblems.webp');
+ position:relative;
+ background-image:none;
  background-size:300% 200%;
  background-position:0% 0%;
+}
+/* The source atlas has opaque midnight corners. Clip only those corners,
+   preserving the stone rim, four jewels and the original emblem colors.
+   Keep the filter on the parent so the selected glow follows the cutout. */
+.top nav .nav-icon::before{
+ content:"";position:absolute;inset:0;pointer-events:none;
+ background-image:url('../assets/minigames/minigame-emblems.webp');
+ background-repeat:no-repeat;background-size:inherit;background-position:inherit;
+ clip-path:polygon(50% 1.5%,54.5% 6%,78.5% 6%,85% 9%,92% 17%,92.5% 34%,92.5% 44%,94% 46%,92.5% 49%,92.5% 77%,90.5% 82%,81% 91%,55% 91%,50% 95.5%,45% 91%,19% 91%,9% 82%,7.5% 77%,7.5% 49%,6% 46%,7.5% 43%,7.5% 20%,9% 16%,17% 8%,22% 6%,45.5% 6%);
 }
 .top nav [data-page="jouer"] .nav-icon{background-position:0% 0%}
 .top nav [data-page="boosters"] .nav-icon{background-position:0% 100%}
