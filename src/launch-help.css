@@ -48,3 +48,42 @@
 #arcane-launch .launch-button:disabled{opacity:.5;cursor:default}
 .game-footer #return-to-title{min-height:44px;color:#d6c1a8}
 @media(max-width:350px){#arcane-launch .launch-secondary-actions{width:94vw;gap:4px}#arcane-launch .launch-secondary-actions .launch-button{font-size:11px}}
+
+/* Persistent studio / title-return bar: a single row, never below the fold.
+   Reserve its height in the scrolling content, including compact trial modes. */
+:root{--aetherium-footer-height:44px;--aetherium-mobile-nav-height:64px;scroll-padding-bottom:calc(var(--aetherium-footer-height) + 10px + env(safe-area-inset-bottom,0px))}
+#app>footer.game-footer{
+ position:fixed;inset:auto 0 0;z-index:90;
+ display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:space-between;
+ gap:8px;box-sizing:border-box;width:100%;height:calc(var(--aetherium-footer-height) + env(safe-area-inset-bottom,0px));
+ margin:0;padding:0 max(18px,env(safe-area-inset-right,0px)) env(safe-area-inset-bottom,0px) max(18px,env(safe-area-inset-left,0px));
+ background:linear-gradient(180deg,#1d1b32,#15182b);border-top:1px solid #8e6d6a82;
+ color:#b5a5bd;font:12px/1.2 Georgia,serif;
+}
+#app>footer.game-footer>span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#app>footer.game-footer #return-to-title{
+ flex:none;min-height:44px;height:44px;max-width:100%;margin:0;padding:0 6px;
+ color:#ead3b0;font:600 12px/1.2 Georgia,serif;white-space:nowrap;
+}
+#app>footer.game-footer #return-to-title:focus-visible{outline-offset:-3px}
+#app>.layout{padding-bottom:calc(var(--aetherium-footer-height) + 12px + env(safe-area-inset-bottom,0px))}
+#app>#toast{bottom:calc(var(--aetherium-footer-height) + 12px + env(safe-area-inset-bottom,0px))}
+@media(max-width:850px){
+ :root{scroll-padding-bottom:calc(var(--aetherium-footer-height) + var(--aetherium-mobile-nav-height) + 10px + env(safe-area-inset-bottom,0px))}
+ #app>footer.game-footer{
+  bottom:calc(var(--aetherium-mobile-nav-height) + env(safe-area-inset-bottom,0px));
+  height:var(--aetherium-footer-height);
+  padding:0 max(10px,env(safe-area-inset-right,0px)) 0 max(10px,env(safe-area-inset-left,0px));
+  font-size:clamp(10px,3vw,12px);gap:4px;
+ }
+ #app>footer.game-footer #return-to-title{font-size:clamp(11px,3vw,12px)}
+ #app>.layout,
+ #app:has(#page-jouer.active.mobile-play-ready[data-trial-view="play"])>.layout,
+ #app:has(#page-jouer.active[data-trial-view="circuits"])>.layout{
+  padding-bottom:calc(var(--aetherium-mobile-nav-height) + var(--aetherium-footer-height) + 10px + env(safe-area-inset-bottom,0px));
+ }
+ #app:has(#page-jouer.active.mobile-play-ready[data-trial-view="play"])>footer.game-footer,
+ #app:has(#page-jouer.active[data-trial-view="circuits"])>footer.game-footer{display:flex}
+ #app>#toast{bottom:calc(var(--aetherium-mobile-nav-height) + var(--aetherium-footer-height) + 10px + env(safe-area-inset-bottom,0px))}
+ body.sheet-open #app>footer.game-footer{visibility:hidden}
+}

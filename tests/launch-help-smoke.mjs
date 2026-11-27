@@ -12,3 +12,10 @@ assert.ok(!html.includes('class="footer-tools"'));
 assert.equal((html.match(/class="help-number"/g)||[]).length,9);
 assert.ok(css.includes('max-height:min(90dvh,850px)'));
 console.log('Title help: launch, settings, return to title, nine chapters, clean trial hub, booster funds and modal focus checks OK.');
+
+assert.ok(html.includes('src/launch-help.css?v=3'));
+assert.ok(css.includes('#app>footer.game-footer{')&&css.includes('position:fixed;inset:auto 0 0'));
+assert.ok(css.includes('bottom:calc(var(--aetherium-mobile-nav-height) + env(safe-area-inset-bottom,0px))'));
+assert.ok(css.includes('padding-bottom:calc(var(--aetherium-mobile-nav-height) + var(--aetherium-footer-height)'));
+assert.ok(css.includes('>footer.game-footer{display:flex}'));
+console.log('Persistent footer: desktop, mobile navigation, safe area and trial layout reservation OK.');
