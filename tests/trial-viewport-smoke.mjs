@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const html=readFileSync('index.html','utf8'),css=readFileSync('src/trial-viewport.css','utf8'),js=readFileSync('src/main.js','utf8');
-assert.ok(html.includes('src/trial-viewport.css?v=4'));
+assert.ok(html.includes('src/trial-viewport.css?v=5'));
 assert.ok(css.includes('height:100dvh;min-height:0'));
 assert.ok(css.includes('body:has(#page-jouer.active[data-trial-view="hub"])'));
 assert.ok(css.includes('var(--aetherium-mobile-nav-height,64px) + var(--aetherium-footer-height,44px)'));
@@ -19,5 +19,11 @@ console.log('Continuous difficulty panorama: shared image, live difficulty state
 
 const hubCss=readFileSync('src/trial-hub.css','utf8');
 for(const obsolete of ['initiation.webp','aventure-mine.webp','maitrise.webp','ascension.webp'])assert.ok(!hubCss.includes(obsolete),'Old individual difficulty background must not obscure panorama: '+obsolete);
-assert.ok(html.includes('src/trial-hub.css?v=30'));
+assert.ok(html.includes('src/trial-hub.css?v=31'));
 assert.ok(css.includes('#difficulty-options>button:is([data-difficulty],.future-difficulty)')&&css.includes('center 58%/100% auto'));
+
+assert.ok(html.indexOf('id="confrontation-shortcut"')<html.indexOf('id="expedition-shortcut"')&&html.indexOf('id="expedition-shortcut"')<html.indexOf('id="circuit-shortcut"'));
+assert.ok(html.includes('class="adventures-mural"'));
+assert.ok(css.includes('aventures-fresque.webp')&&css.includes('grid-column:1/-1;grid-row:1'));
+assert.ok(css.includes('.expedition-mural-tile{grid-column:1;grid-row:2')&&css.includes('.circuit-mural-tile{grid-column:2;grid-row:2'));
+console.log('Adventures mural: actual DOM order, shared backdrop, two-row grid and scoped responsive layout.');

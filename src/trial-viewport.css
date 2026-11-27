@@ -197,3 +197,66 @@ body:has(#page-jouer.active[data-trial-view="hub"]){
 #page-jouer[data-trial-view="hub"] #difficulty-options>button:is([data-difficulty],.future-difficulty).is-active{
  background:transparent;
 }
+
+/* Adventures: one uninterrupted image under the three real controls.
+   The title stays outside the artwork; two equal rows map exactly to the mural. */
+#page-jouer[data-trial-view="hub"] .trial-hub-portals{
+ display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);
+ gap:4px;min-height:0;align-content:stretch;align-self:stretch;
+}
+#page-jouer[data-trial-view="hub"] .trial-hub-portals>.adventures-mural{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));
+ min-width:0;min-height:0;grid-column:1/-1;gap:0;position:relative;isolation:isolate;
+ border-radius:7px;overflow:hidden;
+ background:linear-gradient(180deg,#0b0d1d46,#0b0d1d29 52%,#0b0d1d40),url('../assets/minigames/aventures-fresque.webp?v=1') center/100% 100% no-repeat,#191c30;
+}
+#page-jouer[data-trial-view="hub"] .adventures-mural>.expedition-portal{
+ position:relative;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+ min-height:0;min-width:0;height:100%;width:100%;margin:0;padding:5px 7px;
+ border:1px solid #c7a68785;border-radius:0;background:transparent;
+ box-shadow:inset 0 0 0 1px #e3c5a018;overflow:hidden;
+}
+#page-jouer[data-trial-view="hub"] .adventures-mural>.confrontation-portal{grid-column:1/-1;grid-row:1;border-radius:7px 7px 0 0}
+#page-jouer[data-trial-view="hub"] .adventures-mural>.expedition-mural-tile{grid-column:1;grid-row:2;border-top:0;border-radius:0 0 0 7px}
+#page-jouer[data-trial-view="hub"] .adventures-mural>.circuit-mural-tile{grid-column:2;grid-row:2;border-top:0;border-left:0;border-radius:0 0 7px 0}
+#page-jouer[data-trial-view="hub"] .adventures-mural .expedition-portal-symbol{display:none}
+#page-jouer[data-trial-view="hub"] .adventures-mural .expedition-portal-copy{
+ position:relative;z-index:1;pointer-events:none;align-self:flex-start;max-width:100%;
+ width:auto;gap:3px;padding:2px 3px;border-radius:3px;
+ background:#080b1b66;text-shadow:0 1px 3px #000,0 0 5px #000;
+}
+#page-jouer[data-trial-view="hub"] .adventures-mural .expedition-portal-copy strong{font:600 clamp(12px,1.4vw,16px)/1.15 Georgia,serif;color:#f5e3c9}
+#page-jouer[data-trial-view="hub"] .adventures-mural .expedition-portal-copy span{font:11px/1.1 Georgia,serif;color:#e3d7ec}
+#page-jouer[data-trial-view="hub"] .adventures-mural .expedition-portal-button{
+ position:absolute;inset:0;z-index:2;display:flex;justify-content:flex-end;align-items:flex-end;
+ min-height:0;width:100%;height:100%;margin:0;padding:4px 6px;
+ border:0;border-radius:inherit;background:transparent;box-shadow:none;
+ font:600 11px/1.1 Georgia,serif;color:#f5e3c9;text-shadow:0 1px 4px #000,0 0 6px #000;
+}
+#page-jouer[data-trial-view="hub"] .adventures-mural>.confrontation-portal .expedition-portal-copy{max-width:75%}
+#page-jouer[data-trial-view="hub"] .adventures-mural>.confrontation-portal .expedition-portal-button{align-items:center}
+#page-jouer[data-trial-view="hub"] .adventures-mural>.expedition-portal:focus-within{box-shadow:inset 0 0 0 2px #e7c78e}
+#page-jouer[data-trial-view="hub"] .adventures-mural .expedition-portal-button:focus-visible{outline:2px solid #eed6aa;outline-offset:-3px}
+@media(min-width:851px) and (min-height:521px){
+ #page-jouer[data-trial-view="hub"] .trial-hub-layout{grid-template-columns:minmax(0,1fr) minmax(280px,.65fr)}
+ #page-jouer[data-trial-view="hub"] .adventures-mural{max-height:clamp(180px,30vw,420px)}
+}
+@media(max-width:850px){
+ #page-jouer[data-trial-view="hub"] .adventures-mural .expedition-portal-copy strong{font-size:clamp(12px,3.3vw,15px)}
+ #page-jouer[data-trial-view="hub"] .adventures-mural .expedition-portal-copy span{font-size:10px}
+}
+@media(max-height:690px) and (orientation:portrait){
+ #page-jouer[data-trial-view="hub"] .adventures-mural .expedition-portal-copy span{display:none}
+}
+@media(max-height:520px) and (orientation:landscape){
+ #page-jouer[data-trial-view="hub"] .trial-hub-layout{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:5px}
+ #page-jouer[data-trial-view="hub"] .trial-hub-picker{grid-column:1;grid-row:1}
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-picker{grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr))}
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice:nth-child(n){grid-column:span 2}
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice:nth-child(n+4){grid-column:span 3}
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-column:2;grid-row:1;grid-template-rows:minmax(0,1fr)}
+ #page-jouer[data-trial-view="hub"] .adventures-mural>.expedition-portal{padding:2px 4px}
+ #page-jouer[data-trial-view="hub"] .adventures-mural .expedition-portal-copy strong{font-size:11px}
+ #page-jouer[data-trial-view="hub"] .adventures-mural .expedition-portal-copy span{display:none}
+ #page-jouer[data-trial-view="hub"] .adventures-mural .expedition-portal-button{font-size:9px;padding:2px 4px}
+}

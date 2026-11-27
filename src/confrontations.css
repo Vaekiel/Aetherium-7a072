@@ -1,9 +1,6 @@
-#page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-template-rows:none;grid-auto-rows:auto;align-content:start}
-#page-jouer[data-trial-view="hub"] .trial-hub-portals .confrontation-portal{grid-column:1/-1;background:linear-gradient(90deg,#101326dd 0%,#15152b80 58%,#17152a44 100%),url('../assets/minigames/confrontations-colosse.webp') center 49%/cover no-repeat;min-height:84px}
 #page-jouer[data-trial-view="hub"] .confrontation-portal .expedition-portal-copy strong{color:#f4dfbb}
 #page-jouer[data-trial-view="hub"] .confrontation-portal .expedition-portal-copy span{color:#eee0eb}
 @media(max-width:850px) and (orientation:portrait){
-#page-jouer[data-trial-view="hub"] .trial-hub-portals .confrontation-portal{grid-template-columns:30px minmax(0,1fr) auto;grid-template-rows:1fr;gap:7px;min-height:76px;padding:8px}
 #page-jouer[data-trial-view="hub"] .confrontation-portal .expedition-portal-button{grid-column:3;width:auto;padding:6px 11px;min-height:44px}
 }
 .confrontation-dialog{box-sizing:border-box;width:min(94vw,680px);max-width:94vw;max-height:88dvh;overflow:auto;padding:0;border:1px solid #b79984;border-radius:9px;color:#eddfce;background:#17192e;box-shadow:0 12px 40px #09091bcc;font-family:Georgia,serif}
