@@ -48,7 +48,7 @@ Votre progression est **enregistrée automatiquement et localement** dans votre 
 
 ### Sauvegarder et retrouver sa collection
 
-Depuis le bas de la page du jeu, clique sur **Gérer ma sauvegarde**.
+Depuis le menu d’accueil, ouvre **Paramètres → Gérer ma sauvegarde**. Pendant une partie, le bouton **Menu d’accueil** en bas de l’écran permet de revenir au titre sans recharger le jeu.
 
 - **Télécharger ma sauvegarde** crée un fichier JSON personnel contenant cartes, Chromatiques, ressources, records et expéditions.
 - **Choisir un fichier JSON** permet d'importer un fichier Aetherium exporté depuis un autre navigateur ou appareil. Le jeu vérifie son intégrité et affiche un récapitulatif **avant de demander confirmation**.

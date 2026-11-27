@@ -3012,7 +3012,7 @@ backupRestore.addEventListener('click',()=>{
     syncBackupRestore();
   }
 });
-$('#reset').addEventListener('click',()=>{if(!confirm('Effacer définitivement les cartes et la progression sauvegardées sur cet appareil ?'))return;try{saveSession.write(fresh(),{replace:true})}catch(error){showSaveWarning(error.message);return}clearBoosterScene();enableHolographicInspection(null);try{localStorage.removeItem(PREVIOUS_SAVE_KEY)}catch{}state=fresh();circuitSession.reset();renderCircuits();missingFinish='all';state.trialStats=sanitizedTrialStats(state.trialStats);trialStarters.forEach(start=>start());renderTrialMastery();renderDifficultyChoice();renderExpedition();selectedCard=null;forgeSelectedId=null;forgeFilter='all';forgeMode='discovery';$('#atelier-mode').value=forgeMode;$('#atelier-filter').value='all';$('#atelier-result').hidden=true;$('#inspector').replaceChildren(el('p','muted','Sélectionne une carte découverte pour l’admirer.'));$('#pulls').replaceChildren();$('#pack-title').textContent='Les archives attendent leur voyageur.';$('#pack-msg').textContent='Gagne des Couronnes en jouant pour ouvrir des boosters.';update();renderCollection();notify('Progression réinitialisée.')});
+$('#reset').addEventListener('click',()=>{const settingsStatus=$('#settings-status');if(backupBusy)return;if(!confirm('Effacer définitivement les cartes et la progression sauvegardées sur cet appareil ?'))return;try{saveSession.write(fresh(),{replace:true})}catch(error){showSaveWarning(error.message);settingsStatus.textContent=error.message;settingsStatus.classList.add('is-error');return}clearBoosterScene();enableHolographicInspection(null);try{localStorage.removeItem(PREVIOUS_SAVE_KEY)}catch{}state=fresh();circuitSession.reset();renderCircuits();missingFinish='all';state.trialStats=sanitizedTrialStats(state.trialStats);trialStarters.forEach(start=>start());renderTrialMastery();renderDifficultyChoice();renderExpedition();selectedCard=null;forgeSelectedId=null;forgeFilter='all';forgeMode='discovery';$('#atelier-mode').value=forgeMode;$('#atelier-filter').value='all';$('#atelier-result').hidden=true;$('#inspector').replaceChildren(el('p','muted','Sélectionne une carte découverte pour l’admirer.'));$('#pulls').replaceChildren();$('#pack-title').textContent='Les archives attendent leur voyageur.';$('#pack-msg').textContent='Gagne des Couronnes en jouant pour ouvrir des boosters.';update();renderCollection();settingsStatus.classList.remove('is-error');settingsStatus.textContent='Progression réinitialisée.';notify('Progression réinitialisée.')});
 syncMobileSheets();
 selectBooster('origines');
 renderExpedition();
@@ -3025,3 +3025,6 @@ window.addEventListener('hashchange',()=>{
 });
 
 mountConfrontations({cards:CARDS,getOwned:()=>state.owned,openBoosters:()=>navigate('boosters')});
+// Save and reset controls become available only after game initialization.
+$('#backup-open').disabled=false;
+$('#reset').disabled=false;

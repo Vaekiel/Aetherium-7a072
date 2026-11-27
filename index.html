@@ -22,18 +22,23 @@
 @media(orientation:landscape) and (min-aspect-ratio:5/4){#arcane-launch .launch-art{width:63%;object-fit:contain;object-position:center;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}#arcane-launch .launch-shade{background:linear-gradient(90deg,#10132222 30%,#101322cc 68%,#101322ee)}#arcane-launch .launch-menu{inset:0 0 0 60%;align-content:center;padding:max(12px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) 8px}#arcane-launch .launch-button{width:min(100%,290px)}}
 @media(max-height:360px){#arcane-launch .launch-menu{gap:7px}#arcane-launch .launch-button{min-height:44px;padding:8px 12px}#arcane-launch .launch-studio{font-size:10px}}
 @media(prefers-reduced-motion:reduce){#arcane-launch{transition:none}}
-</style><link rel="stylesheet" href="./src/confrontations.css?v=1"><link rel="stylesheet" href="./src/launch-help.css?v=1"></head>
+</style><link rel="stylesheet" href="./src/confrontations.css?v=1"><link rel="stylesheet" href="./src/launch-help.css?v=2"></head>
 <body><div id="arcane-launch" hidden role="dialog" aria-modal="true" aria-label="Aetherium — menu titre">
 <picture><source media="(orientation: portrait)" srcset="./assets/icons/aetherium-launch-mobile-v2.webp"><img class="launch-art" src="./assets/icons/aetherium-launch.webp" alt="Aetherium — Chroniques des Arcanes" fetchpriority="high"></picture>
 <h1 id="launch-fallback" class="launch-fallback" hidden>AETHERIUM</h1>
 <div class="launch-shade" aria-hidden="true"></div>
 <div class="launch-menu" id="launch-menu">
 <button id="launch-play" class="launch-button launch-button--play" type="button">✦ &nbsp; Jouer</button>
-<div class="launch-secondary-actions"><button id="launch-help-open" class="launch-button" type="button" aria-haspopup="dialog" aria-controls="aetherium-help">Aide &amp; tutoriel</button><button id="launch-news-open" class="launch-button" type="button" aria-controls="launch-news" aria-expanded="false">Nouveautés</button></div>
+<div class="launch-secondary-actions"><button id="launch-help-open" class="launch-button" type="button" aria-haspopup="dialog" aria-controls="aetherium-help">Aide &amp; tutoriel</button><button id="launch-news-open" class="launch-button" type="button" aria-controls="launch-news" aria-expanded="false">Nouveautés</button><button id="launch-settings-open" class="launch-button" type="button" aria-controls="launch-settings" aria-expanded="false">Paramètres</button></div>
 <p class="launch-studio">NOCTILOOM STUDIO</p>
 </div>
 <section id="launch-news" class="launch-news" hidden aria-labelledby="launch-news-title">
-<h2 id="launch-news-title" tabindex="-1">✦ Nouveautés des Arcanes</h2>
+<h2 id="launch-news-title" tabindex="-1">✦ Dernières nouveautés</h2>
+<p>Les évolutions utiles pour jouer et profiter de ta collection, sans révéler les secrets du jeu.</p>
+<h3>27 novembre 2026 · Navigation et aide</h3>
+<p>Un guide de l’aventurier explique les mécaniques dès le menu titre. Les paramètres et la sauvegarde sont désormais accessibles depuis l’accueil ; tu peux y revenir sans recharger ta partie. La page des Épreuves est plus compacte, avec des mini-jeux illustrés et des accès directs aux aventures.</p>
+<h3>27 novembre 2026 · Les Confrontations (DEV)</h3>
+<p>Teste les premiers combats tactiques à partir des cartes de ton Codex. L’Éclat, la Garde et le Flux influencent tes actions. Le mode est expérimental, gratuit et sans perte de carte ; les récompenses ne sont pas encore activées.</p>
 <h3>26 novembre 2026 · Nouvelle identité</h3>
 <p>Un écran titre inédit, une nouvelle icône d’application et un recto de carte harmonisé sur les trois collections. Les cartes conservent leurs illustrations et leurs statistiques.</p>
 <h3>23 novembre 2026 · Interface et ergonomie</h3>
@@ -41,6 +46,26 @@
 <h3>19 novembre 2026 · Finitions des cartes</h3>
 <p>Les versions Calligraphique, Chromatique et Holographique enrichissent la collection. Les effets spéciaux restent à découvrir en jeu.</p>
 <button id="launch-news-close" class="launch-button" type="button">Retour</button>
+</section>
+<section id="launch-settings" class="launch-news launch-settings" hidden aria-labelledby="launch-settings-title">
+  <h2 id="launch-settings-title" tabindex="-1">Paramètres</h2>
+  <div class="launch-settings-card">
+    <h3>Ma progression</h3>
+    <p>Ta progression est enregistrée automatiquement sur cet appareil. Exporte une copie pour la conserver ou la retrouver sur un autre navigateur.</p>
+    <button type="button" id="backup-open" class="launch-button" disabled>Gérer ma sauvegarde ›</button>
+    <p class="settings-dev-note">Version DEV : la progression est distincte de celle du jeu public.</p>
+  </div>
+  <details class="launch-settings-card app-mode-help"><summary>Jouer sans barre de navigateur</summary>
+    <p>Android : ouvre le menu ⋮ du navigateur, puis « Installer l’application » ou « Ajouter à l’écran d’accueil ». Lance ensuite Aetherium depuis son icône.</p>
+    <p>iPhone / iPad : dans Safari, utilise Partager puis « Sur l’écran d’accueil ».</p>
+    <p>Sur les navigateurs compatibles, le bouton plein écran du jeu permet de basculer manuellement.</p>
+  </details>
+  <details class="launch-settings-card settings-danger"><summary>Réinitialiser la progression</summary>
+    <p>Cette action efface définitivement tes cartes, tes ressources et tes succès sur cet appareil. Exporte d’abord ta sauvegarde si tu souhaites la conserver.</p>
+    <button type="button" id="reset" class="launch-button settings-danger-button" disabled>Réinitialiser ma progression</button>
+  </details>
+  <p id="settings-status" role="status" aria-live="polite"></p>
+  <button type="button" id="launch-settings-close" class="launch-button">‹ Retour</button>
 </section>
 </div>
 <dialog id="aetherium-help" class="aetherium-help" aria-labelledby="help-title">
@@ -83,34 +108,44 @@
     </div></details>
     <details><summary><span class="help-number">09</span> Sauvegarder ta progression</summary><div class="help-chapter">
       <p>Ta progression est enregistrée automatiquement dans ton navigateur, sur cet appareil. Effacer les données du navigateur peut supprimer ta sauvegarde.</p>
-      <p>En bas du jeu, ouvre « Réglages et sauvegarde », puis « Gérer ma sauvegarde ». Télécharge régulièrement ton fichier de sauvegarde et conserve-le hors du navigateur. Tu peux le réimporter sur un autre appareil après vérification et confirmation.</p>
-      <p>La version DEV possède une progression distincte de la version publique.</p>
+      <p>Depuis le menu d’accueil, ouvre « Paramètres », puis « Gérer ma sauvegarde ». Pour revenir à l’accueil sans perdre ta progression, utilise « Menu d’accueil » en bas du jeu. Télécharge régulièrement ton fichier de sauvegarde et conserve-le hors du navigateur. Tu peux le réimporter sur un autre appareil après vérification et confirmation.</p>
+      <p>La version DEV possède une progression distincte de la version publique. Dans les Paramètres, la réinitialisation est réservée aux joueurs qui souhaitent repartir de zéro : une confirmation est obligatoire.</p>
     </div></details>
-    <p class="help-footnote">Le reste se découvre en jouant. Tu peux rouvrir ce guide depuis les réglages à tout moment.</p>
+    <p class="help-footnote">Le reste se découvre en jouant. Tu peux rouvrir ce guide à tout moment depuis le menu d’accueil.</p>
   </div>
 </dialog>
 <script id="aetherium-launch-controller">
 (()=>{const screen=document.getElementById('arcane-launch');if(!screen)return;
-const play=document.getElementById('launch-play'),open=document.getElementById('launch-news-open'),close=document.getElementById('launch-news-close'),menu=document.getElementById('launch-menu'),news=document.getElementById('launch-news'),heading=document.getElementById('launch-news-title'),fallback=document.getElementById('launch-fallback'),art=screen.querySelector('.launch-art');
-if(!play||!open||!close||!menu||!news)return;
-let entered=false;
-const lockApp=()=>{const app=document.getElementById('app');if(app)app.inert=!entered;};
+const $=id=>document.getElementById(id);
+const play=$('launch-play'),open=$('launch-news-open'),close=$('launch-news-close'),menu=$('launch-menu'),news=$('launch-news'),heading=$('launch-news-title'),fallback=$('launch-fallback'),art=screen.querySelector('.launch-art');
+const settings=$('launch-settings'),settingsOpen=$('launch-settings-open'),settingsClose=$('launch-settings-close'),help=$('aetherium-help'),helpOpen=$('launch-help-open'),helpClose=$('help-close');
+let entered=false,leaveTimer=null,helpReturn=null,gameReturn=null;
 const focus=el=>el?.focus({preventScroll:true});
-const showMenu=()=>{news.hidden=true;menu.hidden=false;open.setAttribute('aria-expanded','false');focus(open);};
-const showNews=()=>{menu.hidden=true;news.hidden=false;open.setAttribute('aria-expanded','true');focus(heading);};
-const enter=()=>{if(entered)return;entered=true;screen.classList.add('is-leaving');screen.setAttribute('aria-hidden','true');lockApp();focus(document.querySelector('#app .brand'));setTimeout(()=>{screen.hidden=true;},450);};
-play.addEventListener('click',enter);
-open.addEventListener('click',showNews);
-close.addEventListener('click',showMenu);
-screen.addEventListener('keydown',e=>{if(e.key==='Escape'&&!news.hidden){e.preventDefault();showMenu();return;}if(e.key==='Tab'&&!entered){const controls=news.hidden?[play,document.getElementById('launch-help-open'),open]:[close];const first=controls[0],last=controls[controls.length-1];if(e.shiftKey&&(document.activeElement===first||!controls.includes(document.activeElement))){e.preventDefault();focus(last);}else if(!e.shiftKey&&(document.activeElement===last||!controls.includes(document.activeElement))){e.preventDefault();focus(first);}}});
+const lockApp=()=>{const app=$('app');if(app)app.inert=!entered;};
+const showMenu=(target=play)=>{news.hidden=true;settings.hidden=true;menu.hidden=false;open.setAttribute('aria-expanded','false');settingsOpen.setAttribute('aria-expanded','false');focus(target);};
+const showNews=()=>{menu.hidden=true;settings.hidden=true;news.hidden=false;open.setAttribute('aria-expanded','true');settingsOpen.setAttribute('aria-expanded','false');news.scrollTop=0;focus(heading);};
+const showSettings=()=>{menu.hidden=true;news.hidden=true;settings.hidden=false;settingsOpen.setAttribute('aria-expanded','true');open.setAttribute('aria-expanded','false');settings.scrollTop=0;focus($('launch-settings-title'));};
+const enter=()=>{if(entered)return;entered=true;screen.classList.add('is-leaving');screen.setAttribute('aria-hidden','true');lockApp();focus(gameReturn||document.querySelector('#app .brand'));leaveTimer=setTimeout(()=>{if(entered)screen.hidden=true;leaveTimer=null;},450);};
+const returnToTitle=event=>{if(!entered)return;gameReturn=event.currentTarget;if(leaveTimer!==null){clearTimeout(leaveTimer);leaveTimer=null;}entered=false;screen.hidden=false;screen.classList.remove('is-leaving');screen.removeAttribute('aria-hidden');lockApp();showMenu();};
+const showHelp=event=>{if(help.open)return;helpReturn=event.currentTarget;help.showModal();focus($('help-title'));};
+play.addEventListener('click',enter);open.addEventListener('click',showNews);close.addEventListener('click',()=>showMenu(open));
+settingsOpen.addEventListener('click',showSettings);settingsClose.addEventListener('click',()=>showMenu(settingsOpen));
+helpOpen.addEventListener('click',showHelp);helpClose.addEventListener('click',()=>help.close());
+help.addEventListener('close',()=>{focus(helpReturn);helpReturn=null;});
+screen.addEventListener('keydown',e=>{
+ if(e.key==='Escape'&&!news.hidden){e.preventDefault();showMenu(open);return;}
+ if(e.key==='Escape'&&!settings.hidden){e.preventDefault();showMenu(settingsOpen);return;}
+ if(e.key!=='Tab'||entered)return;
+ const active=!settings.hidden?settings:!news.hidden?news:menu;
+ const controls=[...active.querySelectorAll('button:not([disabled]),summary,a[href]')].filter(el=>el.getClientRects().length>0);
+ const first=controls[0],last=controls[controls.length-1];if(!first)return;
+ if(e.shiftKey&&(document.activeElement===first||!controls.includes(document.activeElement))){e.preventDefault();focus(last);}
+ else if(!e.shiftKey&&(document.activeElement===last||!controls.includes(document.activeElement))){e.preventDefault();focus(first);}
+});
 const missingArt=()=>{if(fallback)fallback.hidden=false;};
 if(art){art.addEventListener('error',missingArt,{once:true});if(art.complete&&!art.naturalWidth)missingArt();}
 screen.hidden=false;focus(play);
-const help=document.getElementById('aetherium-help'),helpOpen=document.getElementById('launch-help-open'),helpClose=document.getElementById('help-close');let helpReturn=null;
-const showHelp=event=>{if(help.open)return;helpReturn=event.currentTarget;help.showModal();focus(document.getElementById('help-title'));};
-helpOpen.addEventListener('click',showHelp);helpClose.addEventListener('click',()=>help.close());
-help.addEventListener('close',()=>{focus(helpReturn);helpReturn=null;});
-const ready=()=>{lockApp();document.getElementById('guide-reopen')?.addEventListener('click',showHelp);};
+const ready=()=>{lockApp();$('return-to-title')?.addEventListener('click',returnToTitle);$('backup-dialog')?.addEventListener('close',()=>{if(!entered&&!settings.hidden)focus($('backup-open'));});};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready,{once:true});else ready();
 })();
 </script><div id="app"><div class="ambient-landscape" aria-hidden="true"><div class="landscape-sky"></div><div class="landscape-moon"></div><div class="landscape-island island-left"></div><div class="landscape-island island-right"></div><div class="landscape-ruins"></div><div class="landscape-foreground"></div></div>
@@ -517,7 +552,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <div id="achievements" class="achievements"></div>
 </section>
 </main>
-<footer class="game-footer"><span>Noctiloom Studio · AETHERIUM</span><details class="footer-tools"><summary>Réglages et sauvegarde</summary><div class="footer-tools-actions"><button type="button" id="guide-reopen" class="text-button">Aide &amp; tutoriel</button><button type="button" id="backup-open" class="text-button">Gérer ma sauvegarde</button><button id="reset" class="text-button">Réinitialiser</button></div><details class="app-mode-help"><summary>Jouer sans barre de navigateur</summary><p>Android : ouvre le menu ⋮ du navigateur, puis « Installer l’application » ou « Ajouter à l’écran d’accueil ». Lance ensuite Aetherium depuis son icône.</p><p>iPhone / iPad : dans Safari, utilise Partager puis « Sur l’écran d’accueil ». Lance ensuite le jeu depuis son icône.</p><p>Le plein écran direct dépend du navigateur. Il ne s’active jamais sans ton accord.</p></details></details></footer>
+<footer class="game-footer"><span>Noctiloom Studio · AETHERIUM</span><button type="button" id="return-to-title" class="text-button">‹ Menu d’accueil</button></footer>
+
+<div id="toast" role="status" aria-live="polite"></div></div>
 <dialog id="backup-dialog" class="backup-dialog" aria-labelledby="backup-heading" aria-describedby="backup-description">
  <div class="backup-dialog-inner">
   <p class="kicker">LES ARCHIVES DU VOYAGEUR</p>
@@ -542,4 +579,4 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <div class="backup-footer"><span>Conserve le fichier téléchargé en lieu sûr : effacer les données du navigateur efface aussi les sauvegardes locales.</span><button type="button" id="backup-close" class="secondary">Fermer</button></div>
  </div>
 </dialog>
-<div id="toast" role="status" aria-live="polite"></div></div><script type="module" src="./src/main.js?v=au-dela-lot-3&amp;booster=au-dela-1&amp;final=dernier-accord-1&amp;finishes=2&amp;rarity=1&amp;journal=au-dela-1&amp;ui=quiet-1&amp;gallery=1&amp;audela=premium-3&amp;typographie=v4&amp;recto=original-restored-1&amp;inspector=codex-stats-hd-all-1&amp;rectolab=uniform-3&amp;epreuves=navigation-2&amp;chromatic=audit-1&amp;save=safety-1&amp;stability=3&amp;forge=finishes-1&amp;signature=targets-1&amp;trialreward=clarity-1&amp;codex=2-5&amp;onboarding=1&amp;completion=04b&amp;journey=05&amp;trials=06&amp;lore=07&amp;circuits=08&amp;seasons=09&amp;hub=13&amp;confrontations=1&amp;help=1"></script><script type="module" src="./src/header-relics.js?v=relics-1"></script><script type="module" src="./src/fullscreen.js?v=immersive-1&amp;relics=1"></script></body></html>
+<script type="module" src="./src/main.js?v=au-dela-lot-3&amp;booster=au-dela-1&amp;final=dernier-accord-1&amp;finishes=2&amp;rarity=1&amp;journal=au-dela-1&amp;ui=quiet-1&amp;gallery=1&amp;audela=premium-3&amp;typographie=v4&amp;recto=original-restored-1&amp;inspector=codex-stats-hd-all-1&amp;rectolab=uniform-3&amp;epreuves=navigation-2&amp;chromatic=audit-1&amp;save=safety-1&amp;stability=3&amp;forge=finishes-1&amp;signature=targets-1&amp;trialreward=clarity-1&amp;codex=2-5&amp;onboarding=1&amp;completion=04b&amp;journey=05&amp;trials=06&amp;lore=07&amp;circuits=08&amp;seasons=09&amp;hub=13&amp;confrontations=1&amp;help=2"></script><script type="module" src="./src/header-relics.js?v=relics-1"></script><script type="module" src="./src/fullscreen.js?v=immersive-1&amp;relics=1"></script></body></html>

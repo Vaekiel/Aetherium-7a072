@@ -1,6 +1,6 @@
 /* Aetherium — shared title-screen and in-game help. */
-#arcane-launch .launch-secondary-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:min(78vw,320px)}
-#arcane-launch .launch-secondary-actions .launch-button{width:100%;min-width:0;padding:9px 5px;letter-spacing:0;font-size:14px}
+#arcane-launch .launch-secondary-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:min(88vw,360px)}
+#arcane-launch .launch-secondary-actions .launch-button{width:100%;min-width:0;padding:8px 4px;letter-spacing:0;font-size:clamp(11px,3.3vw,14px);line-height:1.2;white-space:normal;overflow-wrap:normal}
 @media(orientation:landscape) and (min-aspect-ratio:5/4){#arcane-launch .launch-secondary-actions{width:min(100%,290px)}}
 @media(max-height:360px){#arcane-launch .launch-secondary-actions .launch-button{min-height:44px;font-size:12px}}
 .trial-hub-accessible-title{position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip-path:inset(50%);white-space:nowrap;border:0!important}
@@ -30,3 +30,21 @@
 .help-content .help-footnote{font-size:12px;color:#bfaecb;text-align:center;margin:5px 0}
 .aetherium-help :is(button,summary):focus-visible{outline:2px solid #f5d6a5;outline-offset:-3px}
 @media(max-width:480px){.help-header{padding:11px 12px}.help-content{padding:10px}.help-content summary{font-size:15px}.help-chapter{padding:10px}}
+
+/* Title settings share the news panel styling. */
+#arcane-launch .launch-settings-card{margin:9px 0;padding:12px;border:1px solid #88768e91;border-radius:6px;background:#1a2035}
+#arcane-launch .launch-settings-card h3{margin:0 0 7px}
+#arcane-launch .launch-settings-card p{margin:8px 0}
+#arcane-launch .launch-settings-card .launch-button{margin-top:8px}
+#arcane-launch .launch-settings-card summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:#e9cfaa;font:600 16px Georgia,serif;gap:8px;list-style:none}
+#arcane-launch .launch-settings-card summary::-webkit-details-marker{display:none}
+#arcane-launch .launch-settings-card summary::after{content:'+';margin-left:auto;color:#d4b8ff}
+#arcane-launch .launch-settings-card[open] summary::after{content:'−'}
+#arcane-launch .launch-settings .settings-dev-note{font-size:12px;color:#bfaecb}
+#arcane-launch .settings-danger{border-color:#9c686c}
+#arcane-launch .settings-danger-button{border-color:#bb8582;color:#f7d1cd;background:linear-gradient(180deg,#51313b,#342234)}
+#arcane-launch #settings-status{color:#bde0cc;margin:8px 0 0}
+#arcane-launch #settings-status.is-error{color:#efadab}
+#arcane-launch .launch-button:disabled{opacity:.5;cursor:default}
+.game-footer #return-to-title{min-height:44px;color:#d6c1a8}
+@media(max-width:350px){#arcane-launch .launch-secondary-actions{width:94vw;gap:4px}#arcane-launch .launch-secondary-actions .launch-button{font-size:11px}}

@@ -1,12 +1,14 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const html=readFileSync('index.html','utf8'),js=readFileSync('src/main.js','utf8'),css=readFileSync('src/launch-help.css','utf8');
-for(const id of ['launch-help-open','aetherium-help','help-close','help-title','guide-reopen','booster-funds','confrontation-shortcut'])assert.equal((html.match(new RegExp('id="'+id+'"','g'))||[]).length,1,id);
+for(const id of ['launch-help-open','aetherium-help','help-close','help-title','return-to-title','launch-settings-open','launch-settings','backup-open','reset','booster-funds','confrontation-shortcut'])assert.equal((html.match(new RegExp('id="'+id+'"','g'))||[]).length,1,id);
 assert.ok(!html.includes('id="beginner-guide"')&&!html.includes('id="trial-guide-shortcut"'));
 assert.ok(!js.includes("$('#beginner-guide')")&&!js.includes("$('#trial-guide-shortcut')")&&!js.includes("$('#guide-action')"));
 assert.ok(js.includes('funds.hidden=boosterBusy||state.coins>=PACK_PRICE'));
 assert.ok(html.includes('help.showModal()')&&html.includes("help.addEventListener('close'"));
-assert.ok(html.includes('const controls=news.hidden?[play,document.getElementById'));
+assert.ok(html.includes('active.querySelectorAll')&&html.includes('returnToTitle')&&html.includes('showSettings'));
+assert.ok(html.indexOf('id="backup-dialog"')>html.indexOf('id="toast"'),'Backup dialog lives outside the inert game');
+assert.ok(!html.includes('class="footer-tools"'));
 assert.equal((html.match(/class="help-number"/g)||[]).length,9);
 assert.ok(css.includes('max-height:min(90dvh,850px)'));
-console.log('Title help: launch, footer, nine chapters, clean trial hub, booster funds and modal focus checks OK.');
+console.log('Title help: launch, settings, return to title, nine chapters, clean trial hub, booster funds and modal focus checks OK.');
