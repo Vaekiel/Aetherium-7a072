@@ -479,3 +479,12 @@
 #page-jouer[data-trial-view="hub"] .difficulty-options button[data-difficulty="initiation"].is-active{
  background:linear-gradient(180deg,rgba(8,12,24,.02) 0%,rgba(8,12,24,.12) 52%,rgba(8,12,24,.60) 100%),url('../assets/minigames/initiation.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
 }
+
+/* Approved Aventure landscape: retain a neutral title scrim and the seal.
+   The existing scenery is a fallback until the new asset is uploaded. */
+#page-jouer[data-trial-view="hub"] .difficulty-options button[data-difficulty="aventure"]{
+ background:linear-gradient(180deg,rgba(8,12,24,.08) 0%,rgba(8,12,24,.16) 52%,rgba(8,12,24,.65) 100%),url('../assets/minigames/aventure.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
+}
+#page-jouer[data-trial-view="hub"] .difficulty-options button[data-difficulty="aventure"].is-active{
+ background:linear-gradient(180deg,rgba(8,12,24,.02) 0%,rgba(8,12,24,.12) 52%,rgba(8,12,24,.60) 100%),url('../assets/minigames/aventure.webp') center/cover no-repeat,url('../assets/scenery/dusk-horizon.webp') center/cover no-repeat;
+}
