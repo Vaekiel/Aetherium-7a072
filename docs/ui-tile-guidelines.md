@@ -9,6 +9,6 @@ Règle de design pour l’accueil des Épreuves : difficulté, mini-jeux et aven
 - Les informations secondaires des aventures sont conservées dans les libellés accessibles et les infobulles, et détaillées dans les écrans correspondants.
 - Ne pas modifier les dimensions des grilles pour ajouter du texte. Garder les images, la fresque continue et l’accueil sans défilement.
 
-## Exception validée — fresque des mini-jeux
+## Fresque des mini-jeux
 
-L’illustration du Sanctuaire validée contient déjà les cinq titres et sceaux : elle est conservée telle quelle en WebP. Les cinq vrais boutons, avec leurs libellés accessibles, couvrent les zones de l’image (3 en haut, 2 en bas). Les titres HTML ne sont masqués visuellement qu’après chargement réussi du fond. Aucun titre ou sceau supplémentaire ne doit se superposer à ceux du dessin. En cas d’échec de chargement, les noms et emblèmes de secours restent visibles. La taille des titres dessinés dépend du format de la fresque, contrairement aux titres HTML des autres sections.
+Le Sanctuaire conserve sa composition validée, dans une version de fond sans titres, sceaux ni ornements incrustés. Les cinq boutons restent indépendants et accessibles, avec le même style typographique et les mêmes dimensions de sceaux que les difficultés et aventures. Les cinq sceaux SVG représentent la rune, le livre, le cadenas, les outils de fouille et la potion. La grille reste de trois tuiles en haut et deux en bas, sans séparation graphique dans le fond. Les titres et sceaux restent visibles même si l’image ne charge pas.
