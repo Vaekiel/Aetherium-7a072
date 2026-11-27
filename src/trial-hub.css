@@ -412,16 +412,15 @@
 
 
 
-/* Original illustration mode: no tint, blend, transparency or color grading.
-   Contrast is local to the title, not the artwork. */
+/* Shared arcane panel gradient: keep original artwork colors under a neutral translucent veil. */
 #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice.has-trial-art .trial-choice-art{
  filter:none;opacity:1;mix-blend-mode:normal;backdrop-filter:none;
 }
 #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice.has-trial-art .trial-art-shade{
- background:none;box-shadow:none;display:none;
+ display:block;background:linear-gradient(90deg,rgba(10,12,25,.55) 0%,rgba(10,12,25,.48) 56%,rgba(10,12,25,.30) 100%);box-shadow:none;
 }
 #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice.has-trial-art .game-choice-name{
- background:rgba(8,9,16,.78);border-radius:3px;box-shadow:0 0 5px 2px rgba(8,9,16,.35);text-shadow:0 1px 2px #000;
+ background:rgba(8,9,16,.48);border-radius:3px;box-shadow:none;text-shadow:0 1px 3px #000,0 0 5px #000;
 }
 
 /* Excavation artwork alone: lift exposure and color contrast without shifting hue.
