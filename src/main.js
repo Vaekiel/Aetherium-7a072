@@ -1,5 +1,5 @@
 import {mountConfrontations} from './confrontations.js?v=1';
-import {mountTrialMobilePlay} from './trial-mobile-play.js?v=2';
+import {mountTrialMobilePlay} from './trial-mobile-play.js?v=3';
 import {ARCANE_CIRCUITS,createCircuitSession} from './arcane-circuits.js?v=1';
 import {journeyProgress} from './journey-progress.js?v=1';
 import {loreArchive} from './lore-archive.js?v=1';

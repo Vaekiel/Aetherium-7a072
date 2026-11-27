@@ -50,11 +50,15 @@ export function mountTrialMobilePlay(){
   if(!game)return;
   const board=q('.board',game);
   if(!board)return;
-  if(!compact.matches||!page.classList.contains('active')||page.dataset.trialView!=='play'){
+  if(!page.classList.contains('active')||page.dataset.trialView!=='play'){
    board.style.removeProperty('--mobile-board-width');return;
   }
   const nav=q('.top nav'), viewport=window.visualViewport;
-  const bottom=Math.min(viewport?viewport.offsetTop+viewport.height:window.innerHeight,nav?.getBoundingClientRect().top||window.innerHeight);
+  const footer=q('#app>footer.game-footer');
+  const boundary=compact.matches?nav:footer;
+  const viewBottom=viewport?viewport.offsetTop+viewport.height:window.innerHeight;
+  const boundaryTop=boundary?.getBoundingClientRect().top;
+  const bottom=Math.min(viewBottom,Number.isFinite(boundaryTop)&&boundaryTop>0?boundaryTop:viewBottom);
   const rect=game.getBoundingClientRect(), br=board.getBoundingClientRect();
   if(rect.width<=0||br.width<=0)return;
   const style=getComputedStyle(board), gameStyle=getComputedStyle(game);
@@ -64,8 +68,12 @@ export function mountTrialMobilePlay(){
   const gap=parseFloat(style.rowGap)||0, colGap=parseFloat(style.columnGap)||0;
   const py=(parseFloat(style.paddingTop)||0)+(parseFloat(style.paddingBottom)||0)+(parseFloat(style.borderTopWidth)||0)+(parseFloat(style.borderBottomWidth)||0);
   const px=(parseFloat(style.paddingLeft)||0)+(parseFloat(style.paddingRight)||0)+(parseFloat(style.borderLeftWidth)||0)+(parseFloat(style.borderRightWidth)||0);
-  const available=bottom-rect.top-(rect.height-br.height)-8;
-  const tile=Math.max(44,Math.floor((available-py-gap*(rows-1))/rows));
+  // Desktop budget is measured from the unscrolled document position, so
+  // scrolling a short viewport never enlarges the board and creates a loop.
+  const gameTop=rect.top+(compact.matches?0:window.scrollY);
+  const available=bottom-gameTop-(rect.height-br.height)-8;
+  const fittedTile=Math.max(44,Math.floor((available-py-gap*(rows-1))/rows));
+  const tile=compact.matches?fittedTile:Math.min(112,fittedTile);
   const inner=rect.width-(parseFloat(gameStyle.paddingLeft)||0)-(parseFloat(gameStyle.paddingRight)||0)-(parseFloat(gameStyle.borderLeftWidth)||0)-(parseFloat(gameStyle.borderRightWidth)||0);
   const width=Math.max(0,Math.floor(Math.min(inner,cols*tile+(cols-1)*colGap+px)));
   const value=width+'px';

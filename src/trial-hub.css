@@ -470,3 +470,63 @@
 
 /* Center the header title and guide button along the vertical axis at every breakpoint. */
 #page-jouer[data-trial-view="hub"]>.heading>#trial-guide-shortcut{align-self:center;margin-block:0}
+
+/* Desktop trial play: preserve the phone rules and reuse the compact play
+   controls with a height-fitted board, not a viewport-wide square grid. */
+@media(min-width:851px){
+ #page-jouer.mobile-play-ready[data-trial-view="play"]>.kicker,
+ #page-jouer.mobile-play-ready[data-trial-view="play"]>.heading{display:none}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-subpage-back{display:flex;justify-content:space-between;align-items:center;gap:6px;margin:0 0 5px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] #trial-mobile-info{display:block}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-subpage-back button{min-height:40px;padding:6px 9px;font-size:12px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .play-stage .games .game{padding:8px!important;min-height:0}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-card-heading{display:flex;align-items:center;justify-content:space-between;gap:4px 8px;padding:0 0 4px;margin:0 0 4px;flex-wrap:wrap}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-card-heading .trial-title{flex:1 1 auto;padding:0;margin:0;font-size:clamp(17px,4.6vw,23px)}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-meta{gap:4px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-meta .reward{min-height:22px;padding:3px 5px;margin:0;font-size:10px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.trial-objective,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game .trial-meta .trial-mastery,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.memory-fresco,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.trial-records,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.alchemy-grimoire,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.alchemy-family-legend,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game .excavation-site-description,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game .excavation-artifact-note,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.trial-switcher{display:none!important}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.board{width:min(100%,var(--mobile-board-width,100%));max-width:100%;margin:0 auto!important;padding:4px!important;gap:4px!important;box-sizing:border-box}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.status{min-height:0;margin:5px 0!important;font-size:11px!important;line-height:1.3}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.small-actions{margin:4px 0 0!important;gap:5px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .small-actions button{min-height:44px!important;padding:5px 6px;font-size:12px;white-space:normal}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-ritual,.memory-ritual,.ether-lock-rule,.excavation-site-panel,.alchemy-ritual){padding:5px 6px;margin:0 0 4px;gap:5px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-ritual-glyph,.memory-ritual-glyph,.alchemy-ritual-icon){width:23px;height:23px;font-size:17px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-ritual-name,.memory-ritual-title,.ether-lock-rule-title,.alchemy-ritual-title,.excavation-site-name){font-size:13px;line-height:1.2}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-ritual-rule,.memory-ritual-rule,.ether-lock-rule-text,.alchemy-ritual-clue){font-size:11px;line-height:1.25}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-hud,.memory-hud){padding:4px 1px;gap:3px;font-size:11px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-meter,.memory-meter,.alchemy-meter){margin:0 0 4px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-meter,.memory-meter,.alchemy-meter) span{height:5px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.ether-lock-hud,.excavation-hud,.alchemy-hud){grid-template-columns:52px minmax(0,1fr);gap:6px;padding:4px 0;min-height:0}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.ether-lock-dial,.excavation-relic,.alchemy-cauldron){max-width:52px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.ether-lock-readout,.alchemy-recipe){gap:2px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.ether-target,.excavation-counter,.alchemy-name){font-size:18px;line-height:1.1}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.ether-slot,.alchemy-slot){min-height:23px;height:auto;padding:3px 2px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.ether-slots,.alchemy-slots){gap:3px;margin:0}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game .alchemy-ingredient-name{font-size:10px;padding:2px 1px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game .excavation-kicker{display:none}
+
+ #app:has(#page-jouer.active.mobile-play-ready[data-trial-view="play"])>.layout{
+  min-height:0;padding:10px clamp(12px,2vw,24px) calc(var(--aetherium-footer-height,44px) + 10px + env(safe-area-inset-bottom,0px));
+ }
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .play-stage{width:100%;max-width:740px;margin:0 auto}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-subpage-back{width:100%;max-width:740px;margin:0 auto 6px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-subpage-back button{min-height:36px;font-size:13px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .play-stage .games .game{padding:10px 14px!important}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-card-heading .trial-title{font-size:clamp(18px,2vw,24px)}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-meta .reward{margin:0;font-size:12px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.board{width:min(100%,var(--mobile-board-width,400px));padding:5px!important;gap:4px!important}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game>.status{font-size:12px!important}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .small-actions button{min-height:36px!important;font-size:13px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-ritual-rule,.memory-ritual-rule,.ether-lock-rule-text,.alchemy-ritual-clue){font-size:12px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game .excavation-site-description{display:none!important}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game :is(.rune-hud,.memory-hud){font-size:12px}
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .game .alchemy-ingredient-name{font-size:11px}
+}
