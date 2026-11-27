@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const html=readFileSync('index.html','utf8'),css=readFileSync('src/trial-viewport.css','utf8'),js=readFileSync('src/main.js','utf8');
-assert.ok(html.includes('src/trial-viewport.css?v=6'));
+assert.ok(html.includes('src/trial-viewport.css?v=7'));
 assert.ok(css.includes('height:100dvh;min-height:0'));
 assert.ok(css.includes('body:has(#page-jouer.active[data-trial-view="hub"])'));
 assert.ok(css.includes('var(--aetherium-mobile-nav-height,64px) + var(--aetherium-footer-height,44px)'));
@@ -33,3 +33,8 @@ assert.ok(!html.slice(html.indexOf('class="adventures-mural"'),html.indexOf('cla
 assert.ok(css.includes('--tile-title-size:clamp(11px,3.3vw,14px)')&&css.includes('font-size:var(--tile-title-size)'));
 assert.ok(css.includes('#game-picker.game-picker .game-choice:nth-child(5) .game-choice-name,')&&css.includes('.adventures-mural .adventure-tile-title{'));
 console.log('Shared typography: all twelve tiles use one viewport-driven size and one centered title.');
+
+assert.equal((html.match(/class="adventure-emblem"/g)||[]).length,3);
+for(const name of ['confrontations','expeditions','circuits'])assert.equal((html.match(new RegExp('data-emblem="'+name+'"','g'))||[]).length,1);
+assert.ok(css.includes('--tile-emblem-size:')&&css.includes('width:var(--tile-emblem-size);height:var(--tile-emblem-size)'));
+console.log('Adventure seals: three decorative pixel SVGs with shared responsive dimensions.');

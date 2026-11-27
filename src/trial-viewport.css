@@ -314,3 +314,23 @@ body:has(#page-jouer.active[data-trial-view="hub"]){
  #page-jouer[data-trial-view="hub"] #difficulty-options>button{padding:2px 1px 9px;gap:2px}
  #page-jouer[data-trial-view="hub"] #difficulty-options>button.future-difficulty small{font-size:8px;bottom:1px}
 }
+
+/* Shared pixel seal dimensions for difficulties and adventures.
+   Inline SVGs share the existing octagonal frame; no new image requests. */
+#page-jouer[data-trial-view="hub"]{--tile-emblem-size:clamp(16px,3.8dvh,25px)}
+#page-jouer[data-trial-view="hub"] #difficulty-options>button .difficulty-emblem,
+#page-jouer[data-trial-view="hub"] .adventures-mural .adventure-emblem{
+ display:block;flex:0 0 auto;width:var(--tile-emblem-size);height:var(--tile-emblem-size);
+ max-width:100%;margin:0;filter:drop-shadow(0 1px 3px #080918);image-rendering:pixelated;
+}
+#page-jouer[data-trial-view="hub"] .adventures-mural>.expedition-portal .expedition-portal-button{
+ flex-direction:column;gap:3px;padding:2px;align-items:center;justify-content:center;
+}
+@media(max-height:560px) and (orientation:portrait){
+ #page-jouer[data-trial-view="hub"]{--tile-emblem-size:16px}
+ #page-jouer[data-trial-view="hub"] .adventures-mural>.expedition-portal .expedition-portal-button{gap:1px}
+}
+@media(max-height:520px) and (orientation:landscape){
+ #page-jouer[data-trial-view="hub"]{--tile-emblem-size:clamp(14px,3.8dvh,20px)}
+ #page-jouer[data-trial-view="hub"] .adventures-mural>.expedition-portal .expedition-portal-button{flex-direction:row;gap:3px}
+}
