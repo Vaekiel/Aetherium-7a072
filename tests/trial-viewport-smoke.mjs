@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const html=readFileSync('index.html','utf8'),css=readFileSync('src/trial-viewport.css','utf8'),js=readFileSync('src/main.js','utf8');
-assert.ok(html.includes('src/trial-viewport.css?v=5'));
+assert.ok(html.includes('src/trial-viewport.css?v=6'));
 assert.ok(css.includes('height:100dvh;min-height:0'));
 assert.ok(css.includes('body:has(#page-jouer.active[data-trial-view="hub"])'));
 assert.ok(css.includes('var(--aetherium-mobile-nav-height,64px) + var(--aetherium-footer-height,44px)'));
@@ -27,3 +27,9 @@ assert.ok(html.includes('class="adventures-mural"'));
 assert.ok(css.includes('aventures-fresque.webp')&&css.includes('grid-column:1/-1;grid-row:1'));
 assert.ok(css.includes('.expedition-mural-tile{grid-column:1;grid-row:2')&&css.includes('.circuit-mural-tile{grid-column:2;grid-row:2'));
 console.log('Adventures mural: actual DOM order, shared backdrop, two-row grid and scoped responsive layout.');
+
+assert.equal((html.match(/class="adventure-tile-title"/g)||[]).length,3);
+assert.ok(!html.slice(html.indexOf('class="adventures-mural"'),html.indexOf('class="trial-subpage-back"')).includes('expedition-portal-copy'));
+assert.ok(css.includes('--tile-title-size:clamp(11px,3.3vw,14px)')&&css.includes('font-size:var(--tile-title-size)'));
+assert.ok(css.includes('#game-picker.game-picker .game-choice:nth-child(5) .game-choice-name,')&&css.includes('.adventures-mural .adventure-tile-title{'));
+console.log('Shared typography: all twelve tiles use one viewport-driven size and one centered title.');

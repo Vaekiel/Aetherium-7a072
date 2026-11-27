@@ -48,7 +48,6 @@ body:has(#page-jouer.active[data-trial-view="hub"]){
 #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice-name{
  white-space:normal;text-wrap:balance;overflow-wrap:normal;line-height:1.12;font-size:clamp(11px,10.5cqi,14px);
 }
-#page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice:nth-child(5) .game-choice-name{font-size:clamp(11px,10.5cqi,14px)}
 #page-jouer[data-trial-view="hub"] .trial-preview{min-height:0;grid-row:2;padding:8px;gap:4px 10px}
 #page-jouer[data-trial-view="hub"] .trial-preview h2{font-size:clamp(16px,2.7dvh,23px)}
 #page-jouer[data-trial-view="hub"] .trial-hub-portals{
@@ -259,4 +258,59 @@ body:has(#page-jouer.active[data-trial-view="hub"]){
  #page-jouer[data-trial-view="hub"] .adventures-mural .expedition-portal-copy strong{font-size:11px}
  #page-jouer[data-trial-view="hub"] .adventures-mural .expedition-portal-copy span{display:none}
  #page-jouer[data-trial-view="hub"] .adventures-mural .expedition-portal-button{font-size:9px;padding:2px 4px}
+}
+
+/* Aetherium tile typography — shared design tokens for difficulty, minigame
+   and adventure titles. Size follows viewport, never an individual tile. */
+#page-jouer[data-trial-view="hub"]{
+ --tile-title-size:clamp(13px,1.15vw,16px);
+ --tile-title-color:#f5e3c9;
+ --tile-title-font:Georgia,"Times New Roman",serif;
+ --tile-title-shadow:0 1px 3px #070914,0 0 6px #070914;
+ --tile-title-scrim:#080b1b66;
+}
+@media(max-width:850px){
+ #page-jouer[data-trial-view="hub"]{--tile-title-size:clamp(11px,3.3vw,14px)}
+}
+@media(max-height:520px) and (orientation:landscape){
+ #page-jouer[data-trial-view="hub"]{--tile-title-size:11px}
+}
+/* Explicit IDs defeat the previous nth-child and per-difficulty font rules. */
+#page-jouer[data-trial-view="hub"] #difficulty-options>button>span,
+#page-jouer[data-trial-view="hub"] .trial-setup #game-picker.game-picker .game-choice .game-choice-name,
+#page-jouer[data-trial-view="hub"] .trial-setup #game-picker.game-picker .game-choice:nth-child(5) .game-choice-name,
+#page-jouer[data-trial-view="hub"] .adventures-mural .adventure-tile-title{
+ display:block;position:relative;z-index:1;box-sizing:border-box;min-width:0;max-width:100%;
+ width:fit-content;margin:0;padding:2px 4px;border-radius:3px;
+ font-family:var(--tile-title-font);font-weight:600;font-size:var(--tile-title-size);
+ font-style:normal;font-variant:normal;line-height:1.15;letter-spacing:0;
+ color:var(--tile-title-color);text-align:center;text-transform:none;text-shadow:var(--tile-title-shadow);
+ background:var(--tile-title-scrim);box-shadow:none;
+ white-space:normal;overflow-wrap:normal;word-break:normal;text-wrap:balance;
+}
+#page-jouer[data-trial-view="hub"] #difficulty-options>button>span{white-space:nowrap;padding-inline:2px}
+#page-jouer[data-trial-view="hub"] #difficulty-options>button{
+ justify-content:center;align-items:center;padding:3px 1px 14px;gap:3px;
+}
+#page-jouer[data-trial-view="hub"] #difficulty-options>button.future-difficulty small{
+ position:absolute;bottom:2px;left:50%;transform:translateX(-50%);
+ margin:0;padding:1px 3px;white-space:nowrap;font:10px/1 Georgia,serif;
+}
+#page-jouer[data-trial-view="hub"] .trial-setup #game-picker.game-picker .game-choice{
+ align-items:center;justify-content:center;text-align:center;
+}
+#page-jouer[data-trial-view="hub"] .adventures-mural>.expedition-portal{
+ padding:0;align-items:center;justify-content:center;
+}
+#page-jouer[data-trial-view="hub"] .adventures-mural>.expedition-portal .expedition-portal-button{
+ display:flex;align-items:center;justify-content:center;text-align:center;padding:3px;
+}
+@media(max-height:560px) and (orientation:portrait){
+ #page-jouer[data-trial-view="hub"] #difficulty-options>button{padding:2px 1px 10px;gap:1px}
+ #page-jouer[data-trial-view="hub"] #difficulty-options>button .difficulty-emblem{width:16px;height:16px}
+ #page-jouer[data-trial-view="hub"] #difficulty-options>button.future-difficulty small{font-size:8px;bottom:1px}
+}
+@media(max-height:520px) and (orientation:landscape){
+ #page-jouer[data-trial-view="hub"] #difficulty-options>button{padding:2px 1px 9px;gap:2px}
+ #page-jouer[data-trial-view="hub"] #difficulty-options>button.future-difficulty small{font-size:8px;bottom:1px}
 }
