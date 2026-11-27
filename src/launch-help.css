@@ -1,0 +1,32 @@
+/* Aetherium — shared title-screen and in-game help. */
+#arcane-launch .launch-secondary-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:min(78vw,320px)}
+#arcane-launch .launch-secondary-actions .launch-button{width:100%;min-width:0;padding:9px 5px;letter-spacing:0;font-size:14px}
+@media(orientation:landscape) and (min-aspect-ratio:5/4){#arcane-launch .launch-secondary-actions{width:min(100%,290px)}}
+@media(max-height:360px){#arcane-launch .launch-secondary-actions .launch-button{min-height:44px;font-size:12px}}
+.trial-hub-accessible-title{position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip-path:inset(50%);white-space:nowrap;border:0!important}
+#page-jouer[data-trial-view="hub"]>.kicker{margin-bottom:8px}
+.aetherium-help{box-sizing:border-box;width:min(94vw,640px);max-width:94vw;max-height:min(90dvh,850px);padding:0;overflow:auto;overscroll-behavior:contain;color:#eadfee;background:linear-gradient(155deg,#25203a,#13182b);border:1px solid #c5a17b;border-radius:12px;box-shadow:0 12px 70px #080611df;font-family:Georgia,serif;text-align:left}
+.aetherium-help::backdrop{background:#090b1bdd}
+.aetherium-help *{box-sizing:border-box}
+.help-header{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:linear-gradient(90deg,#16182cf5,#34264af5),url('../assets/minigames/confrontations-arena.svg') center/cover;border-bottom:1px solid #a68a7f}
+.help-header h2{color:#f7dcb1;font:600 clamp(21px,5.6vw,29px)/1.1 Georgia,serif;margin:5px 0 0}
+.help-kicker{color:#c6a67d;font:10px/1.2 Georgia,serif;letter-spacing:.11em;margin:0}
+.help-close{flex:none;min-height:44px;padding:8px 12px;background:#423354;color:#f2dfc1;border:1px solid #bca08a;border-radius:5px;font:14px Georgia,serif;cursor:pointer}
+.help-content{padding:14px 16px 18px;display:grid;gap:9px}
+.help-content p,.help-content li,.help-content dd{font:14px/1.55 system-ui,sans-serif;color:#ded6e8}
+.help-content p{margin:0 0 8px}
+.help-content details{margin:0;border:1px solid #88768e91;border-radius:6px;overflow:hidden;background:#1c2035}
+.help-content summary{display:flex;align-items:center;gap:10px;min-height:48px;padding:9px 12px;cursor:pointer;list-style:none;color:#f3dfbf;font:600 16px/1.2 Georgia,serif;background:linear-gradient(115deg,#35304a,#202438)}
+.help-content summary::-webkit-details-marker{display:none}
+.help-content summary::after{content:'+';margin-left:auto;color:#d4b8ff;font-size:20px}
+.help-content details[open] summary::after{content:'−'}
+.help-number{flex:none;color:#d4b18b;font-size:12px;border:1px solid #8e7893;border-radius:4px;padding:5px}
+.help-chapter{padding:12px}
+.help-chapter dl{margin:0 0 10px}
+.help-chapter dt{margin:10px 0 3px;color:#ebcfa1;font-weight:bold}
+.help-chapter dd{margin:0}
+.help-loop{margin:8px 0 12px;padding-left:22px}
+.help-loop li{margin:4px 0}
+.help-content .help-footnote{font-size:12px;color:#bfaecb;text-align:center;margin:5px 0}
+.aetherium-help :is(button,summary):focus-visible{outline:2px solid #f5d6a5;outline-offset:-3px}
+@media(max-width:480px){.help-header{padding:11px 12px}.help-content{padding:10px}.help-content summary{font-size:15px}.help-chapter{padding:10px}}

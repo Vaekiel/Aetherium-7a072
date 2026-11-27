@@ -22,14 +22,14 @@
 @media(orientation:landscape) and (min-aspect-ratio:5/4){#arcane-launch .launch-art{width:63%;object-fit:contain;object-position:center;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}#arcane-launch .launch-shade{background:linear-gradient(90deg,#10132222 30%,#101322cc 68%,#101322ee)}#arcane-launch .launch-menu{inset:0 0 0 60%;align-content:center;padding:max(12px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) 8px}#arcane-launch .launch-button{width:min(100%,290px)}}
 @media(max-height:360px){#arcane-launch .launch-menu{gap:7px}#arcane-launch .launch-button{min-height:44px;padding:8px 12px}#arcane-launch .launch-studio{font-size:10px}}
 @media(prefers-reduced-motion:reduce){#arcane-launch{transition:none}}
-</style><link rel="stylesheet" href="./src/confrontations.css?v=1"></head>
+</style><link rel="stylesheet" href="./src/confrontations.css?v=1"><link rel="stylesheet" href="./src/launch-help.css?v=1"></head>
 <body><div id="arcane-launch" hidden role="dialog" aria-modal="true" aria-label="Aetherium — menu titre">
 <picture><source media="(orientation: portrait)" srcset="./assets/icons/aetherium-launch-mobile-v2.webp"><img class="launch-art" src="./assets/icons/aetherium-launch.webp" alt="Aetherium — Chroniques des Arcanes" fetchpriority="high"></picture>
 <h1 id="launch-fallback" class="launch-fallback" hidden>AETHERIUM</h1>
 <div class="launch-shade" aria-hidden="true"></div>
 <div class="launch-menu" id="launch-menu">
 <button id="launch-play" class="launch-button launch-button--play" type="button">✦ &nbsp; Jouer</button>
-<button id="launch-news-open" class="launch-button" type="button" aria-controls="launch-news" aria-expanded="false">Nouveautés</button>
+<div class="launch-secondary-actions"><button id="launch-help-open" class="launch-button" type="button" aria-haspopup="dialog" aria-controls="aetherium-help">Aide &amp; tutoriel</button><button id="launch-news-open" class="launch-button" type="button" aria-controls="launch-news" aria-expanded="false">Nouveautés</button></div>
 <p class="launch-studio">NOCTILOOM STUDIO</p>
 </div>
 <section id="launch-news" class="launch-news" hidden aria-labelledby="launch-news-title">
@@ -43,6 +43,52 @@
 <button id="launch-news-close" class="launch-button" type="button">Retour</button>
 </section>
 </div>
+<dialog id="aetherium-help" class="aetherium-help" aria-labelledby="help-title">
+  <header class="help-header"><div><p class="help-kicker">CHRONIQUES DES ARCANES</p><h2 id="help-title" tabindex="-1">Guide de l’aventurier</h2></div><button type="button" class="help-close" id="help-close" aria-label="Fermer le guide">‹ Retour</button></header>
+  <div class="help-content">
+    <p>Bienvenue dans Aetherium ! Découvre les mécaniques du jeu à ton rythme. Ce guide explique comment jouer, sans révéler les secrets, les recettes ni les solutions.</p>
+    <details open><summary><span class="help-number">01</span> Premiers pas</summary><div class="help-chapter">
+      <p>Tu commences avec 300 Couronnes. Un booster coûte 100 Couronnes et contient cinq cartes. Tu peux donc découvrir tes premières cartes dès le départ.</p>
+      <ol class="help-loop"><li>Relève les Épreuves pour gagner des Couronnes.</li><li>Ouvre des boosters pour enrichir ton Codex.</li><li>Utilise les Éclats des doublons dans l’Atelier.</li><li>Retrouve tes succès et explore les aventures à ton rythme.</li></ol>
+      <p>Commence en Initiation si tu souhaites apprendre tranquillement. Le jeu est gratuit, sans compte obligatoire ni achat en argent réel.</p>
+    </div></details>
+    <details><summary><span class="help-number">02</span> Les Épreuves et les difficultés</summary><div class="help-chapter">
+      <p>Choisis un mini-jeu et une difficulté. Les règles et les objectifs varient selon le mode choisi. Les victoires rapportent des Couronnes ; tes records et défis te permettent de suivre ta maîtrise.</p>
+      <dl><dt>Initiation</dt><dd>Pour apprendre les mécaniques.</dd><dt>Aventure</dt><dd>Pour relever les défis classiques.</dd><dt>Maîtrise</dt><dd>Pour affronter des règles plus exigeantes.</dd><dt>Ascension</dt><dd>Une difficulté supplémentaire, encore en préparation.</dd></dl>
+      <p>Les règles propres à chaque épreuve restent consultables pendant le jeu.</p>
+    </div></details>
+    <details><summary><span class="help-number">03</span> Les cinq mini-jeux</summary><div class="help-chapter">
+      <dl><dt>Chemin runique</dt><dd>Observe les runes et reproduis l’ordre demandé en évitant les erreurs.</dd><dt>Mémoire ancienne</dt><dd>Retourne les tablettes et retrouve les paires correspondantes.</dd><dt>Serrure d’Éther</dt><dd>Déduis la combinaison de cristaux à partir des indices.</dd><dt>Fouilles interdites</dt><dd>Explore le terrain et utilise les indices numériques pour éviter les pièges.</dd><dt>Laboratoire arcanique</dt><dd>Interprète les indices pour découvrir les ingrédients des potions et retenir tes mélanges.</dd></dl>
+    </div></details>
+    <details><summary><span class="help-number">04</span> Les aventures</summary><div class="help-chapter">
+      <dl><dt>Expéditions</dt><dd>Suis des itinéraires narratifs et réussis des épreuves pour avancer dans l’histoire.</dd><dt>Circuits</dt><dd>Enchaîne plusieurs épreuves dans un parcours permanent, sans date limite.</dd><dt>Confrontations · prototype DEV</dt><dd>Compose une alliance avec les cartes que tu possèdes, puis affronte un adversaire au tour par tour. Choisis entre Éclat, Garde et Flux selon son intention. Les combats expérimentaux ne consomment ni cartes ni ressources et ne donnent pas encore de récompense.</dd></dl>
+    </div></details>
+    <details><summary><span class="help-number">05</span> Couronnes, Éclats et boosters</summary><div class="help-chapter">
+      <dl><dt>Couronnes</dt><dd>Remportées lors des Épreuves. Elles servent à ouvrir les boosters.</dd><dt>Éclats</dt><dd>Obtenus grâce aux doublons. Ils servent à fabriquer des cartes ou des finitions dans la Forge.</dd></dl>
+      <p>Choisis un booster en fonction de la collection que tu souhaites enrichir. Les cinq cartes sont révélées à l’ouverture. Certaines découvertes s’obtiennent autrement ; le Codex te guide sans dévoiler leur histoire.</p>
+    </div></details>
+    <details><summary><span class="help-number">06</span> Le Codex et les cartes</summary><div class="help-chapter">
+      <p>Le Codex rassemble les cartes découvertes, classées par saison et collection. Utilise les filtres pour retrouver un type, une rareté ou une finition. Sélectionne une carte pour l’examiner.</p>
+      <p>Il existe quatre types : Héros, Créature, Sort et Artefact. Les raretés sont Commune, Inhabituelle, Rare, Épique et Légendaire.</p>
+      <dl><dt>Éclat</dt><dd>Puissance offensive de la carte.</dd><dt>Garde</dt><dd>Résistance de la carte.</dd><dt>Flux</dt><dd>Potentiel magique de la carte.</dd></dl>
+      <p>Une carte peut exister en version normale, Calligraphique, Chromatique ou Holographique. Ces finitions enrichissent son apparence sans modifier ses statistiques.</p>
+    </div></details>
+    <details><summary><span class="help-number">07</span> L’Atelier et la Forge</summary><div class="help-chapter">
+      <p>Dépense tes Éclats pour fabriquer une carte manquante éligible ou une finition d’une carte découverte. Le prix est indiqué avant confirmation. Certaines cartes ne peuvent pas être forgées.</p>
+      <p>Tu peux également définir un objectif de fabrication pour suivre les Éclats nécessaires à ta prochaine découverte.</p>
+    </div></details>
+    <details><summary><span class="help-number">08</span> Chroniques, succès et saisons</summary><div class="help-chapter">
+      <p>L’icône des Chroniques, en haut de l’écran, donne accès à ta progression, tes succès et tes titres. Les records des Épreuves, les collections et les aventures récompensent différentes façons de jouer.</p>
+      <p>Les saisons enrichissent le monde d’Aetherium avec de nouvelles collections et histoires. Les collections déjà publiées restent accessibles : rien ne t’oblige à terminer une saison dans un délai donné.</p>
+    </div></details>
+    <details><summary><span class="help-number">09</span> Sauvegarder ta progression</summary><div class="help-chapter">
+      <p>Ta progression est enregistrée automatiquement dans ton navigateur, sur cet appareil. Effacer les données du navigateur peut supprimer ta sauvegarde.</p>
+      <p>En bas du jeu, ouvre « Réglages et sauvegarde », puis « Gérer ma sauvegarde ». Télécharge régulièrement ton fichier de sauvegarde et conserve-le hors du navigateur. Tu peux le réimporter sur un autre appareil après vérification et confirmation.</p>
+      <p>La version DEV possède une progression distincte de la version publique.</p>
+    </div></details>
+    <p class="help-footnote">Le reste se découvre en jouant. Tu peux rouvrir ce guide depuis les réglages à tout moment.</p>
+  </div>
+</dialog>
 <script id="aetherium-launch-controller">
 (()=>{const screen=document.getElementById('arcane-launch');if(!screen)return;
 const play=document.getElementById('launch-play'),open=document.getElementById('launch-news-open'),close=document.getElementById('launch-news-close'),menu=document.getElementById('launch-menu'),news=document.getElementById('launch-news'),heading=document.getElementById('launch-news-title'),fallback=document.getElementById('launch-fallback'),art=screen.querySelector('.launch-art');
@@ -56,11 +102,16 @@ const enter=()=>{if(entered)return;entered=true;screen.classList.add('is-leaving
 play.addEventListener('click',enter);
 open.addEventListener('click',showNews);
 close.addEventListener('click',showMenu);
-screen.addEventListener('keydown',e=>{if(e.key==='Escape'&&!news.hidden){e.preventDefault();showMenu();return;}if(e.key==='Tab'&&!entered){const controls=news.hidden?[play,open]:[close];const first=controls[0],last=controls[controls.length-1];if(e.shiftKey&&(document.activeElement===first||!controls.includes(document.activeElement))){e.preventDefault();focus(last);}else if(!e.shiftKey&&(document.activeElement===last||!controls.includes(document.activeElement))){e.preventDefault();focus(first);}}});
+screen.addEventListener('keydown',e=>{if(e.key==='Escape'&&!news.hidden){e.preventDefault();showMenu();return;}if(e.key==='Tab'&&!entered){const controls=news.hidden?[play,document.getElementById('launch-help-open'),open]:[close];const first=controls[0],last=controls[controls.length-1];if(e.shiftKey&&(document.activeElement===first||!controls.includes(document.activeElement))){e.preventDefault();focus(last);}else if(!e.shiftKey&&(document.activeElement===last||!controls.includes(document.activeElement))){e.preventDefault();focus(first);}}});
 const missingArt=()=>{if(fallback)fallback.hidden=false;};
 if(art){art.addEventListener('error',missingArt,{once:true});if(art.complete&&!art.naturalWidth)missingArt();}
 screen.hidden=false;focus(play);
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',lockApp,{once:true});else lockApp();
+const help=document.getElementById('aetherium-help'),helpOpen=document.getElementById('launch-help-open'),helpClose=document.getElementById('help-close');let helpReturn=null;
+const showHelp=event=>{if(help.open)return;helpReturn=event.currentTarget;help.showModal();focus(document.getElementById('help-title'));};
+helpOpen.addEventListener('click',showHelp);helpClose.addEventListener('click',()=>help.close());
+help.addEventListener('close',()=>{focus(helpReturn);helpReturn=null;});
+const ready=()=>{lockApp();document.getElementById('guide-reopen')?.addEventListener('click',showHelp);};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready,{once:true});else ready();
 })();
 </script><div id="app"><div class="ambient-landscape" aria-hidden="true"><div class="landscape-sky"></div><div class="landscape-moon"></div><div class="landscape-island island-left"></div><div class="landscape-island island-right"></div><div class="landscape-ruins"></div><div class="landscape-foreground"></div></div>
 <header class="top"><a class="brand" href="#jouer"><span class="brand-wordmark">AETHERIUM</span></a><nav aria-label="Navigation principale"><button type="button" data-page="jouer" class="active" aria-current="page"><span class="nav-icon" aria-hidden="true">✧</span><span>Épreuves</span></button><button type="button" data-page="boosters"><span class="nav-icon" aria-hidden="true">◈</span><span>Boosters</span></button><button type="button" data-page="collection"><span class="nav-icon" aria-hidden="true">▣</span><span>Codex</span></button><button type="button" data-page="atelier"><span class="nav-icon" aria-hidden="true">✦</span><span>Atelier</span></button></nav><div class="wallet" aria-label="Ressources"><button type="button" class="wallet-link" data-go="boosters" title="Utiliser les Couronnes dans les Boosters" aria-label="Couronnes — aller aux Boosters"><i class="relic-icon relic-icon--crown" aria-hidden="true"></i><b id="coins">300</b></button><button type="button" class="wallet-link" data-go="atelier" title="Consulter les Éclats dans l’Atelier" aria-label="Éclats — aller à l’Atelier"><i class="relic-icon relic-icon--shard" aria-hidden="true"></i><b id="dust">0</b></button></div><button type="button" id="chroniques-link" class="chronicles-link" data-go="succes" aria-label="Ouvrir les Chroniques et les Succès" title="Chroniques et Succès"><span class="chronicles-icon relic-icon relic-icon--honors" aria-hidden="true"></span><span class="chronicles-label">Chroniques</span></button><button type="button" id="immersive-toggle" hidden aria-pressed="false" aria-label="Passer en plein écran" title="Passer en plein écran"><span class="immersive-icon relic-icon relic-icon--expand" aria-hidden="true"></span></button></header>
@@ -68,18 +119,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <p id="save-warning" role="alert" hidden style="padding:12px;border:1px solid #d5ab73;border-radius:8px;color:#ffe4ad;background:#211932"></p>
 <section id="page-jouer" class="page active">
   <p class="kicker">SAISON I · LES MARCHES DE VERRE</p>
-  <div class="heading"><h1>Épreuves des Arcanes</h1><span>Cinq défis à relever, des Couronnes à gagner.</span><button type="button" class="secondary trial-guide-shortcut" id="trial-guide-shortcut" hidden>Premiers pas ›</button></div>
-  <section id="beginner-guide" class="beginner-guide" hidden aria-labelledby="guide-title">
-    <div class="guide-copy"><p class="kicker">✧ PREMIERS PAS</p><h2 id="guide-title" tabindex="-1">Bienvenue dans les Marches de Verre</h2>
-      <p id="guide-copy"></p>
-      <div class="guide-steps" aria-label="Premières découvertes"><span id="guide-pack-step"></span><span id="guide-trial-step"></span></div>
-      <details class="guide-details"><summary>Comment fonctionnent les Archives ?</summary>
-        <p>Les Épreuves rapportent des Couronnes, utilisées pour ouvrir des boosters. Les doublons rapportent des Éclats, à dépenser dans l’Atelier pour fabriquer des cartes ou des finitions. Le Codex rassemble tes découvertes.</p>
-        <p>Ta progression est enregistrée dans ce navigateur. Pour en conserver une copie, utilise « Gérer ma sauvegarde » dans les réglages.</p>
-      </details>
-    </div>
-    <div class="guide-actions"><button type="button" class="primary" id="guide-action">Découvrir les boosters ›</button><button type="button" class="text-button" id="guide-dismiss">Masquer le guide</button></div>
-  </section>
+  <h1 class="trial-hub-accessible-title">Épreuves des Arcanes</h1>
   <div class="trial-setup">
     <section class="difficulty-panel" aria-label="Difficulté des épreuves">
       <div class="difficulty-description"><strong>Difficulté</strong><small id="difficulty-hint">Les règles classiques, avec un petit bonus de maîtrise.</small></div>
@@ -477,7 +517,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <div id="achievements" class="achievements"></div>
 </section>
 </main>
-<footer class="game-footer"><span>Noctiloom Studio · AETHERIUM</span><details class="footer-tools"><summary>Réglages et sauvegarde</summary><div class="footer-tools-actions"><button type="button" id="guide-reopen" class="text-button">Guide des premiers pas</button><button type="button" id="backup-open" class="text-button">Gérer ma sauvegarde</button><button id="reset" class="text-button">Réinitialiser</button></div><details class="app-mode-help"><summary>Jouer sans barre de navigateur</summary><p>Android : ouvre le menu ⋮ du navigateur, puis « Installer l’application » ou « Ajouter à l’écran d’accueil ». Lance ensuite Aetherium depuis son icône.</p><p>iPhone / iPad : dans Safari, utilise Partager puis « Sur l’écran d’accueil ». Lance ensuite le jeu depuis son icône.</p><p>Le plein écran direct dépend du navigateur. Il ne s’active jamais sans ton accord.</p></details></details></footer>
+<footer class="game-footer"><span>Noctiloom Studio · AETHERIUM</span><details class="footer-tools"><summary>Réglages et sauvegarde</summary><div class="footer-tools-actions"><button type="button" id="guide-reopen" class="text-button">Aide &amp; tutoriel</button><button type="button" id="backup-open" class="text-button">Gérer ma sauvegarde</button><button id="reset" class="text-button">Réinitialiser</button></div><details class="app-mode-help"><summary>Jouer sans barre de navigateur</summary><p>Android : ouvre le menu ⋮ du navigateur, puis « Installer l’application » ou « Ajouter à l’écran d’accueil ». Lance ensuite Aetherium depuis son icône.</p><p>iPhone / iPad : dans Safari, utilise Partager puis « Sur l’écran d’accueil ». Lance ensuite le jeu depuis son icône.</p><p>Le plein écran direct dépend du navigateur. Il ne s’active jamais sans ton accord.</p></details></details></footer>
 <dialog id="backup-dialog" class="backup-dialog" aria-labelledby="backup-heading" aria-describedby="backup-description">
  <div class="backup-dialog-inner">
   <p class="kicker">LES ARCHIVES DU VOYAGEUR</p>
@@ -502,4 +542,4 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <div class="backup-footer"><span>Conserve le fichier téléchargé en lieu sûr : effacer les données du navigateur efface aussi les sauvegardes locales.</span><button type="button" id="backup-close" class="secondary">Fermer</button></div>
  </div>
 </dialog>
-<div id="toast" role="status" aria-live="polite"></div></div><script type="module" src="./src/main.js?v=au-dela-lot-3&amp;booster=au-dela-1&amp;final=dernier-accord-1&amp;finishes=2&amp;rarity=1&amp;journal=au-dela-1&amp;ui=quiet-1&amp;gallery=1&amp;audela=premium-3&amp;typographie=v4&amp;recto=original-restored-1&amp;inspector=codex-stats-hd-all-1&amp;rectolab=uniform-3&amp;epreuves=navigation-2&amp;chromatic=audit-1&amp;save=safety-1&amp;stability=3&amp;forge=finishes-1&amp;signature=targets-1&amp;trialreward=clarity-1&amp;codex=2-5&amp;onboarding=1&amp;completion=04b&amp;journey=05&amp;trials=06&amp;lore=07&amp;circuits=08&amp;seasons=09&amp;hub=13&amp;confrontations=1"></script><script type="module" src="./src/header-relics.js?v=relics-1"></script><script type="module" src="./src/fullscreen.js?v=immersive-1&amp;relics=1"></script></body></html>
+<div id="toast" role="status" aria-live="polite"></div></div><script type="module" src="./src/main.js?v=au-dela-lot-3&amp;booster=au-dela-1&amp;final=dernier-accord-1&amp;finishes=2&amp;rarity=1&amp;journal=au-dela-1&amp;ui=quiet-1&amp;gallery=1&amp;audela=premium-3&amp;typographie=v4&amp;recto=original-restored-1&amp;inspector=codex-stats-hd-all-1&amp;rectolab=uniform-3&amp;epreuves=navigation-2&amp;chromatic=audit-1&amp;save=safety-1&amp;stability=3&amp;forge=finishes-1&amp;signature=targets-1&amp;trialreward=clarity-1&amp;codex=2-5&amp;onboarding=1&amp;completion=04b&amp;journey=05&amp;trials=06&amp;lore=07&amp;circuits=08&amp;seasons=09&amp;hub=13&amp;confrontations=1&amp;help=1"></script><script type="module" src="./src/header-relics.js?v=relics-1"></script><script type="module" src="./src/fullscreen.js?v=immersive-1&amp;relics=1"></script></body></html>
