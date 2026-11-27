@@ -394,3 +394,18 @@
 #page-jouer[data-trial-view="hub"] .game-choice.has-trial-art.active .trial-choice-art{filter:saturate(1)}
 #page-jouer[data-trial-view="hub"] .has-trial-art .game-choice-name{color:#f5e3c9}
 #page-jouer[data-trial-view="hub"] .has-trial-art .game-choice-hint{color:#e0d1e8}
+
+/* One-line mini-game titles: adapt to the actual tile, not the viewport.
+   Inline-size containment leaves the existing row heights and artwork intact. */
+#page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice{container-type:inline-size}
+#page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice-name{
+ white-space:nowrap;overflow-wrap:normal;word-break:normal;text-wrap:nowrap;
+ font-size:11px;font-size:min(14px,10.5cqi);line-height:1.16;
+}
+#page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice:nth-child(5) .game-choice-name{
+ font-size:10px;font-size:min(14px,9cqi);
+}
+@media(max-width:850px){
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice-name{font-size:min(12px,10.5cqi)}
+ #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice:nth-child(5) .game-choice-name{font-size:min(12px,9cqi)}
+}
