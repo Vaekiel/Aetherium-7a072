@@ -57,6 +57,14 @@
   pointer-events:none;
   filter:drop-shadow(0 2px 3px #06081bb0);
 }
+/* Resource sprites must not inherit the legacy rounded .wallet span chips. */
+#app > header.top .wallet .wallet-link .relic-icon{
+  padding:0;
+  border:0;
+  border-radius:0;
+  background-color:transparent;
+  box-shadow:none;
+}
 #app > header.top .relic-icon--crown{background-position:0% 0%}
 #app > header.top .relic-icon--shard{background-position:100% 0%}
 #app > header.top .relic-icon--honors{background-position:0% 100%}
