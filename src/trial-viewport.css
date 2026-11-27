@@ -146,3 +146,48 @@ body:has(#page-jouer.active[data-trial-view="hub"]){
  #app:has(#page-jouer.active[data-trial-view="hub"])>.top nav .nav-icon{width:22px;height:22px;flex-basis:22px}
  #app:has(#page-jouer.active[data-trial-view="hub"])>footer #return-to-title{min-height:36px;height:36px}
 }
+
+/* Four difficulties, one continuous panorama. The grid owns the artwork:
+   no per-tile scaling/cropping, no seams, and disabled Ascension stays legible. */
+#page-jouer[data-trial-view="hub"] .difficulty-options{
+ position:relative;isolation:isolate;gap:0;grid-template-columns:repeat(4,minmax(0,1fr));
+ border-radius:7px;background:linear-gradient(180deg,#0a0c1a8c 0%,#0a0c1a18 54%,#0a0c1a26 100%),url('../assets/minigames/difficultes-fresque.webp') center 58%/cover no-repeat;
+}
+#page-jouer[data-trial-view="hub"] .difficulty-options button,
+#page-jouer[data-trial-view="hub"] .difficulty-options button.is-active,
+#page-jouer[data-trial-view="hub"] .difficulty-options .future-difficulty{
+ position:relative;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;
+ min-height:clamp(72px,15dvh,136px);padding:5px 2px;gap:3px;
+ border:1px solid #bc9a806e;border-radius:0;background:transparent;
+ box-shadow:none;opacity:1;color:#f8e6c6;text-shadow:0 1px 3px #070914,0 0 6px #070914;
+ font:600 clamp(12px,1.3vw,16px)/1.12 Georgia,serif;
+}
+#page-jouer[data-trial-view="hub"] .difficulty-options button:first-child{border-radius:7px 0 0 7px}
+#page-jouer[data-trial-view="hub"] .difficulty-options button:last-child{border-radius:0 7px 7px 0}
+#page-jouer[data-trial-view="hub"] .difficulty-options button:not(:first-child){border-left-color:transparent}
+#page-jouer[data-trial-view="hub"] .difficulty-options button .difficulty-emblem{display:block;width:clamp(16px,3.8dvh,25px);height:clamp(16px,3.8dvh,25px);filter:drop-shadow(0 1px 3px #080918)}
+#page-jouer[data-trial-view="hub"] .difficulty-options button>span{position:relative;z-index:1;white-space:nowrap;line-height:1.15}
+#page-jouer[data-trial-view="hub"] .difficulty-options button.is-active{
+ z-index:2;border-color:var(--seal,#efd2a0);box-shadow:inset 0 0 0 1px var(--seal,#efd2a0),inset 0 0 12px #e9c8ff55,0 0 9px #bd97e477;
+}
+#page-jouer[data-trial-view="hub"] .difficulty-options button.is-active::after{z-index:3;bottom:-3px}
+#page-jouer[data-trial-view="hub"] .difficulty-options button:focus-visible{outline:2px solid #f8deaf;outline-offset:-3px;z-index:3}
+#page-jouer[data-trial-view="hub"] .difficulty-options .future-difficulty{border-style:solid;cursor:default}
+#page-jouer[data-trial-view="hub"] .difficulty-options .future-difficulty small{color:#f3e3ff;font:10px/1 Georgia,serif;margin:0;padding:2px 4px;background:#15102699;border-radius:3px}
+@media(max-width:850px){
+ #page-jouer[data-trial-view="hub"] .difficulty-options button,
+ #page-jouer[data-trial-view="hub"] .difficulty-options button.is-active,
+ #page-jouer[data-trial-view="hub"] .difficulty-options .future-difficulty{min-height:clamp(55px,12dvh,108px);font-size:clamp(11px,3.25vw,14px)}
+}
+@media(max-height:560px) and (orientation:portrait){
+ #page-jouer[data-trial-view="hub"] .difficulty-options button,
+ #page-jouer[data-trial-view="hub"] .difficulty-options button.is-active,
+ #page-jouer[data-trial-view="hub"] .difficulty-options .future-difficulty{min-height:52px;padding:3px 1px;gap:1px;font-size:11px}
+ #page-jouer[data-trial-view="hub"] .difficulty-options .future-difficulty small{font-size:8px;padding:1px 3px}
+}
+@media(max-height:520px) and (orientation:landscape){
+ #page-jouer[data-trial-view="hub"] .difficulty-options button,
+ #page-jouer[data-trial-view="hub"] .difficulty-options button.is-active,
+ #page-jouer[data-trial-view="hub"] .difficulty-options .future-difficulty{min-height:40px;padding:3px 2px;gap:3px;flex-direction:row;justify-content:center;align-items:center;font-size:11px}
+ #page-jouer[data-trial-view="hub"] .difficulty-options .future-difficulty small{font-size:8px;padding:1px 3px}
+}
