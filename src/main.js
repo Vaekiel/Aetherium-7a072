@@ -1405,7 +1405,7 @@ definitions.forEach((entry,index)=>{
   const control=button('',()=>{selectGame(index);if(mobileView.matches||window.matchMedia('(max-height:520px) and (orientation:landscape)').matches)openTrial();},'game-choice');
   // Individual landscape artworks progressively replace the emblem atlas.
   // Until a given artwork is published, the original emblem remains visible.
-  const artwork=['chemin-runique.webp','memoire-ancienne.webp','serrure-ether.webp','fouilles-interdites-768.webp'][index];
+  const artwork=['chemin-runique.webp','memoire-ancienne.webp','serrure-ether.webp','fouilles-interdites-768.webp','laboratoire-arcanique.webp'][index];
   if(artwork){
     const art=el('img','trial-choice-art');
     art.alt='';
