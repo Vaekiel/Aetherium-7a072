@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const css=readFileSync('src/desktop-shell.css','utf8');
+const html=readFileSync('index.html','utf8');
+const trial=readFileSync('src/trial-hub.css','utf8');
+assert.ok(trial.includes('max-width:740px'),'Reference is the runic game panel');
+assert.ok(css.includes('--desktop-panel-width:740px'));
+assert.ok(css.includes('(min-width:851px) and (hover:hover) and (pointer:fine) and (orientation:landscape)'));
+assert.ok(css.includes('#app>.layout>.page')&&css.includes('max-width:var(--desktop-panel-width)'));
+assert.ok(css.includes('aspect-ratio:16/9'));
+for(const name of ['#page-collection','#page-boosters','#page-atelier','#page-succes','#page-expeditions','#arcane-circuits','dialog.trial-reading-dialog','dialog.confrontation-dialog','dialog#aetherium-help'])assert.ok(css.includes(name),name);
+assert.ok(html.indexOf('desktop-shell.css?v=1')>html.indexOf('trial-viewport.css?v=14'));
+console.log('Desktop shell: shared 740px panels, scoped desktop media query, adapted grids and dialogs.');

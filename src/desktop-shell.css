@@ -1,0 +1,73 @@
+/* Aetherium desktop shell — the Chemin runique play panel is the reference.
+   Only mouse/trackpad desktop layouts are affected; touch layouts stay intact.
+   A shared width constrains containers, never individual card or artwork ratios. */
+@media (min-width:851px) and (hover:hover) and (pointer:fine) and (orientation:landscape){
+ #app{
+  --desktop-panel-width:740px;
+  --desktop-panel-gutter:20px;
+ }
+ #app>.layout,
+ #app:has(#page-jouer.active[data-trial-view="hub"])>.layout,
+ #app:has(#page-jouer.active.mobile-play-ready[data-trial-view="play"])>.layout{
+  box-sizing:border-box;width:100%;max-width:calc(var(--desktop-panel-width) + 2 * var(--desktop-panel-gutter));
+  margin-inline:auto;padding-inline:var(--desktop-panel-gutter);
+ }
+ #app>.layout>.page{
+  box-sizing:border-box;width:100%;max-width:var(--desktop-panel-width);min-width:0;margin-inline:auto;
+ }
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .play-stage,
+ #page-jouer.mobile-play-ready[data-trial-view="play"] .trial-subpage-back{
+  max-width:var(--desktop-panel-width);
+ }
+ #page-jouer[data-trial-view="hub"] .trial-hub-layout{gap:12px}
+ #page-jouer[data-trial-view="hub"] .trial-setup #game-picker.game-picker.has-mini-mural,
+ #page-jouer[data-trial-view="hub"] .trial-hub-portals>.adventures-mural{aspect-ratio:16/9}
+ #page-jouer.active[data-trial-view="hub"]{
+  --tile-title-size:15px;--tile-emblem-size:28px;
+ }
+ /* Keep the collection inspector beside the cards, even when the viewport
+    itself is wide. Two card columns and compact sidebars fit the common shell. */
+ #page-collection .collection-layout{
+  grid-template-columns:minmax(0,132px) minmax(0,1fr) minmax(0,224px);gap:10px;align-items:start;
+ }
+ #page-collection .collection-layout>.filters{padding:9px 7px;min-width:0}
+ #page-collection .filters .filter-group button{padding-inline:6px;white-space:normal;overflow-wrap:anywhere}
+ #page-collection .collection-layout>.gallery{min-width:0}
+ #page-collection .gallery #card-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ #page-collection .collection-layout>.inspector-shell{
+  grid-column:3;grid-row:1;position:sticky;top:18px;width:100%;max-width:none;min-width:0;padding:6px;
+ }
+ #page-collection .inspector-shell>.inspector:has(>.inspector-copy){display:block;padding:6px}
+ #page-collection .inspector-shell>.inspector>.inspector-copy{text-align:center}
+ #page-collection .inspector-shell>.inspector>.inspector-art-shell,
+ #page-collection .inspector-shell>.inspector>.codex-sealed-inspector{width:100%;max-width:100%;margin-inline:auto}
+ #page-collection .codex-milestones-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #page-collection .codex-chapter-list{grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible}
+ /* Booster, forge, adventures and chronicles retain their own content
+    while sharing the same outer width. */
+ #page-boosters .booster-gallery{max-width:var(--desktop-panel-width);gap:12px}
+ #page-atelier .atelier-layout{grid-template-columns:minmax(0,1fr) minmax(0,220px);gap:12px}
+ #page-atelier .atelier-crafting-layout{grid-template-columns:minmax(0,1fr) minmax(0,230px);gap:12px}
+ #page-atelier .atelier-card-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ #page-atelier .atelier-catalogue{padding:12px}
+ #page-succes .achievements{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ :is(#page-expeditions,#arcane-circuits) .expedition-panel{max-width:var(--desktop-panel-width)}
+ :is(#page-expeditions,#arcane-circuits) .expedition-choices{grid-template-columns:repeat(2,minmax(0,1fr))}
+ /* Native windows are centered independently of their parent and keep their
+    natural height, with internal scrolling on short desktop screens. */
+ #page-boosters #booster-dialog,
+ #app #atelier-confirm,
+ #app #backup-dialog,
+ dialog#aetherium-help,
+ dialog.backup-dialog,
+ dialog.atelier-confirm,
+ dialog.trial-reading-dialog,
+ dialog.confrontation-dialog{
+  box-sizing:border-box;width:min(740px,calc(100vw - 40px));max-width:740px;
+  max-height:calc(100dvh - 40px);margin:auto;
+ }
+ #page-boosters .booster-dialog.has-results .booster-dialog-layout{
+  grid-template-columns:minmax(0,185px) minmax(0,1fr);gap:14px;
+ }
+ #page-boosters .booster-dialog.has-results .cards.booster-gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+}
