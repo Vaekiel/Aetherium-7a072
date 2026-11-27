@@ -1,3 +1,4 @@
+import {mountConfrontations} from './confrontations.js?v=1';
 import {mountTrialMobilePlay} from './trial-mobile-play.js?v=2';
 import {ARCANE_CIRCUITS,createCircuitSession} from './arcane-circuits.js?v=1';
 import {journeyProgress} from './journey-progress.js?v=1';
@@ -3051,3 +3052,5 @@ window.addEventListener('hashchange',()=>{
   const page=location.hash.slice(1);
   if(APP_PAGES.includes(page)&&!$('#page-'+page).classList.contains('active'))navigate(page);
 });
+
+mountConfrontations({cards:CARDS,getOwned:()=>state.owned,openBoosters:()=>navigate('boosters')});

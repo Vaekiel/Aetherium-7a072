@@ -22,7 +22,7 @@
 @media(orientation:landscape) and (min-aspect-ratio:5/4){#arcane-launch .launch-art{width:63%;object-fit:contain;object-position:center;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}#arcane-launch .launch-shade{background:linear-gradient(90deg,#10132222 30%,#101322cc 68%,#101322ee)}#arcane-launch .launch-menu{inset:0 0 0 60%;align-content:center;padding:max(12px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) 8px}#arcane-launch .launch-button{width:min(100%,290px)}}
 @media(max-height:360px){#arcane-launch .launch-menu{gap:7px}#arcane-launch .launch-button{min-height:44px;padding:8px 12px}#arcane-launch .launch-studio{font-size:10px}}
 @media(prefers-reduced-motion:reduce){#arcane-launch{transition:none}}
-</style></head>
+</style><link rel="stylesheet" href="./src/confrontations.css?v=1"></head>
 <body><div id="arcane-launch" hidden role="dialog" aria-modal="true" aria-label="Aetherium — menu titre">
 <picture><source media="(orientation: portrait)" srcset="./assets/icons/aetherium-launch-mobile-v2.webp"><img class="launch-art" src="./assets/icons/aetherium-launch.webp" alt="Aetherium — Chroniques des Arcanes" fetchpriority="high"></picture>
 <h1 id="launch-fallback" class="launch-fallback" hidden>AETHERIUM</h1>
@@ -113,6 +113,11 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
           <span class="expedition-portal-symbol" aria-hidden="true">✦</span>
           <div class="expedition-portal-copy"><strong>Les Circuits</strong><span>3 circuits permanents</span></div>
           <button type="button" id="circuit-shortcut" class="expedition-portal-button" aria-label="Explorer les Circuits des Marches">Explorer ›</button>
+        </div>
+        <div class="expedition-portal confrontation-portal">
+          <span class="expedition-portal-symbol" aria-hidden="true">⚔</span>
+          <div class="expedition-portal-copy"><strong>Les Confrontations</strong><span>Éveille la puissance de tes cartes</span></div>
+          <button type="button" id="confrontation-shortcut" class="expedition-portal-button">Combattre ›</button>
         </div>
       </div>
     </div>
@@ -497,4 +502,4 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <div class="backup-footer"><span>Conserve le fichier téléchargé en lieu sûr : effacer les données du navigateur efface aussi les sauvegardes locales.</span><button type="button" id="backup-close" class="secondary">Fermer</button></div>
  </div>
 </dialog>
-<div id="toast" role="status" aria-live="polite"></div></div><script type="module" src="./src/main.js?v=au-dela-lot-3&amp;booster=au-dela-1&amp;final=dernier-accord-1&amp;finishes=2&amp;rarity=1&amp;journal=au-dela-1&amp;ui=quiet-1&amp;gallery=1&amp;audela=premium-3&amp;typographie=v4&amp;recto=original-restored-1&amp;inspector=codex-stats-hd-all-1&amp;rectolab=uniform-3&amp;epreuves=navigation-2&amp;chromatic=audit-1&amp;save=safety-1&amp;stability=3&amp;forge=finishes-1&amp;signature=targets-1&amp;trialreward=clarity-1&amp;codex=2-5&amp;onboarding=1&amp;completion=04b&amp;journey=05&amp;trials=06&amp;lore=07&amp;circuits=08&amp;seasons=09&amp;hub=13"></script><script type="module" src="./src/header-relics.js?v=relics-1"></script><script type="module" src="./src/fullscreen.js?v=immersive-1&amp;relics=1"></script></body></html>
+<div id="toast" role="status" aria-live="polite"></div></div><script type="module" src="./src/main.js?v=au-dela-lot-3&amp;booster=au-dela-1&amp;final=dernier-accord-1&amp;finishes=2&amp;rarity=1&amp;journal=au-dela-1&amp;ui=quiet-1&amp;gallery=1&amp;audela=premium-3&amp;typographie=v4&amp;recto=original-restored-1&amp;inspector=codex-stats-hd-all-1&amp;rectolab=uniform-3&amp;epreuves=navigation-2&amp;chromatic=audit-1&amp;save=safety-1&amp;stability=3&amp;forge=finishes-1&amp;signature=targets-1&amp;trialreward=clarity-1&amp;codex=2-5&amp;onboarding=1&amp;completion=04b&amp;journey=05&amp;trials=06&amp;lore=07&amp;circuits=08&amp;seasons=09&amp;hub=13&amp;confrontations=1"></script><script type="module" src="./src/header-relics.js?v=relics-1"></script><script type="module" src="./src/fullscreen.js?v=immersive-1&amp;relics=1"></script></body></html>
