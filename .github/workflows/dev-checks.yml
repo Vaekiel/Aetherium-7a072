@@ -23,6 +23,7 @@ jobs:
           node tests/save-backup-smoke.mjs
           node --experimental-default-type=module tests/onboarding-smoke.mjs
           node --check --input-type=module < src/trial-mobile-play.js
+          node tests/desktop-shell-smoke.mjs
           node tests/trial-mobile-play-smoke.mjs
           node --experimental-default-type=module tests/trial-progress-smoke.mjs
           node --experimental-default-type=module tests/expedition-smoke.mjs
