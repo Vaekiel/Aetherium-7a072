@@ -368,12 +368,12 @@
 }
 #page-jouer[data-trial-view="hub"] .trial-choice-art{
  display:block;object-fit:cover;object-position:center 55%;border:0;box-sizing:border-box;z-index:0;
- filter:brightness(var(--trial-art-light,1)) saturate(var(--trial-art-sat,.72)) hue-rotate(var(--trial-art-hue,0deg));
+ filter:brightness(var(--trial-art-light,1)) grayscale(.78) sepia(1) hue-rotate(224deg) saturate(3);
 }
 #page-jouer[data-trial-view="hub"] .trial-art-shade{
  display:block;z-index:1;
  /* Same translucent night palette as the expedition and circuit portals. */
- background:linear-gradient(180deg,rgba(24,25,53,.34) 0%,rgba(33,28,61,.42) 45%,rgba(28,24,51,.75) 76%,rgba(19,22,43,.93) 100%);
+ background:linear-gradient(180deg,rgba(24,25,53,.15) 0%,rgba(33,28,61,.25) 45%,rgba(28,24,51,.65) 76%,rgba(19,22,43,.90) 100%);
  box-shadow:inset 0 0 0 1px #e8c89b26;
 }
 #page-jouer[data-trial-view="hub"] .has-trial-art .game-choice-name,
@@ -383,7 +383,7 @@
 #page-jouer[data-trial-view="hub"] .has-trial-art .game-choice-hint{color:#e0d1e8}
 #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice.has-trial-art.active::after{z-index:3}
 #page-jouer[data-trial-view="hub"] .game-choice.has-trial-art.active .trial-art-shade{
- background:linear-gradient(180deg,rgba(24,25,53,.29) 0%,rgba(33,28,61,.37) 45%,rgba(28,24,51,.73) 76%,rgba(19,22,43,.93) 100%);
+ background:linear-gradient(180deg,rgba(24,25,53,.15) 0%,rgba(33,28,61,.25) 45%,rgba(28,24,51,.65) 76%,rgba(19,22,43,.90) 100%);
  box-shadow:inset 0 0 0 1px #edc9ff9c,inset 0 0 13px #b178f44a;
 }
 @media(prefers-reduced-motion:reduce){
@@ -411,8 +411,8 @@
 
 /* Art direction: balance the original illustrations individually, preserving
    their compositions and sharing the same twilight tint in both selection states. */
-#page-jouer[data-trial-view="hub"] .game-choice:has(> .trial-choice-art[src$="chemin-runique.webp"]){--trial-art-light:1.04;--trial-art-sat:.68;--trial-art-hue:0deg}
-#page-jouer[data-trial-view="hub"] .game-choice:has(> .trial-choice-art[src$="memoire-ancienne.webp"]){--trial-art-light:1.03;--trial-art-sat:.66;--trial-art-hue:0deg}
-#page-jouer[data-trial-view="hub"] .game-choice:has(> .trial-choice-art[src$="serrure-ether.webp"]){--trial-art-light:.77;--trial-art-sat:.60;--trial-art-hue:9deg}
-#page-jouer[data-trial-view="hub"] .game-choice:has(> .trial-choice-art[src$="fouilles-interdites-768.webp"]){--trial-art-light:.91;--trial-art-sat:.90;--trial-art-hue:10deg}
-#page-jouer[data-trial-view="hub"] .game-choice:has(> .trial-choice-art[src$="laboratoire-arcanique.webp"]){--trial-art-light:.78;--trial-art-sat:.58;--trial-art-hue:5deg}
+#page-jouer[data-trial-view="hub"] .game-choice:has(> .trial-choice-art[src$="chemin-runique.webp"]){--trial-art-light:1.06}
+#page-jouer[data-trial-view="hub"] .game-choice:has(> .trial-choice-art[src$="memoire-ancienne.webp"]){--trial-art-light:1.05}
+#page-jouer[data-trial-view="hub"] .game-choice:has(> .trial-choice-art[src$="serrure-ether.webp"]){--trial-art-light:0.82}
+#page-jouer[data-trial-view="hub"] .game-choice:has(> .trial-choice-art[src$="fouilles-interdites-768.webp"]){--trial-art-light:1.2}
+#page-jouer[data-trial-view="hub"] .game-choice:has(> .trial-choice-art[src$="laboratoire-arcanique.webp"]){--trial-art-light:0.85}
