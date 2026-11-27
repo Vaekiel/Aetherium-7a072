@@ -12,8 +12,8 @@ assert.equal(png.subarray(1,4).toString('ascii'),'PNG');
 assert.equal(png.readUInt32BE(16),128);
 assert.equal(png.readUInt32BE(20),128);
 assert.ok(statSync(icon).size>2000,'The icon atlas has real pixel illustrations');
-assert.ok(ui.includes('@import "./header-relics.css?v=relics-3";'));
-assert.ok(h.includes('relics=3'));
+assert.ok(ui.includes('@import "./header-relics.css?v=relics-4";'));
+assert.ok(h.includes('relics=4'));
 assert.ok(h.includes('src/header-relics.js?v=relics-1'));
 for(const name of ['crown','shard','honors','expand']){
  assert.ok(h.includes('relic-icon--'+name),'The '+name+' sprite is in the header');
@@ -50,3 +50,5 @@ console.log('AETHERIUM — 4 sprite relics, counters, fullscreen, adaptive heade
 
 const resourceIconRule=css.match(/\.wallet \.wallet-link \.relic-icon\s*\{([^}]+)\}/)?.[1]||'';
 for(const property of ['padding:0','border:0','border-radius:0','background-color:transparent','box-shadow:none']) assert.ok(resourceIconRule.includes(property),'Resource icons reset legacy chip style: '+property);
+
+for(const name of ['crown','shard']) assert.ok(h.includes('<i class="relic-icon relic-icon--'+name+'" aria-hidden="true"></i>'),'Resource icon must not match legacy wallet span selector: '+name);
