@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const html=readFileSync('index.html','utf8'),css=readFileSync('src/trial-viewport.css','utf8'),js=readFileSync('src/main.js','utf8');
-assert.ok(html.includes('src/trial-viewport.css?v=13'));
+assert.ok(html.includes('src/trial-viewport.css?v=14'));
 assert.ok(css.includes('height:100dvh;min-height:0'));
 assert.ok(css.includes('body:has(#page-jouer.active[data-trial-view="hub"])'));
 assert.ok(css.includes('var(--aetherium-mobile-nav-height,64px) + var(--aetherium-footer-height,44px)'));
@@ -66,3 +66,5 @@ assert.ok(wide.includes('grid-template-columns:minmax(0,1fr)')&&wide.includes('.
 assert.ok(desktop.includes('(orientation:landscape)')&&desktop.includes('grid-template-columns:repeat(2,minmax(0,1fr))')&&desktop.includes('.trial-hub-portals{grid-column:2;grid-row:1}'));
 assert.ok(wide.includes('.trial-preview{display:none}'));
 console.log('Responsive hub: phone unchanged, portrait tablet stacked, wide desktop two native-ratio murals.');
+
+assert.ok(desktop.includes('max-width:min(94%,clamp(800px,154dvh,1320px))'),'Desktop hub is slightly narrower without changing the mural aspect ratio');

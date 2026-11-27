@@ -454,7 +454,7 @@ body:has(#page-jouer.active[data-trial-view="hub"]){
    stretching the artwork or requiring a second click to enter a minigame. */
 @media (min-width:850px) and (min-height:521px) and (orientation:landscape), (min-width:1100px) and (orientation:landscape){
  #app:has(#page-jouer.active[data-trial-view="hub"])>.layout{
-  max-width:clamp(820px,168dvh,1440px);padding:clamp(8px,1.8dvh,24px) clamp(16px,2vw,28px);
+  max-width:min(94%,clamp(800px,154dvh,1320px));padding:clamp(8px,1.8dvh,24px) clamp(16px,2vw,28px);
  }
  #page-jouer.active[data-trial-view="hub"]{
   gap:clamp(7px,1.3dvh,16px);
