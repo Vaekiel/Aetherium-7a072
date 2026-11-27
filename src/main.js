@@ -1424,8 +1424,7 @@ definitions.forEach((entry,index)=>{
     control.append(art,shade);
     art.src='./assets/minigames/'+artwork;
   }
-  control.append(el('span','game-choice-name',entry.name),
-    el('span','game-choice-hint',trialSubtitles[index]));
+  control.append(el('span','game-choice-name',entry.name));
   control.setAttribute('aria-label','Choisir '+entry.name);
   control.setAttribute('aria-controls','trial-panel-'+index);
   control.setAttribute('aria-pressed',String(index===0));
