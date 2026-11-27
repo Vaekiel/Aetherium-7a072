@@ -46,9 +46,9 @@ body:has(#page-jouer.active[data-trial-view="hub"]){
 #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice.has-trial-art::before{display:none}
 #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice:not(.has-trial-art)::before{width:min(36px,7dvh);max-height:32%;aspect-ratio:1}
 #page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice-name{
- white-space:normal;text-wrap:balance;overflow-wrap:normal;line-height:1.12;font-size:clamp(11px,12cqi,16px);
+ white-space:normal;text-wrap:balance;overflow-wrap:normal;line-height:1.12;font-size:clamp(11px,10.5cqi,14px);
 }
-#page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice:nth-child(5) .game-choice-name{font-size:clamp(11px,10.5cqi,16px)}
+#page-jouer[data-trial-view="hub"] .trial-setup .game-picker .game-choice:nth-child(5) .game-choice-name{font-size:clamp(11px,10.5cqi,14px)}
 #page-jouer[data-trial-view="hub"] .trial-preview{min-height:0;grid-row:2;padding:8px;gap:4px 10px}
 #page-jouer[data-trial-view="hub"] .trial-preview h2{font-size:clamp(16px,2.7dvh,23px)}
 #page-jouer[data-trial-view="hub"] .trial-hub-portals{
