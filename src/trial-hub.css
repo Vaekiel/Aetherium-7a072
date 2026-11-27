@@ -442,3 +442,31 @@
  #page-jouer[data-trial-view="hub"] .trial-hub-portals{grid-template-rows:auto minmax(0,1fr) minmax(0,1fr)}
  #page-jouer[data-trial-view="hub"] .trial-hub-portals>.trial-setup-title{font-size:13px}
 }
+
+/* Difficulty seals — hand-built pixel emblems and translucent scenic panels. */
+#page-jouer[data-trial-view="hub"] .difficulty-options button{
+ --seal-glow:#759cba44;--seal-scene:50% 50%;
+ background:radial-gradient(ellipse at 50% 22%,var(--seal-glow),transparent 74%),linear-gradient(180deg,#121a30a8,#14172bef 92%),url('../assets/scenery/dusk-horizon.webp') var(--seal-scene)/cover no-repeat;
+ border-color:#ae9377;box-shadow:inset 0 0 0 2px #d2b88a20,0 3px 8px #080b2060;
+}
+#page-jouer[data-trial-view="hub"] .difficulty-options [data-difficulty="initiation"]{--seal-glow:#36997865;--seal-scene:12% 62%;--seal:#a3ebc6}
+#page-jouer[data-trial-view="hub"] .difficulty-options [data-difficulty="aventure"]{--seal-glow:#497bd683;--seal-scene:36% 50%;--seal:#b5caff}
+#page-jouer[data-trial-view="hub"] .difficulty-options [data-difficulty="maitrise"]{--seal-glow:#b28a436e;--seal-scene:67% 47%;--seal:#f3cc82}
+#page-jouer[data-trial-view="hub"] .difficulty-options .future-difficulty{--seal-glow:#8f64b44f;--seal-scene:94% 50%;--seal:#bcb0d4;opacity:.72}
+#page-jouer[data-trial-view="hub"] .difficulty-options button.is-active{
+ background:radial-gradient(ellipse at 50% 22%,var(--seal-glow),transparent 85%),linear-gradient(180deg,#27213c75,#242039e8 95%),url('../assets/scenery/dusk-horizon.webp') var(--seal-scene)/cover no-repeat;
+ border-color:var(--seal);box-shadow:inset 0 0 0 2px #e6d3ad45,0 0 10px #a47de047;
+}
+#page-jouer[data-trial-view="hub"] .difficulty-options .difficulty-emblem{
+ width:32px;height:32px;filter:drop-shadow(0 2px 3px #070914b0);image-rendering:pixelated;
+}
+#page-jouer[data-trial-view="hub"] .difficulty-options button>span{text-shadow:0 1px 3px #080916;white-space:nowrap}
+@media(max-width:850px){
+ #page-jouer[data-trial-view="hub"] .difficulty-options .difficulty-emblem{width:28px;height:28px}
+}
+@media(max-height:700px) and (max-width:599px){
+ #page-jouer[data-trial-view="hub"] .difficulty-options .difficulty-emblem{width:24px;height:24px}
+}
+@media(max-height:520px) and (orientation:landscape){
+ #page-jouer[data-trial-view="hub"] .difficulty-options .difficulty-emblem{width:23px;height:23px}
+}
